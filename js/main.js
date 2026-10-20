@@ -1,6 +1,21 @@
 // ============ INIT ============
 (async () => {
   await loadState();
+
+  // Migration des identifiants (anciennes versions). Les données d'origine sont
+  // gardées dans une copie de secours avant toute modification.
+  try {
+    const snapshot = JSON.parse(JSON.stringify({ history: state.history, customPrograms: state.customPrograms, current: state.current }));
+    if (migrateProgramIds()) {
+      await idbSet(STORAGE_KEY + '-backup-ids', { date: new Date().toISOString(), ...snapshot }).catch(() => {});
+      saveState();
+    }
+  } catch (e) {
+    console.warn('Migration des identifiants impossible', e);
+    // Revenir aux données d'origine plutôt que garder un état à moitié migré
+    try { await loadState(); } catch (e2) {}
+  }
+
   render();
 
   // Récap hebdomadaire (lundi uniquement)

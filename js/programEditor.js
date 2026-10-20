@@ -247,9 +247,9 @@ function openProgramEditor(id) {
       name:      '',
       objective: 'force',
       days:      [
-        { id: 'new-day-0', name: 'Jour A', when: 'Lundi',    accent: ACCENT_PRESETS[0], subtitle: '', exercises: [] },
-        { id: 'new-day-1', name: 'Jour B', when: 'Mercredi', accent: ACCENT_PRESETS[1], subtitle: '', exercises: [] },
-        { id: 'new-day-2', name: 'Jour C', when: 'Vendredi', accent: ACCENT_PRESETS[2], subtitle: '', exercises: [] },
+        { id: `day-${generateId()}`, name: 'Jour A', when: 'Lundi',    accent: ACCENT_PRESETS[0], subtitle: '', exercises: [] },
+        { id: `day-${generateId()}`, name: 'Jour B', when: 'Mercredi', accent: ACCENT_PRESETS[1], subtitle: '', exercises: [] },
+        { id: `day-${generateId()}`, name: 'Jour C', when: 'Vendredi', accent: ACCENT_PRESETS[2], subtitle: '', exercises: [] },
       ],
     };
   }
@@ -562,6 +562,7 @@ function addLibraryEx(dayIdx, exId) {
     rankKey: ex.rankKey || '',
     info:    ex.info    || null,
     isCustom: false,
+    libId:   ex.id, // garder l'ID d'origine pour conserver l'historique
   };
   exConfigSets   = ex.sets     || 3;
   exConfigType   = ex.topSet ? 'topset' : ex.superset ? 'superset' : ex.dropSet ? 'dropset' : 'normal';
@@ -691,8 +692,15 @@ function confirmAddEx() {
   else if (type === 'dropset')  format = `${sets}×(${reps}+${reps})`;
   else                     format = `${sets}×${reps}`;
 
-  editorData.days[pendingExConfig.dayIdx].exercises.push({
-    id:       generateId(),
+  // Un exercice de la bibliothèque garde son ID : ses perfs passées, suggestions
+  // et PR restent liés, quel que soit le programme. Nouvel ID seulement s'il est
+  // déjà présent dans ce jour (les clés de séries se mélangeraient).
+  const targetDay = editorData.days[pendingExConfig.dayIdx];
+  const libId     = pendingExConfig.libId;
+  const exId      = libId && !targetDay.exercises.some(e => e.id === libId) ? libId : generateId();
+
+  targetDay.exercises.push({
+    id:       exId,
     name:     pendingExConfig.name,
     format,
     sets,
@@ -757,6 +765,11 @@ function editorSave() {
     showToast('Ajoute au moins 1 exercice par jour');
     return;
   }
+
+  // Chaque jour doit avoir un ID unique dans toute l'app, sinon l'historique
+  // d'un programme est lu avec les exercices d'un autre (copie du programme
+  // par défaut qui garde A/B/C, par exemple).
+  ensureUniqueDayIds(editorData);
 
   if (editorData.id && !editorData._fromDefault) {
     // Mise à jour d'un programme custom existant
