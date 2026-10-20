@@ -1,5 +1,5 @@
 // Changer ce numéro force le nettoyage des anciens caches.
-const CACHE = 'ponos-v2';
+const CACHE = 'ponos-v3';
 
 const PRECACHE = [
   './',
@@ -34,11 +34,13 @@ self.addEventListener('install', e => {
   );
 });
 
-// Activate : supprime les anciens caches
+// Activate : supprime les anciens caches de Ponos uniquement. Hébé est sur le
+// même site (pierrhu.github.io) et partage le stockage des caches : ne pas
+// toucher aux siens (hebe-…).
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k.startsWith('ponos-') && k !== CACHE).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
 });
