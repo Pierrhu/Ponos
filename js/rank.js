@@ -9,6 +9,11 @@ function renderRank() {
     <input type="number" inputmode="decimal" value="${state.bodyWeight||''}" placeholder="kg" onchange="updateWeight(this.value)">
     <span style="font-size:13px;color:rgba(0,0,0,0.6);font-weight:600">kg</span>
   </div>`;
+  if (hebeAvailable()) {
+    html += `<p class="info-text" style="margin:-4px 0 12px">${state.bodyWeightDate
+      ? `Partagé avec Hébé · pesée du ${hebeDateFr(state.bodyWeightDate)}`
+      : 'Partagé avec Hébé'}</p>`;
+  }
 
   let totalRankIdx = 0, rankCount = 0;
 
@@ -114,6 +119,8 @@ function renderRank() {
 
 function updateWeight(val) {
   state.bodyWeight = parseFloat(val) || 0;
+  state.bodyWeightDate = localYMD();
+  saveHebeWeight(state.bodyWeight);
   saveState();
   render();
 }

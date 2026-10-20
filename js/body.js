@@ -3,6 +3,7 @@
 function renderBody() {
   let html = '<h2 class="page-title">Suivi corporel</h2>';
   html += '<p class="info-text" style="margin-bottom:10px">Mesure-toi chaque semaine, même jour, le matin à jeun.</p>';
+  if (hebeAvailable()) html += '<p class="info-text" style="margin:-4px 0 10px">Le poids et le tour de taille sont partagés avec Hébé : les courbes réunissent les mesures des deux apps.</p>';
   html += '<div class="warrior-section">Mensurations</div>';
 
   state.bodyStats.forEach((entry, idx) => {
@@ -23,7 +24,7 @@ function renderBody() {
   html += `<button class="btn-primary" style="background:var(--yellow)" onclick="addBodyStat()">+ Nouvelle mesure</button>`;
 
   // Graphes d'évolution
-  if (state.bodyStats.length >= 2) {
+  {
     const metrics = [
       { key:'poids',     label:'Poids (kg)',          color:'var(--yellow)', hex:'#E4A229', goodDir:'context' },
       { key:'bras',      label:'Tour de bras (cm)',   color:'var(--purple)', hex:'#8B5CF6', goodDir:'up'      },
@@ -32,10 +33,16 @@ function renderBody() {
     ];
 
     metrics.forEach(m => {
-      const entries = state.bodyStats.filter(b => b[m.key]).map(b => ({
-        val:  parseFloat(b[m.key]),
-        date: new Date(b.date).toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit'})
-      }));
+      const hebeList = m.key === 'poids' ? getHebeWeights() : m.key === 'taille_cm' ? getHebeWaist() : null;
+      const entries = hebeList
+        ? mergedBodySeries(m.key, hebeList, m.key === 'poids' ? 'kg' : 'cm').slice(-12).map(e => ({
+            val:  e.val,
+            date: new Date(e.d + 'T12:00:00').toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit'})
+          }))
+        : state.bodyStats.filter(b => b[m.key]).map(b => ({
+            val:  parseFloat(b[m.key]),
+            date: new Date(b.date).toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit'})
+          }));
       if (entries.length < 2) return;
 
       const vals  = entries.map(e => e.val);
@@ -108,6 +115,12 @@ function addBodyStat() {
 
 function updateBody(idx, key, val) {
   state.bodyStats[idx][key] = val;
-  if (key === 'poids' && val) state.bodyWeight = parseFloat(val);
+  const d = localYMD(state.bodyStats[idx].date);
+  if (key === 'poids' && val) {
+    state.bodyWeight = parseFloat(val);
+    if (!state.bodyWeightDate || d >= state.bodyWeightDate) state.bodyWeightDate = d;
+    saveHebeWeight(parseFloat(val), d);
+  }
+  if (key === 'taille_cm' && val) saveHebeWaist(parseFloat(val), d);
   saveState();
 }

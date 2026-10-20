@@ -92,6 +92,7 @@ function saveState() {
     veloSessions:   state.veloSessions,
     activeProgramId: state.activeProgramId,
     customPrograms:  state.customPrograms,
+    bodyWeightDate:  state.bodyWeightDate,
     dayIdx:          state.dayIdx,
     done:            state.done,
     sessionStart:    state.sessionStart,

@@ -16,6 +16,9 @@
     try { await loadState(); } catch (e2) {}
   }
 
+  // Poids : dernière pesée faite dans Hébé
+  syncWeightFromHebe();
+
   // Séance en cours reprise, sinon jour proposé
   resumeSessionIfAny();
   if (!state.sessionStart) state.dayIdx = suggestNextDayIdx();
