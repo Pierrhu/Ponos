@@ -14,6 +14,15 @@
 
   // Service Worker
   if ('serviceWorker' in navigator) {
+    // Quand une nouvelle version prend le relais, recharger une fois pour l'afficher
+    // (sauf en pleine séance, pour ne pas couper le chrono).
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloading || state._sessionActive) return;
+      reloading = true;
+      location.reload();
+    });
     try {
       await navigator.serviceWorker.register('sw.js');
       console.log('Service Worker enregistré');
