@@ -5,7 +5,7 @@ const PROGRAM = [
     exercises: [
       {id:'a1',restTime:180,name:'Développé couché barre',format:'3 chauffe + Top set 3-5 + 2×6-8',sets:3,topSet:true,rankKey:'bench',
         info:{
-          gif:'gifs/developpe-couche-barre.gif',
+          gif:'gifs/developpe-couche-barre.webp',
           execution:[
             'Échauffement : 3 séries progressives (barre à vide ×10, ~50% ×6, ~70% ×3) pour préparer les articulations et le SNC.',
             'Pieds au sol, fessiers et haut du dos en contact avec le banc, léger arc thoracique naturel.',
@@ -17,7 +17,7 @@ const PROGRAM = [
         }},
       {id:'a2',restTime:180,name:'Rowing barre pronation',format:'1-2 chauffe + Top set 3-5 + 2×6-8',sets:3,topSet:true,rankKey:'row',
         info:{
-          gif:'gifs/rowing-barre-pronation.gif',
+          gif:'gifs/rowing-barre-pronation.webp',
           execution:[
             'Échauffement : 1-2 séries légères (~50-60%) car le corps est déjà chaud du bench.',
             'Pieds largeur de hanches, genoux légèrement fléchis, buste penché à ~45° (pas plus bas).',
@@ -29,7 +29,7 @@ const PROGRAM = [
         }},
       {id:'a3',restTime:120,name:'Développé incliné DB 30°',format:'3×8-10',sets:3,
         info:{
-          gif:'gifs/developpe-incline-db.gif',
+          gif:'gifs/developpe-incline-db.webp',
           execution:[
             'Banc incliné à 30° (pas plus, sinon les deltoïdes antérieurs prennent le dessus).',
             'Haltères au niveau des épaules, paumes vers l\'avant, coudes à ~45°.',
@@ -41,7 +41,7 @@ const PROGRAM = [
         }},
       {id:'a4',restTime:120,name:'Tirage vertical large',format:'3×10-12',sets:3,
         info:{
-          gif:'gifs/tirage-vertical-large.gif',
+          gif:'gifs/tirage-vertical-large.webp',
           execution:[
             'Prise pronation large (1.5× largeur d\'épaules), cuisses calées sous les boudins.',
             'Tirer la barre vers le haut de la poitrine en bombant légèrement le torse.',
@@ -53,7 +53,7 @@ const PROGRAM = [
         }},
       {id:'a5',restTime:90,name:'Élévations latérales',format:'3×12-15',sets:3,
         info:{
-          gif:'gifs/elevations-laterales-halteres.gif',
+          gif:'gifs/elevations-laterales-halteres.webp',
           execution:[
             'Debout, légère inclinaison du buste vers l\'avant (~10-15°).',
             'Bras légèrement fléchis, monter les haltères sur les côtés jusqu\'à l\'horizontale.',
@@ -65,7 +65,7 @@ const PROGRAM = [
         }},
       {id:'a6',restTime:60,name:'SS: Curl EZ / Ext. corde',format:'2×8-10 / 10-12',sets:2,superset:true,
         info:{
-          gif:'gifs/curl-ez.gif',
+          gif:'gifs/curl-ez.webp',
           execution:[
             'Curl EZ : prise sur les parties inclinées de la barre (réduit le stress sur les poignets). Coudes fixes le long du corps, pas d\'élan.',
             'Extension corde : coudes fixes, écarter la corde en bas du mouvement et squeeze 1s. Ne pas utiliser l\'élan.',
@@ -81,7 +81,7 @@ const PROGRAM = [
     exercises: [
       {id:'b1',restTime:180,name:'Développé militaire',format:'Top set 3-5 + 3×6-8',sets:4,topSet:true,rankKey:'ohp',
         info:{
-          gif:'gifs/developpe-militaire-halteres.gif',
+          gif:'gifs/developpe-militaire-halteres.webp',
           execution:[
             'Debout, pieds largeur de hanches, prise pronation légèrement plus large que les épaules.',
             'Barre au niveau des clavicules, coudes sous la barre.',
@@ -93,7 +93,7 @@ const PROGRAM = [
         }},
       {id:'b2',restTime:150,name:'Tirage vertical neutre',format:'4×6-8 lourd',sets:4,
         info:{
-          gif:'gifs/tirage-vertical-neutre.gif',
+          gif:'gifs/tirage-vertical-neutre.webp',
           execution:[
             'Prise neutre (paumes face à face), largeur d\'épaules ou légèrement plus serrée.',
             'Tirer les coudes vers le bas et l\'arrière, amener la barre au niveau du haut de la poitrine.',
@@ -105,7 +105,7 @@ const PROGRAM = [
         }},
       {id:'b3',restTime:120,name:'Rowing DB unilatéral',format:'3×10-12/bras',sets:3,
         info:{
-          gif:'gifs/rowing-db-unilateral.gif',
+          gif:'gifs/rowing-db-unilateral.webp',
           execution:[
             'Un genou et une main sur le banc, pied opposé au sol, dos plat et parallèle.',
             'Tirer l\'haltère vers la hanche (pas vers l\'épaule), coude rasant le corps.',
@@ -117,7 +117,7 @@ const PROGRAM = [
         }},
       {id:'b4',restTime:90,name:'Latérales poulie basse',format:'4×12-15',sets:4,
         info:{
-          gif:'gifs/elevations-laterales-poulie.gif',
+          gif:'gifs/elevations-laterales-poulie.webp',
           execution:[
             'Debout à côté de la poulie basse, bras intérieur tient la poignée, bras extérieur en appui.',
             'Monter le bras latéralement jusqu\'à l\'horizontale, coude légèrement fléchi.',
@@ -129,7 +129,7 @@ const PROGRAM = [
         }},
       {id:'b5',restTime:60,name:'Face pull corde',format:'3×15-20',sets:3,
         info:{
-          gif:'gifs/face-pull.gif',
+          gif:'gifs/face-pull.webp',
           execution:[
             'Poulie réglée à hauteur du visage ou légèrement au-dessus.',
             'Prise en pronation sur la corde, tirer vers le front en écartant les mains.',
@@ -146,7 +146,7 @@ const PROGRAM = [
     exercises: [
       {id:'c1',restTime:120,name:'Développé couché DB',format:'4×10-12',sets:4,
         info:{
-          gif:'gifs/developpe-couche-db.gif',
+          gif:'gifs/developpe-couche-db.webp',
           execution:[
             'Allongé sur banc plat, haltères au niveau de la poitrine, pieds au sol.',
             'Descente lente avec un étirement profond — les haltères descendent plus bas qu\'une barre.',
@@ -158,7 +158,7 @@ const PROGRAM = [
         }},
       {id:'c2',restTime:120,name:'Tirage horizontal serré',format:'4×10-12',sets:4,
         info:{
-          gif:'gifs/tirage-horizontal-serre.gif',
+          gif:'gifs/tirage-horizontal-serre.webp',
           execution:[
             'Assis face à la poulie, pieds calés, genoux légèrement fléchis, dos droit.',
             'Prise serrée (V-bar ou triangle), tirer vers le bas du sternum.',
@@ -170,7 +170,7 @@ const PROGRAM = [
         }},
       {id:'c3',restTime:90,name:'Écarté poulie vis-à-vis',format:'3×12-15',sets:3,
         info:{
-          gif:'gifs/ecarte-poulie.gif',
+          gif:'gifs/ecarte-poulie.webp',
           execution:[
             'Poulies réglées à hauteur d\'épaules, un pied en avant pour la stabilité.',
             'Bras ouverts, coudes légèrement fléchis (fixés dans cette position tout le mouvement).',
@@ -182,7 +182,7 @@ const PROGRAM = [
         }},
       {id:'c4',restTime:90,name:'Latérales drop set méca.',format:'3×(8+8)',sets:3,dropSet:true,
         info:{
-          gif:'gifs/elevations-laterales-halteres.gif',
+          gif:'gifs/elevations-laterales-halteres.webp',
           execution:[
             'Phase 1 — Penché (~45°) : 8 reps d\'élévations en position penchée (cible le deltoïde latéral en stretch).',
             'Phase 2 — Debout : sans repos, se redresser et faire 8 reps classiques debout.',
@@ -193,7 +193,7 @@ const PROGRAM = [
         }},
       {id:'c5',restTime:60,name:'Face pull corde',format:'2×15-20',sets:2,
         info:{
-          gif:'gifs/face-pull.gif',
+          gif:'gifs/face-pull.webp',
           execution:[
             'Même exécution que le Jour B — poulie haute, tirer vers le front, coudes hauts.',
             'Squeeze 2s, poids léger, focus sur la contraction.',
@@ -203,7 +203,7 @@ const PROGRAM = [
         }},
       {id:'c6',restTime:60,name:'SS: Curl marteau / Ext.',format:'2×10-12 / 10-12',sets:2,superset:true,
         info:{
-          gif:'gifs/curl-marteau.gif',
+          gif:'gifs/curl-marteau.webp',
           execution:[
             'Curl marteau : prise neutre (paumes face à face), bras le long du corps, monter en gardant les coudes fixes.',
             'Extension poulie barre droite : coudes collés au corps, extension complète, squeeze 1s en bas.',

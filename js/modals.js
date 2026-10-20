@@ -1,7 +1,7 @@
 // ============ MODALS & OVERLAYS ============
 
 // ── PR Célébration ────────────────────────────────────────────────────────────
-const PR_GIFS = ['gifs/felicitation-pd.gif'];
+const PR_GIFS = ['gifs/felicitation-pd.webp'];
 
 function openPRCelebrate(prIdx) {
   const pr = state._lastPRs[prIdx];
@@ -81,8 +81,10 @@ function openInfoModal(exId) {
   const { ex, day } = found;
   const info = ex.info;
 
-  const gifHtml = info.gif
-    ? `<div class="info-gif-container"><img src="${info.gif}" alt="${ex.name}" onerror="this.parentElement.innerHTML='<div class=\\'gif-placeholder\\'>GIF non trouvé</div>'"></div>`
+  // Les programmes perso enregistrés avant la conversion pointent encore vers les .gif
+  const gifSrc = info.gif ? info.gif.replace(/\.gif$/, '.webp') : '';
+  const gifHtml = gifSrc
+    ? `<div class="info-gif-container"><img src="${gifSrc}" alt="${ex.name}" onerror="this.parentElement.innerHTML='<div class=\\'gif-placeholder\\'>GIF non trouvé</div>'"></div>`
     : '';
 
   const execHtml = info.execution && info.execution.length
