@@ -80,6 +80,7 @@ async function loadState() {
   if (!state.veloSessions)   state.veloSessions   = [];
   if (!state.customPrograms) state.customPrograms = [];
   if (!state.activeProgramId) state.activeProgramId = 'default';
+  if (!state.done)           state.done           = {};
 }
 
 function saveState() {
@@ -91,6 +92,9 @@ function saveState() {
     veloSessions:   state.veloSessions,
     activeProgramId: state.activeProgramId,
     customPrograms:  state.customPrograms,
+    dayIdx:          state.dayIdx,
+    done:            state.done,
+    sessionStart:    state.sessionStart,
   };
   idbSet(STORAGE_KEY, data).catch(() => {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}

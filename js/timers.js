@@ -73,23 +73,36 @@ let wakeLock        = null;
 
 function startSession() {
   if (state._sessionActive) return;
+  // Le début est enregistré : fermer ou recharger l'app ne remet pas le chrono à zéro
+  if (!state.sessionStart) { state.sessionStart = Date.now(); saveState(); }
   state._sessionActive = true;
-  sessionStart = Date.now();
+  sessionStart = state.sessionStart;
   document.getElementById('session-bar').classList.add('active');
 
-  sessionInterval = setInterval(() => {
+  const tick = () => {
     const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
     const min = Math.floor(elapsed / 60);
     const sec = elapsed % 60;
     document.getElementById('session-time').textContent =
       `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
-  }, 1000);
+  };
+  tick();
+  sessionInterval = setInterval(tick, 1000);
 
   requestWakeLock();
 }
 
+// Au lancement : reprendre une séance en cours (oubliée depuis moins de 6 h)
+function resumeSessionIfAny() {
+  if (!state.sessionStart) return;
+  if (Date.now() - state.sessionStart > 6 * 3600 * 1000) { state.sessionStart = null; saveState(); return; }
+  startSession();
+}
+
 function stopSession() {
   state._sessionActive = false;
+  state.sessionStart = null;
+  saveState();
   if (sessionInterval) clearInterval(sessionInterval);
   sessionInterval = null;
   document.getElementById('session-bar').classList.remove('active');

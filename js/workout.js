@@ -33,7 +33,7 @@ function renderWorkout() {
   getActiveProgram().forEach((d, i) => {
     const active = state.dayIdx === i;
     html += `<button class="day-btn${active?' active':''}" style="--active-color:${d.accent}15;--active-accent:${d.accent}" onclick="selectDay(${i})">
-      <div class="day-name">${d.name}</div><div class="day-when">${d.when}</div>
+      <div class="day-name">${d.name}</div><div class="day-when">${doneThisWeek(d.id) ? '✓ Fait' : d.when}</div>
     </button>`;
   });
   html += '</div>';
@@ -71,22 +71,8 @@ function renderWorkout() {
         const isTop   = ex.topSet && i === 0;
         const kgKey   = `${ex.id}_${i}_kg`;
         const repsKey = `${ex.id}_${i}_reps`;
-        let sugKg = prev ? prev.kg : '';
-        let sugReps = prev ? prev.reps : '';
-
-        if (ex.topSet && i > 0) {
-          const topKg   = parseFloat(state.current[`${ex.id}_0_kg`]);
-          const topReps = parseInt  (state.current[`${ex.id}_0_reps`]);
-          if (topKg   > 0) sugKg   = (Math.round((topKg * 0.85) / 2.5) * 2.5).toFixed(1).replace('.0','');
-          if (topReps > 0) sugReps = Math.min(topReps + 2, 8);
-          if (!sugKg   && prev) sugKg   = prev.kg;
-          if (!sugReps && prev) sugReps = prev.reps;
-        } else if (!ex.topSet && i > 0) {
-          const prevSetKg   = state.current[`${ex.id}_${i-1}_kg`];
-          const prevSetReps = state.current[`${ex.id}_${i-1}_reps`];
-          if (prevSetKg)   sugKg   = prevSetKg;
-          if (prevSetReps) sugReps = prevSetReps;
-        }
+        const { kg: sugKg, reps: sugReps } = getSetSuggestion(ex, i);
+        const isDone = isSetDone(ex.id, i);
 
         html += `<div class="set-row">
           <div class="set-label${isTop?' top':''}">${isTop?'TOP':`Série ${i+1}`}</div>
@@ -104,6 +90,8 @@ function renderWorkout() {
               oninput="event.stopPropagation();updateSet('${repsKey}',this.value);onSetInput('${ex.id}',${i},'${kgKey}','${repsKey}',${ex.topSet||false},'${ex.rankKey||''}')">
             <span class="unit">reps</span>
           </div>
+          <button class="set-check${isDone ? ' done' : ''}" aria-label="${isDone ? 'Annuler la validation' : 'Valider la série'}"
+            onclick="event.stopPropagation();validateSet('${ex.id}',${i})">✓</button>
         </div>`;
 
         if (ex.topSet && i === 0) {
@@ -129,7 +117,7 @@ function renderWorkout() {
   });
 
   // Bouton terminer
-  html += `<button class="btn-primary" style="background:${day.accent}" onclick="finishSession('${day.id}')">Terminer la séance ✓</button>`;
+  html += `<button class="btn-primary" style="background:${day.accent}" onclick="requestFinish('${day.id}')">Terminer la séance ✓</button>`;
 
   // Rappel tractions
   html += `<div class="card" style="margin-top:10px;border-left:2px solid rgba(194,59,59,0.4);padding-left:12px;font-size:12px;color:var(--text3)">
@@ -160,7 +148,7 @@ function renderWorkout() {
   });
 }
 
-function selectDay(i)  { state.dayIdx = i; state.activeEx = null; state._lastPRs = null; state._lastTimerSet = null; render(); }
+function selectDay(i)  { state.dayIdx = i; state.activeEx = null; state._lastPRs = null; state._lastTimerSet = null; saveState(); render(); }
 function toggleEx(id)  { state.activeEx = state.activeEx === id ? null : id; render(); }
 function updateSet(key, val) { state.current[key] = val; saveState(); }
 
@@ -171,12 +159,6 @@ function onSetInput(exId, setIdx, kgKey, repsKey, isTopSet, rankKey) {
   const kg   = state.current[kgKey];
   const reps = state.current[repsKey];
   if (kg && reps && parseFloat(kg) > 0 && parseInt(reps) > 0) {
-    // Ne pas relancer le timer si déjà actif (évite reset à chaque frappe)
-    const setKey = `${exId}_${setIdx}`;
-    if (!state._lastTimerSet || state._lastTimerSet !== setKey) {
-      state._lastTimerSet = setKey;
-      startRestTimer(getRestDuration(exId));
-    }
     document.querySelectorAll(`input[oninput*="'${kgKey}'"], input[oninput*="'${repsKey}'"]`).forEach(inp => {
       inp.classList.remove('input-flash');
       void inp.offsetWidth;
@@ -229,6 +211,117 @@ function onSetInput(exId, setIdx, kgKey, repsKey, isTopSet, rankKey) {
   }
 }
 
+
+// ── Jour proposé, séries validées ─────────────────────────────────────────────
+
+// Jour qui suit la dernière séance faite dans le programme actif
+function suggestNextDayIdx() {
+  const prog = getActiveProgram();
+  for (let i = state.history.length - 1; i >= 0; i--) {
+    const idx = prog.findIndex(d => d.id === state.history[i].dayId);
+    if (idx >= 0) return (idx + 1) % prog.length;
+  }
+  return 0;
+}
+
+function doneThisWeek(dayId) {
+  const wk = getWeekKey(new Date());
+  return state.history.some(h => h.dayId === dayId && getWeekKey(h.date) === wk);
+}
+
+function isSetDone(exId, i) { return !!(state.done && state.done[`${exId}_${i}`]); }
+function isExDone(ex) {
+  for (let i = 0; i < ex.sets; i++) if (!isSetDone(ex.id, i)) return false;
+  return true;
+}
+
+// Valeurs proposées (placeholders) d'une série
+function getSetSuggestion(ex, i) {
+  const prev = getLastPerf(ex.id, i);
+  let kg   = prev ? prev.kg : '';
+  let reps = prev ? prev.reps : '';
+  if (ex.topSet && i > 0) {
+    const topKg   = parseFloat(state.current[`${ex.id}_0_kg`]);
+    const topReps = parseInt  (state.current[`${ex.id}_0_reps`]);
+    if (topKg   > 0) kg   = (Math.round((topKg * 0.85) / 2.5) * 2.5).toFixed(1).replace('.0','');
+    if (topReps > 0) reps = Math.min(topReps + 2, 8);
+  } else if (!ex.topSet && i > 0) {
+    const pk = state.current[`${ex.id}_${i-1}_kg`];
+    const pr = state.current[`${ex.id}_${i-1}_reps`];
+    if (pk) kg = pk;
+    if (pr) reps = pr;
+  }
+  return { kg: kg === '' ? '' : String(kg), reps: reps === '' ? '' : String(reps) };
+}
+
+// ✓ : enregistre la série (valeurs saisies, sinon celles proposées), lance le
+// repos, puis ouvre l'exercice suivant quand toutes les séries sont faites.
+function validateSet(exId, i) {
+  const day = getActiveProgram()[state.dayIdx];
+  const ex  = day.exercises.find(e => e.id === exId);
+  if (!ex) return;
+  if (!state.done) state.done = {};
+  const key = `${exId}_${i}`;
+
+  if (state.done[key]) { delete state.done[key]; saveState(); render(); return; }
+
+  const kgKey = `${exId}_${i}_kg`, repsKey = `${exId}_${i}_reps`;
+  const sug = getSetSuggestion(ex, i);
+  if (!state.current[kgKey]   && sug.kg)   state.current[kgKey]   = sug.kg;
+  if (!state.current[repsKey] && sug.reps) state.current[repsKey] = sug.reps;
+  if (!state.current[kgKey] && !state.current[repsKey]) { showToast('Saisis la charge ou les répétitions', 'err'); return; }
+
+  state.done[key] = true;
+  if (!state._sessionActive) startSession();
+  if (navigator.vibrate) navigator.vibrate(30);
+
+  if (isExDone(ex)) {
+    const next = day.exercises.find(e => !isExDone(e));
+    state.activeEx = next ? next.id : null;
+  }
+  saveState();
+  render();
+  startRestTimer(getRestDuration(exId));
+  if (isExDone(ex) && state.activeEx) {
+    const el = document.querySelector(`.ex-card[data-exid="${state.activeEx}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Terminer : confirmation s'il reste des séries vides
+function requestFinish(dayId) {
+  const day = getActiveProgram().find(d => d.id === dayId);
+  const missing = [];
+  let anyData = false;
+  day.exercises.forEach(ex => {
+    const sets = [];
+    for (let i = 0; i < ex.sets; i++) {
+      if (state.current[`${ex.id}_${i}_kg`] || state.current[`${ex.id}_${i}_reps`]) anyData = true;
+      else sets.push(i + 1);
+    }
+    if (sets.length) missing.push(`${ex.name} — série${sets.length > 1 ? 's' : ''} ${sets.join(', ')}`);
+  });
+  if (!anyData) { showToast('Saisis au moins une série !'); return; }
+  if (!missing.length) { finishSession(dayId); return; }
+
+  let el = document.getElementById('finish-modal');
+  if (!el) { el = document.createElement('div'); el.id = 'finish-modal'; document.body.appendChild(el); }
+  el.className = 'modal-overlay';
+  el.onclick = e => { if (e.target === el) closeFinishModal(); };
+  el.innerHTML = `<div class="modal-box">
+    <div class="modal-title">Terminer la séance ?</div>
+    <div class="info-text" style="margin-bottom:6px">Il reste ${missing.length > 1 ? 'des séries' : 'une ou des séries'} non saisies, elles ne seront pas enregistrées :</div>
+    <div class="info-text" style="color:var(--text2)">${missing.slice(0, 4).join('<br>')}${missing.length > 4 ? '<br>…' : ''}</div>
+    <button class="btn-primary" style="background:${day.accent}" onclick="closeFinishModal();finishSession('${dayId}')">Terminer quand même</button>
+    <button class="modal-cancel" onclick="closeFinishModal()">Continuer la séance</button>
+  </div>`;
+}
+
+function closeFinishModal() {
+  const el = document.getElementById('finish-modal');
+  if (el) el.remove();
+}
+
 // ── Terminer la séance ────────────────────────────────────────────────────────
 function finishSession(dayId) {
   const day   = getActiveProgram().find(d => d.id === dayId);
@@ -248,6 +341,7 @@ function finishSession(dayId) {
 
   if (!hasData) { showToast('Saisis au moins une série !'); return; }
 
+  const elapsed = state.sessionStart ? Math.floor((Date.now() - state.sessionStart) / 1000) : 0;
   stopSession();
   skipRestTimer();
 
@@ -261,12 +355,13 @@ function finishSession(dayId) {
   state.history.push(entry);
   state.activeEx = null;
   state._lastTimerSet = null;
+  state.done = {};
+  state.dayIdx = suggestNextDayIdx();
 
   const prs = detectPRs(entry, day);
   if (prs.length) state._lastPRs = prs;
   saveState();
 
-  const elapsed = sessionStart > 0 ? Math.floor((Date.now() - sessionStart) / 1000) : 0;
   showVictory(day, entry, elapsed, prs);
   render();
 }

@@ -16,6 +16,10 @@
     try { await loadState(); } catch (e2) {}
   }
 
+  // Séance en cours reprise, sinon jour proposé
+  resumeSessionIfAny();
+  if (!state.sessionStart) state.dayIdx = suggestNextDayIdx();
+
   render();
 
   // Récap hebdomadaire (lundi uniquement)
