@@ -1,7 +1,7 @@
 // ============ RANG ============
 
 function renderRank() {
-  let html = '<h2 class="page-title">Rang</h2>';
+  let html = progressHeaderHtml();
   const bw = state.bodyWeight || 95;
 
   html += `<div class="weight-banner">

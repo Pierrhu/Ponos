@@ -1,5 +1,5 @@
 // Changer ce numéro force le nettoyage des anciens caches.
-const CACHE = 'ponos-v6';
+const CACHE = 'ponos-v7';
 
 const PRECACHE = [
   './',

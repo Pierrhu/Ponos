@@ -4,100 +4,128 @@ let editingIdx     = null;
 let editingBodyIdx = null;
 let editSets       = {};
 
+let histFilter = 'all';
+
+function setHistFilter(f) { histFilter = f; renderHistory(); }
+
+function fmtNum(n, d = 1) { return (Math.round(n * 10 ** d) / 10 ** d).toLocaleString('fr-FR'); }
+
 function renderHistory() {
-  let html = '<h2 class="page-title">Historique</h2>'
-           + '<div class="warrior-section">Campagnes passées</div>'
-           + '<div class="hist-hint">← Glisser pour modifier</div>';
+  const all = [];
+  state.history.forEach    ((h, i) => all.push({ type:'muscu', data:h, idx:i }));
+  (state.veloSessions||[]) .forEach((v, i) => all.push({ type:'velo',  data:v, idx:i }));
+  (state.bodyStats||[])    .forEach((b, i) => all.push({ type:'body',  data:b, idx:i }));
+  all.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 
-  const allEntries = [];
-  state.history.forEach    ((h, i) => allEntries.push({ type:'muscu', data:h, idx:i }));
-  (state.veloSessions||[]) .forEach((v, i) => allEntries.push({ type:'velo',  data:v, idx:i }));
-  (state.bodyStats||[])    .forEach((b, i) => allEntries.push({ type:'body',  data:b, idx:i }));
-  allEntries.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+  const count = t => all.filter(e => e.type === t).length;
+  const filters = [
+    { id:'all',   label:'Tout',    n: all.length },
+    { id:'muscu', label:'Muscu',   n: count('muscu') },
+    { id:'velo',  label:'Vélo',    n: count('velo') },
+    { id:'body',  label:'Mesures', n: count('body') },
+  ];
+  const entries = histFilter === 'all' ? all : all.filter(e => e.type === histFilter);
 
-  if (!allEntries.length) {
-    html += `<div class="card" style="text-align:center;padding:24px">
-      <div style="font-size:13px;color:var(--text3)">Aucune activité enregistrée</div>
-      <div style="font-size:11px;color:#444;margin-top:4px">Termine ta première séance pour la voir ici</div>
+  let html = '<h2 class="page-title">Historique</h2>';
+  html += `<div class="seg">${filters.map(f =>
+    `<button class="seg-btn${histFilter === f.id ? ' active' : ''}" onclick="setHistFilter('${f.id}')">${f.label}<span class="seg-n">${f.n}</span></button>`).join('')}</div>`;
+
+  if (!entries.length) {
+    html += `<div class="hx-empty">
+      <div class="hx-empty-title">${all.length ? 'Rien dans cette catégorie' : 'Aucune activité enregistrée'}</div>
+      <div class="hx-empty-desc">${all.length ? 'Choisis un autre filtre.' : 'Termine ta première séance pour la voir ici.'}</div>
     </div>`;
-    html += `<button class="btn-import" onclick="openImportModal()">Charger depuis Excel</button>`;
-  } else {
-    html += `<button class="btn-export" onclick="exportToExcel()">Exporter tout en Excel</button>`;
-    html += `<button class="btn-import" onclick="openImportModal()">Charger depuis Excel</button>`;
-
-    allEntries.forEach(entry => {
-      if (entry.type === 'muscu') {
-        const h = entry.data, i = entry.idx;
-        const found = findDayInfo(h.dayId);
-        if (!found) return;
-        const d = found.day;
-        const setCount = Object.keys(h.sets).length;
-        html += `<div class="hist-card hist-card--warrior" style="--hc-accent:${d.accent}" data-hist-action="openEditSession(${i})">
-          <div class="hist-card-header">
-            <div>
-              <div class="hist-card-title"  style="color:${d.accent}">${d.name}</div>
-              <div class="hist-card-sub">${d.subtitle}</div>
-              <div class="hist-card-date">${formatDate(h.date)}</div>
-            </div>
-            <div class="hist-card-count">
-              <span class="hist-card-count-num"   style="color:${d.accent}">${setCount}</span>
-              <span class="hist-card-count-label">séries</span>
-            </div>
-          </div>
-          <div class="hist-tags">
-            ${getEntryExercises(h, d).map(ex => {
-              const s = h.sets[`${ex.id}_0`];
-              if (!s) return '';
-              return `<span class="hist-tag">${ex.name.split(' ').slice(0,2).join(' ')} ${s.kg}kg×${s.reps}</span>`;
-            }).join('')}
-          </div>
-        </div>`;
-      }
-
-      else if (entry.type === 'velo') {
-        const v = entry.data, vi = entry.idx;
-        const typeLabels = { endurance:'Endurance', long:'Sortie longue', recup:'Récup' };
-        html += `<div class="hist-card hist-card--warrior" style="--hc-accent:var(--yellow)" data-hist-action="openEditVelo(${vi})">
-          <div class="hist-card-header">
-            <div>
-              <div class="hist-card-title" style="color:var(--yellow)">Vélo — ${typeLabels[v.type]||v.type}</div>
-              <div class="hist-card-date">${formatDate(v.date)}</div>
-            </div>
-            <div class="hist-card-count">
-              ${v.distance ? `<span class="hist-card-count-num" style="color:var(--yellow)">${v.distance}</span><span class="hist-card-count-label">km</span>` : ''}
-              ${v.duration ? `<div style="font-size:10px;color:var(--text3);margin-top:2px">${v.duration} min</div>` : ''}
-            </div>
-          </div>
-        </div>`;
-      }
-
-      else if (entry.type === 'body') {
-        const b = entry.data, bi = entry.idx;
-        const vals = [];
-        if (b.poids)    vals.push(`${b.poids}kg`);
-        if (b.bras)     vals.push(`bras ${b.bras}cm`);
-        if (b.poitrine) vals.push(`poit. ${b.poitrine}cm`);
-        if (b.taille_cm)vals.push(`taille ${b.taille_cm}cm`);
-        html += `<div class="hist-card hist-card--warrior" style="--hc-accent:var(--purple)" data-hist-action="openEditBodyStat(${bi})">
-          <div class="hist-card-header">
-            <div>
-              <div class="hist-card-title" style="color:var(--purple)">Mesure corporelle</div>
-              <div class="hist-card-date">${formatDate(b.date)}</div>
-            </div>
-            <div class="hist-card-count">
-              ${b.poids ? `<span class="hist-card-count-num" style="color:var(--purple)">${b.poids}</span><span class="hist-card-count-label">kg</span>` : ''}
-            </div>
-          </div>
-          ${vals.length ? `<div class="hist-tags">${vals.map(v => `<span class="hist-tag">${v}</span>`).join('')}</div>` : ''}
-        </div>`;
-      }
-    });
-
-    html += `<button class="btn-outline" onclick="resetHistory()">Réinitialiser l'historique</button>`;
   }
 
+  let month = '';
+  entries.forEach(entry => {
+    const m = new Date(entry.data.date).toLocaleDateString('fr-FR', { month:'long', year:'numeric' });
+    if (m !== month) {
+      month = m;
+      html += `<div class="hx-month">${m.charAt(0).toUpperCase() + m.slice(1)}</div>`;
+    }
+    const date = new Date(entry.data.date).toLocaleDateString('fr-FR', { weekday:'short', day:'numeric', month:'short' });
+
+    if (entry.type === 'muscu') {
+      const h = entry.data, i = entry.idx;
+      const found = findDayInfo(h.dayId);
+      if (!found) return;
+      const d = found.day;
+      const exos = getEntryExercises(h, d);
+      let vol = 0, nSets = 0;
+      Object.values(h.sets).forEach(st => { vol += (parseFloat(st.kg)||0) * (parseInt(st.reps)||0); nSets++; });
+      const lines = exos.map(ex => {
+        let best = null, n = 0;
+        for (let k = 0; k < ex.sets; k++) {
+          const st = h.sets[`${ex.id}_${k}`];
+          if (!st) continue;
+          n++;
+          if (!best || (parseFloat(st.kg)||0) > (parseFloat(best.kg)||0)) best = st;
+        }
+        return best ? { ex, best, n } : null;
+      }).filter(Boolean);
+
+      html += `<button class="hx-card" style="--hx:${d.accent}" onclick="openEditSession(${i})">
+        <div class="hx-top">
+          <span class="hx-title">${d.name}<span class="hx-subtitle">${d.subtitle || ''}</span></span>
+          <span class="hx-date">${date}</span>
+        </div>
+        <div class="hx-stats"><span><strong>${nSets}</strong> séries</span><span><strong>${lines.length}</strong> exercices</span>${vol ? `<span><strong>${fmtNum(vol / 1000)}</strong> t soulevées</span>` : ''}</div>
+        <div class="hx-lines">
+          ${lines.map(l => `<div class="hx-line">
+            <span class="hx-line-name">${l.ex.name}${l.ex._slotId ? ' <span class="hx-swap">⇄</span>' : ''}</span>
+            <span class="hx-line-perf">${l.best.kg} kg × ${l.best.reps}<span class="hx-line-n"> · ${l.n} série${l.n > 1 ? 's' : ''}</span></span>
+          </div>`).join('')}
+        </div>
+      </button>`;
+    }
+
+    else if (entry.type === 'velo') {
+      const v = entry.data, vi = entry.idx;
+      const typeLabels = { endurance:'Endurance', long:'Sortie longue', recup:'Récupération' };
+      const speed = v.distance && v.duration ? v.distance / (v.duration / 60) : 0;
+      html += `<button class="hx-card hx-card--small" style="--hx:var(--yellow)" onclick="openEditVelo(${vi})">
+        <div class="hx-top">
+          <span class="hx-title">🚴 Vélo<span class="hx-subtitle">${typeLabels[v.type] || v.type || ''}</span></span>
+          <span class="hx-date">${date}</span>
+        </div>
+        <div class="hx-stats">
+          ${v.distance ? `<span><strong>${fmtNum(v.distance)}</strong> km</span>` : ''}
+          ${v.duration ? `<span><strong>${v.duration}</strong> min</span>` : ''}
+          ${speed ? `<span><strong>${fmtNum(speed)}</strong> km/h</span>` : ''}
+        </div>
+      </button>`;
+    }
+
+    else if (entry.type === 'body') {
+      const b = entry.data, bi = entry.idx;
+      const vals = [
+        b.poids     ? `<span><strong>${fmtNum(parseFloat(b.poids))}</strong> kg</span>` : '',
+        b.taille_cm ? `<span>taille <strong>${fmtNum(parseFloat(b.taille_cm))}</strong> cm</span>` : '',
+        b.bras      ? `<span>bras <strong>${fmtNum(parseFloat(b.bras))}</strong> cm</span>` : '',
+        b.poitrine  ? `<span>poitrine <strong>${fmtNum(parseFloat(b.poitrine))}</strong> cm</span>` : '',
+      ].join('');
+      html += `<button class="hx-card hx-card--small" style="--hx:var(--purple)" onclick="openEditBodyStat(${bi})">
+        <div class="hx-top">
+          <span class="hx-title">⚖️ Mesure</span>
+          <span class="hx-date">${date}</span>
+        </div>
+        <div class="hx-stats">${vals || '<span>Mesure vide</span>'}</div>
+      </button>`;
+    }
+  });
+
+  if (all.length) html += '<div class="hx-hint">Touche une ligne pour la modifier ou la supprimer.</div>';
+
+  // Données : export / import / remise à zéro, rangés en bas
+  html += `<div class="warrior-section" style="margin-top:26px">Données</div>
+    <div class="hx-tools">
+      ${state.history.length ? '<button class="hx-tool" onclick="exportToExcel()">⬇ Exporter en Excel</button>' : ''}
+      <button class="hx-tool" onclick="openImportModal()">⬆ Importer un Excel</button>
+    </div>
+    ${all.length ? '<button class="hx-reset" onclick="resetHistory()">Tout effacer</button>' : ''}`;
+
   document.getElementById('page-history').innerHTML = html;
-  initHistSwipe();
 }
 
 // ── Long-press ────────────────────────────────────────────────────────────────
@@ -267,7 +295,7 @@ function openEditBodyStat(idx) {
   editingBodyIdx = idx;
   const b = state.bodyStats[idx];
   if (!b) return;
-  document.getElementById('edit-modal-title').textContent = `Modifier — Mesure du ${formatDate(b.date)}`;
+  document.getElementById('edit-modal-title').textContent = (typeof newBodyIdx !== 'undefined' && newBodyIdx === idx) ? 'Nouvelle mesure' : `Modifier — Mesure du ${formatDate(b.date)}`;
   document.getElementById('edit-modal-body').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <div class="stat-field"><label>Poids (kg)</label><input type="number" inputmode="decimal" id="edit-body-poids"    value="${b.poids   ||''}" placeholder="—"></div>
@@ -289,7 +317,15 @@ function saveEditBodyStat() {
   b.bras      = document.getElementById('edit-body-bras').value;
   b.poitrine  = document.getElementById('edit-body-poitrine').value;
   b.taille_cm = document.getElementById('edit-body-taille').value;
-  if (b.poids) state.bodyWeight = parseFloat(b.poids);
+  // Même partage avec Hébé que la saisie classique
+  const d = localYMD(b.date);
+  if (b.poids) {
+    state.bodyWeight = parseFloat(b.poids);
+    if (!state.bodyWeightDate || d >= state.bodyWeightDate) state.bodyWeightDate = d;
+    saveHebeWeight(parseFloat(b.poids), d);
+  }
+  if (b.taille_cm) saveHebeWaist(parseFloat(b.taille_cm), d);
+  if (typeof newBodyIdx !== 'undefined') newBodyIdx = null;
   editingBodyIdx = null;
   saveState(); closeEditModal(); showToast('Mesure modifiée ✓'); render();
 }
@@ -297,12 +333,19 @@ function saveEditBodyStat() {
 function deleteBodyStat(idx) {
   const b = state.bodyStats[idx];
   if (confirm(`Supprimer mesure du ${formatDate(b.date)} ?`)) {
+    newBodyIdx = null;
     closeEditModal(); state.bodyStats.splice(idx, 1); saveState(); showToast('Mesure supprimée'); render();
   }
 }
 
 // ── Modal partagée ────────────────────────────────────────────────────────────
 function closeEditModal() {
+  // Nouvelle mesure abandonnée sans rien saisir : on ne la garde pas
+  if (typeof newBodyIdx !== 'undefined' && newBodyIdx !== null) {
+    const b = state.bodyStats[newBodyIdx];
+    if (b && !b.poids && !b.bras && !b.poitrine && !b.taille_cm) { state.bodyStats.splice(newBodyIdx, 1); saveState(); render(); }
+    newBodyIdx = null;
+  }
   document.getElementById('edit-modal').classList.add('hidden');
   document.getElementById('edit-modal-delete').style.display = 'none';
   editingIdx = editingBodyIdx = null;

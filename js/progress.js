@@ -147,7 +147,7 @@ function renderExerciseDetail(ex, accent) {
 
 // ── Page Progrès ──────────────────────────────────────────────────────────────
 function renderProgress() {
-  let html = '<h2 class="page-title">Progrès</h2>';
+  let html = progressHeaderHtml();
 
   // ── Statistiques globales en haut ──────────────────────────────────────────
   const streak    = computeStreak();
@@ -186,38 +186,36 @@ function renderProgress() {
   html += renderHeatmap();
 
   // ── Top lifts ─────────────────────────────────────────────────────────────
-  html += '<div class="warrior-section" style="margin-top:20px">Top lifts</div>';
+  html += '<div class="warrior-section" style="margin-top:20px">Exercices principaux</div>';
   const prog = getActiveProgram();
   const topExos = prog.flatMap(d => d.exercises.filter(e => e.topSet).map(e => ({...e, accent: d.accent})));
 
   if (topExos.length) {
     html += '<div class="prog-top-lifts">';
     topExos.forEach(ex => {
-      const hist  = getExerciseHistory(ex.id, ex.sets);
-      const last  = hist.length ? hist[hist.length-1] : null;
-      const bestRM = hist.length ? Math.max(...hist.map(h => h.best1RM)) : 0;
-      const trend  = hist.length >= 2
-        ? hist[hist.length-1].best1RM - hist[hist.length-2].best1RM
-        : 0;
-      const trendColor = trend > 0 ? 'var(--green)' : trend < 0 ? 'var(--red)' : 'var(--text3)';
-      const trendStr   = trend > 0 ? `+${trend.toFixed(1)}` : trend < 0 ? trend.toFixed(1) : '—';
+      const hist   = getExerciseHistory(ex.id, ex.sets);
+      const last   = hist.length ? hist[hist.length-1] : null;
+      const record = hist.length ? hist.reduce((a, h) => h.best1RM > a.best1RM ? h : a) : null;
+      const prev   = hist.length >= 2 ? hist[hist.length-2] : null;
+      const pct    = last && record && record.best1RM ? Math.min(100, Math.round(last.best1RM / record.best1RM * 100)) : 0;
+      const isRecord = last && record && last === record && hist.length > 1;
+      const diffKg = last && prev ? last.bestKg - prev.bestKg : 0;
+      // Seulement les hausses : après une pause, la barre de progression dit déjà où tu en es
+      const diffStr = prev && diffKg > 0 ? `<span class="tl-up">▲ +${diffKg} kg</span>` : '';
 
-      html += `<div class="prog-top-lift-card" style="border-left:3px solid ${ex.accent}">
-        <div class="prog-top-lift-name" style="color:${ex.accent}">${ex.name.split(' ').slice(0,3).join(' ')}</div>
-        <div class="prog-top-lift-row">
-          <div>
-            <div class="prog-top-lift-val">${last ? last.bestKg + '<span style="font-size:10px">kg×' + last.bestReps + '</span>' : '—'}</div>
-            <div class="prog-top-lift-sub">Dernière séance</div>
-          </div>
-          <div style="text-align:right">
-            <div class="prog-top-lift-rm">${bestRM > 0 ? bestRM.toFixed(0) + 'kg' : '—'}</div>
-            <div class="prog-top-lift-sub">1RM max</div>
-          </div>
-          <div style="text-align:right;min-width:36px">
-            <div style="font-size:13px;font-weight:700;color:${trendColor}">${trendStr}</div>
-            <div class="prog-top-lift-sub">Tendance</div>
-          </div>
+      html += `<div class="tl-card" style="--tl:${ex.accent}">
+        <div class="tl-head">
+          <span class="tl-name">${ex.name}</span>
+          ${isRecord ? '<span class="tl-badge">🏆 Record</span>' : ''}
         </div>
+        ${last ? `
+        <div class="tl-row">
+          <div><div class="tl-big">${last.bestKg}<small> kg × ${last.bestReps}</small></div><div class="tl-sub">Dernière séance · ${last.date} ${diffStr}</div></div>
+          <div class="tl-right"><div class="tl-rm">${record.bestKg}<small> kg × ${record.bestReps}</small></div><div class="tl-sub">Record · ${record.date}</div></div>
+        </div>
+        <div class="tl-bar"><div class="tl-bar-fill" style="width:${pct}%"></div></div>
+        <div class="tl-sub">${pct >= 100 ? 'Au niveau de ton record 💪' : `${pct} % de ton record (1RM estimé ${last.best1RM.toFixed(0)} / ${record.best1RM.toFixed(0)} kg)`}</div>`
+        : '<div class="tl-sub">Pas encore de séance</div>'}
       </div>`;
     });
     html += '</div>';
@@ -292,7 +290,8 @@ function renderProgress() {
 function renderHeatmap() {
   const today      = new Date();
   const weeksToShow = 12;
-  const dayColors  = { A:'var(--red)', B:'var(--blue)', C:'var(--green)' };
+  // Couleur de la séance = couleur de son jour (programme Ponos ou perso)
+  const dayColors  = new Proxy({}, { get: (_, id) => { const f = findDayInfo(id); return f ? f.day.accent : 'var(--green)'; } });
   const veloColor  = 'var(--yellow)';
 
   const sessionMap = {};
@@ -389,9 +388,7 @@ function renderHeatmap() {
 
   html += `<div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-top:12px;font-size:10px;color:var(--text3);flex-wrap:wrap">
     <span>Repos</span><div class="heatmap-cell" style="width:11px;height:11px"></div>
-    <span>Jour A</span><div class="heatmap-cell" style="width:11px;height:11px;background:var(--red)"></div>
-    <span>Jour B</span><div class="heatmap-cell" style="width:11px;height:11px;background:var(--blue)"></div>
-    <span>Jour C</span><div class="heatmap-cell" style="width:11px;height:11px;background:var(--green)"></div>
+    ${getActiveProgram().map(d => `<span>${d.name}</span><div class="heatmap-cell" style="width:11px;height:11px;background:${d.accent}"></div>`).join('')}
     <span>Vélo</span><div class="heatmap-cell" style="width:11px;height:11px;background:var(--yellow)"></div>
   </div></div>`;
   return html;

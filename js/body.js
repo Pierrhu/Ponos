@@ -1,27 +1,45 @@
 // ============ SUIVI CORPOREL ============
 
-function renderBody() {
-  let html = '<h2 class="page-title">Suivi corporel</h2>';
-  html += '<p class="info-text" style="margin-bottom:10px">Mesure-toi chaque semaine, même jour, le matin à jeun.</p>';
-  if (hebeAvailable()) html += '<p class="info-text" style="margin:-4px 0 10px">Le poids et le tour de taille sont partagés avec Hébé : les courbes réunissent les mesures des deux apps.</p>';
-  html += '<div class="warrior-section">Mensurations</div>';
+const BODY_FIELDS = [
+  { key:'poids',     label:'Poids',          unit:'kg', hex:'#E4A229', goodDir:'context' },
+  { key:'taille_cm', label:'Tour de taille', unit:'cm', hex:'#C23B3B', goodDir:'down'    },
+  { key:'bras',      label:'Tour de bras',   unit:'cm', hex:'#8B5CF6', goodDir:'up'      },
+  { key:'poitrine',  label:'Poitrine',       unit:'cm', hex:'#2D7DD2', goodDir:'up'      },
+];
 
-  state.bodyStats.forEach((entry, idx) => {
-    const dateStr = new Date(entry.date).toLocaleDateString('fr-FR', {day:'2-digit', month:'long', year:'numeric'});
-    html += `<div class="card" style="margin-bottom:8px">
-      <div style="font-size:11px;color:var(--yellow);font-weight:600;margin-bottom:8px">${dateStr}</div>
-      <div class="stat-grid">
-        ${['poids:Poids (kg)','bras:Tour de bras (cm)','poitrine:Poitrine (cm)','taille_cm:Tour de taille (cm)'].map(f => {
-          const [key, label] = f.split(':');
-          return `<div class="stat-field"><label>${label}</label>
-            <input type="number" inputmode="decimal" value="${entry[key]||''}" placeholder="—"
-              onchange="updateBody(${idx},'${key}',this.value)"></div>`;
-        }).join('')}
-      </div>
+// Série complète d'une mesure (Ponos + Hébé pour le poids et le tour de taille)
+function bodySeries(key) {
+  const hebeList = key === 'poids' ? getHebeWeights() : key === 'taille_cm' ? getHebeWaist() : null;
+  if (hebeList) return mergedBodySeries(key, hebeList, key === 'poids' ? 'kg' : 'cm');
+  return state.bodyStats.filter(b => parseFloat(b[key]) > 0)
+    .map(b => ({ d: localYMD(b.date), val: parseFloat(b[key]) })).sort((a, b) => a.d.localeCompare(b.d));
+}
+
+function renderBody() {
+  let html = progressHeaderHtml();
+
+  // ── Dernières valeurs ────────────────────────────────────────────────────
+  const tiles = BODY_FIELDS.map(f => {
+    const ser = bodySeries(f.key);
+    if (!ser.length) return '';
+    const last = ser[ser.length - 1], first = ser[0];
+    const diff = last.val - first.val;
+    const good = f.goodDir === 'down' ? diff < 0 : f.goodDir === 'up' ? diff > 0 : null;
+    const col  = !diff || good === null ? 'var(--text2)' : good ? 'var(--green)' : 'var(--red)';
+    return `<div class="bd-tile" style="--bd:${f.hex}">
+      <div class="bd-tile-label">${f.label}</div>
+      <div class="bd-tile-val">${last.val.toLocaleString('fr-FR')}<small> ${f.unit}</small></div>
+      <div class="bd-tile-diff" style="color:${col}">${ser.length > 1 ? `${diff > 0 ? '+' : ''}${diff.toLocaleString('fr-FR', { maximumFractionDigits: 1 })} ${f.unit} depuis le ${hebeDateFr(first.d)}` : `le ${hebeDateFr(last.d)}`}</div>
     </div>`;
-  });
+  }).join('');
+
+  html += tiles
+    ? `<div class="bd-tiles">${tiles}</div>`
+    : `<div class="hx-empty"><div class="hx-empty-title">Aucune mesure</div><div class="hx-empty-desc">Pèse-toi et mesure ton tour de taille une fois par semaine, le même jour, le matin à jeun.</div></div>`;
 
   html += `<button class="btn-primary" style="background:var(--yellow)" onclick="addBodyStat()">+ Nouvelle mesure</button>`;
+  html += '<div class="bd-note">Même jour chaque semaine, le matin à jeun. C\'est la tendance qui compte, pas un chiffre isolé.'
+    + (hebeAvailable() ? ' Le poids et le tour de taille sont partagés avec Hébé.' : '') + '</div>';
 
   // Graphes d'évolution
   {
@@ -49,7 +67,7 @@ function renderBody() {
       const minV  = Math.min(...vals), maxV = Math.max(...vals);
       const range = maxV - minV || 1;
       const diff  = vals[vals.length-1] - vals[0];
-      const good  = m.goodDir === 'down' ? diff < 0 : m.goodDir === 'up' ? diff > 0 : true;
+      const good  = m.goodDir === 'down' ? diff < 0 : m.goodDir === 'up' ? diff > 0 : null;
 
       const cH = 80, cW = 320, pX = 8, pT = 16, pB = 4;
       const uH = cH - pT - pB, uW = cW - pX * 2;
@@ -70,8 +88,8 @@ function renderBody() {
 
       html += `<div class="card" style="margin-top:10px">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-          <span style="font-size:13px;font-weight:700;color:${m.color}">${m.label}</span>
-          <span style="font-size:12px;font-weight:700;color:${good?'var(--green)':'var(--red)'}">${diff>0?'+':''}${diff.toFixed(1)}</span>
+          <span class="bd-chart-title" style="color:${m.color}">${m.label}</span>
+          <span style="font-size:12px;font-weight:700;color:${good === null ? 'var(--text2)' : good ? 'var(--green)' : 'var(--red)'}">${diff>0?'+':''}${diff.toFixed(1)}</span>
         </div>
         <svg class="chart-svg" viewBox="0 0 ${cW} ${cH}" preserveAspectRatio="none" style="height:${cH}px">
           <defs>
@@ -105,12 +123,29 @@ function renderBody() {
     });
   }
 
+  // ── Liste des mesures ────────────────────────────────────────────────────
+  if (state.bodyStats.length) {
+    html += '<div class="warrior-section" style="margin-top:22px">Toutes les mesures</div><div class="bd-list">';
+    state.bodyStats.map((b, i) => ({ b, i })).sort((x, y) => new Date(y.b.date) - new Date(x.b.date)).forEach(({ b, i }) => {
+      const cells = BODY_FIELDS.map(f => b[f.key] ? `<span><strong>${parseFloat(b[f.key]).toLocaleString('fr-FR')}</strong> ${f.unit}</span>` : '').filter(Boolean).join('');
+      html += `<button class="bd-row" onclick="openEditBodyStat(${i})">
+        <span class="bd-row-date">${new Date(b.date).toLocaleDateString('fr-FR', { day:'numeric', month:'short', year:'numeric' })}</span>
+        <span class="bd-row-vals">${cells || '<span>—</span>'}</span>
+        <span class="bd-row-edit">✎</span>
+      </button>`;
+    });
+    html += '</div>';
+  }
+
   document.getElementById('page-body').innerHTML = html;
 }
 
+// Nouvelle mesure : on ouvre directement la fenêtre de saisie
+let newBodyIdx = null;
 function addBodyStat() {
   state.bodyStats.push({ date:new Date().toISOString(), poids:'', bras:'', poitrine:'', taille_cm:'' });
-  saveState(); render();
+  newBodyIdx = state.bodyStats.length - 1;
+  openEditBodyStat(newBodyIdx);
 }
 
 function updateBody(idx, key, val) {
