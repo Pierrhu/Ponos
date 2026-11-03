@@ -1,8 +1,8 @@
 // ============ CATALOGUE D'EXERCICES ============
 // Exercices en plus de ceux du programme par défaut : jambes, machines, variantes.
 // Ils servent (1) de remplaçants pendant une séance, (2) dans la bibliothèque de
-// l'éditeur de programme. Les images viennent de free-exercise-db (domaine public,
-// Unlicense) : github.com/yuhonas/free-exercise-db
+// l'éditeur de programme. Images : animations fournies par Pierre (même style
+// que les autres GIF de Ponos).
 //
 // Un ID ne doit jamais changer : les séries enregistrées sont rangées sous
 // « ID_numéroDeSérie ». Pas de « _ » dans les ID (séparateur des clés).
@@ -90,14 +90,15 @@ const EXTRA_EXERCISES = [
       ],
       interet:'Même rôle que le développé incliné haltères (haut des pecs), en plus guidé. Parfait quand la salle est pleine.'
     }},
-  {id:'x-dc-machine', muscle:'Pectoraux', restTime:150, name:'Développé couché (machine)', reps:'6-8', format:'3×6-8', sets:3,
+  {id:'x-dc-machine', muscle:'Pectoraux', restTime:150, name:'Développé couché (Smith machine)', reps:'6-8', format:'3×6-8', sets:3,
     info:{ gif:'gifs/developpe-couche-machine.webp',
       execution:[
-        'Poignées à hauteur du milieu de la poitrine, pieds au sol.',
-        'Omoplates serrées, pousser sans décoller les épaules du dossier.',
-        'Revenir en contrôlant, jusqu\'à l\'étirement.'
+        'Banc placé pour que la barre descende au niveau du bas des pecs.',
+        'Omoplates serrées, pieds au sol, déverrouiller la barre en la tournant.',
+        'Descendre en contrôlant jusqu\'à frôler la poitrine, pousser sans décoller les épaules.',
+        'Toujours finir en reverrouillant la barre sur les crochets.'
       ],
-      interet:'Remplaçant du développé couché barre quand le banc est pris. Les charges ne sont pas comparables avec la barre : c\'est enregistré à part.'
+      interet:'Remplaçant du développé couché barre quand le banc est pris : la barre est guidée, pas besoin de pareur. Les charges ne sont pas comparables avec la barre : c\'est enregistré à part.'
     }},
 
   // ── Épaules ─────────────────────────────────────────────────────────────────
@@ -130,14 +131,15 @@ const EXTRA_EXERCISES = [
       ],
       interet:'La poulie garde une tension sur tout le mouvement, même en bas. Bon remplaçant du curl EZ.'
     }},
-  {id:'x-triceps-corde', muscle:'Bras', restTime:60, name:'Extension triceps à la corde', reps:'10-12', format:'2×10-12', sets:2,
+  {id:'x-triceps-corde', muscle:'Bras', restTime:60, name:'Extension triceps corde au-dessus de la tête', reps:'10-12', format:'2×10-12', sets:2,
     info:{ gif:'gifs/triceps-corde.webp',
       execution:[
-        'Poulie haute, corde en main, coudes collés au corps.',
-        'Tendre les bras vers le bas en écartant la corde en fin de mouvement.',
-        'Remonter lentement jusqu\'à 90°, coudes fixes.'
+        'Poulie haute, corde en main, dos à la machine, un pied devant pour la stabilité.',
+        'Coudes pliés près de la tête, buste légèrement penché en avant.',
+        'Tendre les bras vers l\'avant et le haut en écartant la corde en fin de mouvement.',
+        'Revenir lentement, coudes fixes : seuls les avant-bras bougent.'
       ],
-      interet:'Isolation des triceps, à faire si tu remplaces le superset curl/extension par un curl seul.'
+      interet:'Bras au-dessus de la tête, le long chef du triceps (la plus grosse partie du muscle) travaille étiré : c\'est là qu\'il progresse le mieux. À faire si tu remplaces le superset curl/extension par un curl seul.'
     }},
 ];
 
