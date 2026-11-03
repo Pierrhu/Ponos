@@ -1728,3 +1728,5 @@
 }
 .info-section { margin-bottom: 24px; }
 .info-section-title { margin-bottom: 14px; }
+
+.info-step strong, .info-error strong, .info-why strong { color: var(--text); font-weight: 700; }

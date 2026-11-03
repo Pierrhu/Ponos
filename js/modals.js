@@ -78,6 +78,9 @@ function findExercise(exId) {
   return null;
 }
 
+// **texte** → texte en gras dans les fiches
+function fmtFiche(t) { return String(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); }
+
 function openInfoModal(exId) {
   const found = findExercise(exId);
   if (!found || !found.ex.info) return;
@@ -94,7 +97,7 @@ function openInfoModal(exId) {
     ? `<div class="info-section">
         <div class="info-section-title" style="color:${day.accent}"><span class="dot" style="background:${day.accent}"></span>Exécution</div>
         <ol class="info-steps" style="--step-accent:${day.accent}">
-          ${info.execution.map((p, i) => `<li class="info-step"><span class="info-step-num">${i + 1}</span><span class="info-step-text">${p}</span></li>`).join('')}
+          ${info.execution.map((p, i) => `<li class="info-step"><span class="info-step-num">${i + 1}</span><span class="info-step-text">${fmtFiche(p)}</span></li>`).join('')}
         </ol>
       </div>`
     : '';
@@ -116,7 +119,7 @@ function openInfoModal(exId) {
     ? `<div class="info-section">
         <div class="info-section-title" style="color:var(--red)"><span class="dot" style="background:var(--red)"></span>Erreurs à éviter</div>
         <ul class="info-errors">
-          ${info.erreurs.map(p => `<li class="info-error"><span class="info-error-icon">✕</span><span>${p}</span></li>`).join('')}
+          ${info.erreurs.map(p => `<li class="info-error"><span class="info-error-icon">✕</span><span>${fmtFiche(p)}</span></li>`).join('')}
         </ul>
       </div>`
     : '';
@@ -124,7 +127,7 @@ function openInfoModal(exId) {
   const whyHtml = info.interet
     ? `<div class="info-section">
         <div class="info-section-title" style="color:var(--blue)"><span class="dot" style="background:var(--blue)"></span>Pourquoi cet exercice</div>
-        <div class="info-why">${info.interet}</div>
+        <div class="info-why">${fmtFiche(info.interet)}</div>
       </div>`
     : '';
 
