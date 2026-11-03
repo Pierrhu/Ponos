@@ -45,7 +45,7 @@ function renderHistory() {
             </div>
           </div>
           <div class="hist-tags">
-            ${d.exercises.map(ex => {
+            ${getEntryExercises(h, d).map(ex => {
               const s = h.sets[`${ex.id}_0`];
               if (!s) return '';
               return `<span class="hist-tag">${ex.name.split(' ').slice(0,2).join(' ')} ${s.kg}kg×${s.reps}</span>`;
@@ -169,9 +169,9 @@ function openEditSession(idx) {
 
   document.getElementById('edit-modal-title').textContent = `Modifier — ${d.name} · ${formatDate(h.date)}`;
   let body = '';
-  d.exercises.forEach(ex => {
+  getEntryExercises(h, d).forEach(ex => {
     body += `<div style="margin-bottom:12px">
-      <div style="font-size:12px;font-weight:700;color:${d.accent};margin-bottom:6px">${ex.name}</div>`;
+      <div style="font-size:12px;font-weight:700;color:${d.accent};margin-bottom:6px">${ex.name}${ex._slotId ? ` <span style="font-weight:500;color:var(--text3)">(à la place de ${ex._slotName})</span>` : ''}</div>`;
     for (let i = 0; i < ex.sets; i++) {
       const key   = `${ex.id}_${i}`;
       const s     = editSets[key] || {kg:'', reps:''};

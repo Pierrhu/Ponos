@@ -39,10 +39,11 @@ function renderWorkout() {
   html += '</div>';
   html += `<div class="warrior-section">${day.subtitle}</div>`;
 
-  const suggestions = getSuggestions(day);
+  const exercises   = getSessionExercises(day);
+  const suggestions = getSuggestions({ ...day, exercises });
 
   // Exercices
-  day.exercises.forEach(ex => {
+  exercises.forEach(ex => {
     const isOpen   = state.activeEx === ex.id;
     const lastPerf = getLastPerf(ex.id, 0);
     const sugg     = suggestions[ex.id];
@@ -56,6 +57,7 @@ function renderWorkout() {
       <div class="ex-header">
         <div style="flex:1">${tagHtml}
           <div class="ex-name">${ex.name}</div>
+          ${ex._slotId ? `<div class="ex-swapped">⇄ à la place de ${ex._slotName}</div>` : ''}
           <div class="ex-format">${ex.format}${ex.restTime ? ' <span style="color:var(--text3);font-size:10px">· Repos ' + (ex.restTime >= 60 ? Math.floor(ex.restTime/60) + 'min' : ex.restTime + 's') + '</span>' : ''}</div>
           ${lastPerf ? `<div class="ex-prev" style="text-align:left;margin-top:3px">Préc: <strong style="color:${day.accent}">${lastPerf.kg}kg×${lastPerf.reps}</strong></div>` : ''}
         </div>
@@ -111,6 +113,11 @@ function renderWorkout() {
           html += `<div id="live1rm-${ex.id}" style="margin:-4px 0 6px 56px">${rmHtml}</div>`;
         }
       }
+      const slotId = ex._slotId || ex.id;
+      html += `<div class="swap-row">
+        <button class="swap-btn" onclick="event.stopPropagation();openSwapPicker('${slotId}')">⇄ Changer d'exercice</button>
+        ${ex._slotId ? `<button class="swap-btn swap-btn--back" onclick="event.stopPropagation();chooseSwap('${slotId}',null)">↺ ${ex._slotName}</button>` : ''}
+      </div>`;
       html += '</div>';
     }
     html += '</div>';
@@ -118,12 +125,6 @@ function renderWorkout() {
 
   // Bouton terminer
   html += `<button class="btn-primary" style="background:${day.accent}" onclick="requestFinish('${day.id}')">Terminer la séance ✓</button>`;
-
-  // Rappel tractions
-  html += `<div class="card" style="margin-top:10px;border-left:2px solid rgba(194,59,59,0.4);padding-left:12px;font-size:12px;color:var(--text3)">
-    <div style="font-family:'Cinzel',serif;font-size:9px;font-weight:700;color:rgba(194,59,59,0.6);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px">Ordre supplémentaire</div>
-    2×3-5 tractions négatives (5s descente) en fin de séance. Alterner avec dips.
-  </div>`;
 
   html += `<button class="velo-btn"     onclick="openVeloModal()">🚴 Ajouter une sortie vélo</button>`;
   html += `<button class="basicfit-btn" onclick="openBasicFit()">⚔️ Aller au champ de bataille</button>`;
@@ -187,15 +188,13 @@ function onSetInput(exId, setIdx, kgKey, repsKey, isTopSet, rankKey) {
     if (topKg > 0) {
       const sugKg   = (Math.round((topKg * 0.85) / 2.5) * 2.5).toFixed(1).replace('.0','');
       const sugReps = topReps > 0 ? Math.min(topReps + 2, 8) : '';
-      for (const day of getActiveProgram()) {
-        for (const ex of day.exercises) {
-          if (ex.id !== exId) continue;
-          for (let s = 1; s < ex.sets; s++) {
-            const kgInp   = document.querySelector(`input[oninput*="'${exId}_${s}_kg'"]`);
-            const repsInp = document.querySelector(`input[oninput*="'${exId}_${s}_reps'"]`);
-            if (kgInp   && !kgInp.value)   kgInp.placeholder   = sugKg;
-            if (repsInp && !repsInp.value && sugReps) repsInp.placeholder = sugReps;
-          }
+      for (const ex of getSessionExercises(getActiveProgram()[state.dayIdx])) {
+        if (ex.id !== exId) continue;
+        for (let s = 1; s < ex.sets; s++) {
+          const kgInp   = document.querySelector(`input[oninput*="'${exId}_${s}_kg'"]`);
+          const repsInp = document.querySelector(`input[oninput*="'${exId}_${s}_reps'"]`);
+          if (kgInp   && !kgInp.value)   kgInp.placeholder   = sugKg;
+          if (repsInp && !repsInp.value && sugReps) repsInp.placeholder = sugReps;
         }
       }
     }
@@ -258,7 +257,8 @@ function getSetSuggestion(ex, i) {
 // repos, puis ouvre l'exercice suivant quand toutes les séries sont faites.
 function validateSet(exId, i) {
   const day = getActiveProgram()[state.dayIdx];
-  const ex  = day.exercises.find(e => e.id === exId);
+  const exercises = getSessionExercises(day);
+  const ex  = exercises.find(e => e.id === exId);
   if (!ex) return;
   if (!state.done) state.done = {};
   const key = `${exId}_${i}`;
@@ -276,7 +276,7 @@ function validateSet(exId, i) {
   if (navigator.vibrate) navigator.vibrate(30);
 
   if (isExDone(ex)) {
-    const next = day.exercises.find(e => !isExDone(e));
+    const next = exercises.find(e => !isExDone(e));
     state.activeEx = next ? next.id : null;
   }
   saveState();
@@ -293,7 +293,7 @@ function requestFinish(dayId) {
   const day = getActiveProgram().find(d => d.id === dayId);
   const missing = [];
   let anyData = false;
-  day.exercises.forEach(ex => {
+  getSessionExercises(day).forEach(ex => {
     const sets = [];
     for (let i = 0; i < ex.sets; i++) {
       if (state.current[`${ex.id}_${i}_kg`] || state.current[`${ex.id}_${i}_reps`]) anyData = true;
@@ -326,9 +326,16 @@ function closeFinishModal() {
 function finishSession(dayId) {
   const day   = getActiveProgram().find(d => d.id === dayId);
   const entry = { dayId, date: new Date().toISOString(), sets: {} };
+  const exercises = getSessionExercises(day);
   let hasData = false;
 
-  day.exercises.forEach(ex => {
+  // Remplacements faits pendant la séance : gardés avec la séance pour que
+  // l'historique sache quel exercice a vraiment été fait.
+  const swaps = {};
+  exercises.forEach(ex => { if (ex._slotId) swaps[ex._slotId] = ex.id; });
+  if (Object.keys(swaps).length) entry.swaps = swaps;
+
+  exercises.forEach(ex => {
     for (let i = 0; i < ex.sets; i++) {
       const kg   = state.current[`${ex.id}_${i}_kg`];
       const reps = state.current[`${ex.id}_${i}_reps`];
@@ -345,12 +352,13 @@ function finishSession(dayId) {
   stopSession();
   skipRestTimer();
 
-  day.exercises.forEach(ex => {
+  exercises.forEach(ex => {
     for (let i = 0; i < ex.sets; i++) {
       delete state.current[`${ex.id}_${i}_kg`];
       delete state.current[`${ex.id}_${i}_reps`];
     }
   });
+  day.exercises.forEach(ex => { delete state.swaps[ex.id]; });
 
   state.history.push(entry);
   state.activeEx = null;
@@ -358,7 +366,7 @@ function finishSession(dayId) {
   state.done = {};
   state.dayIdx = suggestNextDayIdx();
 
-  const prs = detectPRs(entry, day);
+  const prs = detectPRs(entry, { ...day, exercises });
   if (prs.length) state._lastPRs = prs;
   saveState();
 
@@ -372,7 +380,7 @@ function showVictory(day, entry, elapsedSec, prs) {
   if (!overlay) return;
 
   const sets          = Object.keys(entry.sets).length;
-  const exosCompleted = new Set(Object.keys(entry.sets).map(k => k.split('_')[0])).size;
+  const exosCompleted = new Set(Object.keys(entry.sets).map(k => k.slice(0, k.lastIndexOf('_')))).size;
   const min           = Math.floor(elapsedSec / 60);
   const sec           = elapsedSec % 60;
   const timeStr       = elapsedSec > 0 ? `${min}:${sec.toString().padStart(2,'0')}` : '—';
@@ -413,4 +421,106 @@ function closeVictory() {
     overlay.classList.remove('out');
     if (state._lastPRs && state._lastPRs.length) openPRCelebrate(0);
   }, 350);
+}
+
+// ── Changer d'exercice pendant la séance ──────────────────────────────────────
+// Le remplacement ne vaut que pour la séance en cours : le programme ne change
+// pas. Les séries sont enregistrées sous l'exercice réellement fait.
+
+let swapPickerSlot = null;
+
+function effectiveExId(slotId) { return (state.swaps && state.swaps[slotId]) || slotId; }
+
+function exHasInput(exId, sets) {
+  for (let i = 0; i < sets; i++) {
+    if (state.current[`${exId}_${i}_kg`] || state.current[`${exId}_${i}_reps`]) return true;
+  }
+  return false;
+}
+
+function openSwapPicker(slotId) {
+  const day  = getActiveProgram()[state.dayIdx];
+  const slot = day.exercises.find(e => e.id === slotId);
+  if (!slot) return;
+  swapPickerSlot = slotId;
+  const current = effectiveExId(slotId);
+  // Pas un exercice déjà prévu ailleurs dans ce jour (les séries se mélangeraient)
+  const taken = new Set(getSessionExercises(day).map(e => e.id));
+  taken.delete(current);
+  const usable = id => id !== slotId && id !== current && !taken.has(id) && getExerciseById(id);
+
+  const suggested = (ALTERNATIVES[slotId] || []).filter(usable);
+  const lib = getExerciseLibrary().filter(e => usable(e.id) && !suggested.includes(e.id));
+  const groups = {};
+  lib.forEach(e => { (groups[e._muscle] = groups[e._muscle] || []).push(e); });
+  const slotMuscle = muscleOf(slot);
+  const order = [slotMuscle, ...MUSCLE_ORDER.filter(m => m !== slotMuscle), 'Autre'];
+
+  const item = ex => {
+    const prev = getLastPerf(ex.id, 0);
+    return `<div class="ex-picker-item" onclick="chooseSwap('${slotId}','${ex.id}')">
+      <div>
+        <div class="ex-picker-item-name">${ex.name}</div>
+        <div class="ex-picker-item-meta">${slot.sets}×${repRange(ex)}${prev ? ` · Préc : ${prev.kg}kg×${prev.reps}` : ''}</div>
+      </div>
+      <div class="ex-picker-item-add" style="background:${day.accent}26;color:${day.accent}">⇄</div>
+    </div>`;
+  };
+
+  let html = `<div class="ex-picker-overlay" onclick="closeSwapPicker()">
+    <div class="ex-picker" onclick="event.stopPropagation()">
+      <div class="ex-picker-header">
+        <div class="ex-picker-title">Remplacer ${slot.name}</div>
+        <button class="ex-picker-close" onclick="closeSwapPicker()">✕</button>
+      </div>`;
+  if (exHasInput(current, slot.sets)) {
+    html += `<div class="swap-warning">Les séries déjà saisies sur cet exercice seront effacées.</div>`;
+  }
+  html += '<div class="ex-picker-list">';
+  if (current !== slotId) {
+    html += `<div class="ex-picker-group" style="color:${day.accent};border-left:2px solid ${day.accent};padding-left:10px">Programme</div>`;
+    html += item(slot).replace(`chooseSwap('${slotId}','${slot.id}')`, `chooseSwap('${slotId}',null)`);
+  }
+  if (suggested.length) {
+    html += `<div class="ex-picker-group" style="color:${day.accent};border-left:2px solid ${day.accent};padding-left:10px">Suggestions</div>`;
+    suggested.forEach(id => { html += item(getExerciseById(id)); });
+  }
+  order.forEach(g => {
+    if (!groups[g]) return;
+    html += `<div class="ex-picker-group" style="padding-left:12px">${g}</div>`;
+    groups[g].forEach(e => { html += item(e); });
+  });
+  html += '</div></div></div>';
+
+  let el = document.getElementById('swap-picker');
+  if (!el) { el = document.createElement('div'); el.id = 'swap-picker'; document.body.appendChild(el); }
+  el.innerHTML = html;
+}
+
+function closeSwapPicker() {
+  swapPickerSlot = null;
+  const el = document.getElementById('swap-picker');
+  if (el) el.remove();
+}
+
+// altId = null : revenir à l'exercice du programme
+function chooseSwap(slotId, altId) {
+  const day  = getActiveProgram()[state.dayIdx];
+  const slot = day.exercises.find(e => e.id === slotId);
+  if (!slot) return;
+  const oldId = effectiveExId(slotId);
+  // Effacer ce qui a été saisi sur l'exercice qu'on quitte
+  for (let i = 0; i < slot.sets; i++) {
+    delete state.current[`${oldId}_${i}_kg`];
+    delete state.current[`${oldId}_${i}_reps`];
+    if (state.done) delete state.done[`${oldId}_${i}`];
+  }
+  if (!state.swaps) state.swaps = {};
+  if (altId && altId !== slotId) state.swaps[slotId] = altId;
+  else delete state.swaps[slotId];
+  state.activeEx = effectiveExId(slotId);
+  saveState();
+  closeSwapPicker();
+  render();
+  showToast(altId ? `${getExerciseById(altId).name} pour cette séance` : `Retour à ${slot.name}`);
 }

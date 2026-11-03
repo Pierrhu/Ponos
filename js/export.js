@@ -14,7 +14,7 @@ function exportToExcel() {
     const d = found ? found.day : null;
     if (!d) return;
     const dateStr = new Date(h.date).toLocaleDateString('fr-FR');
-    d.exercises.forEach(ex => {
+    getEntryExercises(h, d).forEach(ex => {
       for (let i = 0; i < ex.sets; i++) {
         const s = h.sets[`${ex.id}_${i}`];
         if (!s) continue;
@@ -121,8 +121,17 @@ function processImportFile(file) {
           }
         }
         if (!day) return;
-        const ex = day.exercises.find(e => e.name.toLowerCase() === exName.toLowerCase());
-        if (!ex) return;
+        let ex = day.exercises.find(e => e.name.toLowerCase() === exName.toLowerCase());
+        // Exercice de remplacement : le rattacher à l'exercice du jour qu'il remplace
+        let swapSlot = null;
+        if (!ex) {
+          const alt = [...EXTRA_EXERCISES, ...PROGRAM.flatMap(d => d.exercises)]
+            .find(e => e.name.toLowerCase() === exName.toLowerCase());
+          const slot = alt && day.exercises.find(e => (ALTERNATIVES[e.id] || []).includes(alt.id))
+                    || alt && day.exercises.find(e => muscleOf(e) === muscleOf(alt));
+          if (!slot) return;
+          ex = alt; swapSlot = slot.id;
+        }
 
         let setIdx = 0;
         if (setLabel === 'TOP SET') setIdx = 0;
@@ -142,6 +151,7 @@ function processImportFile(file) {
         const key = `${isoDate.slice(0,10)}|${day.id}`;
         if (!sessionMap[key]) sessionMap[key] = { dayId:day.id, date:isoDate, sets:{} };
         sessionMap[key].sets[`${ex.id}_${setIdx}`] = { kg:String(kg||'0'), reps:String(reps||'0') };
+        if (swapSlot) (sessionMap[key].swaps = sessionMap[key].swaps || {})[swapSlot] = ex.id;
       });
 
       importParsedSessions = Object.values(sessionMap);

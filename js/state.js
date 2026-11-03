@@ -81,6 +81,7 @@ async function loadState() {
   if (!state.customPrograms) state.customPrograms = [];
   if (!state.activeProgramId) state.activeProgramId = 'default';
   if (!state.done)           state.done           = {};
+  if (!state.swaps)          state.swaps          = {};
 }
 
 function saveState() {
@@ -96,6 +97,7 @@ function saveState() {
     dayIdx:          state.dayIdx,
     done:            state.done,
     sessionStart:    state.sessionStart,
+    swaps:           state.swaps,
   };
   idbSet(STORAGE_KEY, data).catch(() => {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}

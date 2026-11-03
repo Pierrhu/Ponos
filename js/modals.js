@@ -72,6 +72,9 @@ function findExercise(exId) {
       if (ex.id === exId) return { ex, day };
     }
   }
+  // Exercice de remplacement (catalogue)
+  const ex = getExerciseById(exId);
+  if (ex) return { ex, day: getActiveProgram()[state.dayIdx] };
   return null;
 }
 

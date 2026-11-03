@@ -6,8 +6,10 @@ let restTimerEnd      = 0;
 let restTimerDuration = 0;
 
 function getRestDuration(exId) {
-  // Chercher dans le programme actif (inclut les programmes custom)
-  for (const day of getActiveProgram()) {
+  // Chercher dans la séance en cours (avec les remplacements), puis le programme actif
+  const today = getActiveProgram()[state.dayIdx];
+  const days  = today ? [{ exercises: getSessionExercises(today) }, ...getActiveProgram()] : getActiveProgram();
+  for (const day of days) {
     for (const ex of day.exercises) {
       if (ex.id !== exId) continue;
       // Priorité : restTime défini sur l'exercice

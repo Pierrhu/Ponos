@@ -50,9 +50,12 @@ const MUSCLE_GROUPS = {
   a1:'Pectoraux', a2:'Dos', a3:'Pectoraux', a4:'Dos', a5:'Épaules', a6:'Bras',
   b1:'Épaules',   b2:'Dos', b3:'Dos',       b4:'Épaules', b5:'Épaules',
   c1:'Pectoraux', c2:'Dos', c3:'Pectoraux', c4:'Épaules', c5:'Épaules', c6:'Bras',
+  'x-tractions-neg':'Dos', 'x-mollets':'Jambes', 'x-presse':'Jambes',
 };
 
-const MUSCLE_ORDER = ['Pectoraux', 'Dos', 'Épaules', 'Bras'];
+const MUSCLE_ORDER = ['Pectoraux', 'Dos', 'Épaules', 'Bras', 'Jambes'];
+
+function muscleOf(ex) { return ex.muscle || MUSCLE_GROUPS[ex.id] || 'Autre'; }
 
 function getExerciseLibrary() {
   const lib = [];
@@ -63,11 +66,17 @@ function getExerciseLibrary() {
         seen.add(ex.id);
         lib.push({
           ...ex,
-          _muscle: MUSCLE_GROUPS[ex.id] || 'Autre',
+          _muscle: muscleOf(ex),
           _accent: day.accent,
         });
       }
     });
+  });
+  // Exercices du catalogue (machines, jambes, variantes)
+  EXTRA_EXERCISES.forEach(ex => {
+    if (seen.has(ex.id)) return;
+    seen.add(ex.id);
+    lib.push({ ...ex, _muscle: muscleOf(ex), _accent: '#888' });
   });
   // Trier par ordre musculaire défini
   lib.sort((a, b) => {

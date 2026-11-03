@@ -246,6 +246,20 @@ function renderProgress() {
     }
   });
 
+  // ── Exercices faits en remplacement ──────────────────────────────────────
+  const swappedIds = [...new Set(state.history.flatMap(h => Object.values(h.swaps || {})))]
+    .filter(id => !prog.some(d => d.exercises.some(e => e.id === id)));
+  if (swappedIds.length) {
+    html += '<div class="warrior-section" style="margin-top:20px">Exercices de remplacement</div>';
+    swappedIds.forEach(id => {
+      const ex = getExerciseById(id);
+      if (!ex) return;
+      html += `<div class="card" style="margin-bottom:6px;border-left:2px solid var(--text3)">`;
+      html += renderExerciseDetail({ ...ex, sets: 8, format: repRange(ex) + ' reps' }, '#9A9AA8');
+      html += '</div>';
+    });
+  }
+
   // ── Vélo ───────────────────────────────────────────────────────────────────
   if (state.veloSessions && state.veloSessions.length) {
     const totalKm  = state.veloSessions.reduce((a, v) => a+(v.distance||0), 0);

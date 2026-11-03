@@ -77,7 +77,7 @@ const PROGRAM = [
     ]
   },
   {
-    id:'B', name:'Jour B', subtitle:'Force Verticale', accent:'#2D7DD2', when:'Mercredi',
+    id:'B', name:'Jour B', subtitle:'Force Verticale', accent:'#2D7DD2', when:'Jeudi',
     exercises: [
       {id:'b1',restTime:180,name:'Développé militaire',format:'Top set 3-5 + 3×6-8',sets:4,topSet:true,rankKey:'ohp',
         info:{
@@ -139,10 +139,30 @@ const PROGRAM = [
           ],
           interet:'Non négociable pour la santé des épaules, surtout pour un cycliste qui passe des heures penché vers l\'avant. Renforce les rotateurs externes et le deltoïde postérieur, contrebalançant tout le volume de pressing. Prévention blessure + esthétique (faisceau postérieur souvent négligé).'
         }},
+    {id:'x-tractions-neg', restTime:120, name:'Tractions négatives', format:'2×3-5', sets:2,
+      info:{ gif:'gifs/tractions-negatives.webp',
+        execution:[
+          'Monter en haut de la barre avec un banc ou en sautant, menton au-dessus.',
+          'Descendre le plus lentement possible : 5 secondes minimum jusqu\'aux bras tendus.',
+          'Remonter avec le banc, recommencer.',
+          'Quand tu tiens 5 × 8 secondes, tente une vraie traction.'
+        ],
+        interet:'Tes muscles sont plus forts en descente qu\'en montée : les négatives construisent la force de la traction avant que tu puisses la faire. Objectif : retrouver 3 tractions strictes.'
+      }},
+    {id:'x-mollets', restTime:60, name:'Mollets debout (machine)', format:'3×12-15', sets:3,
+      info:{ gif:'gifs/mollets-debout.webp',
+        execution:[
+          'Épaules sous les coussins, avant des pieds sur la marche, talons dans le vide.',
+          'Descendre les talons le plus bas possible : bon étirement en bas, 1 seconde.',
+          'Monter sur la pointe des pieds le plus haut possible, contracter 1 seconde.',
+          'Genoux presque tendus mais pas verrouillés. Pas de rebond.'
+        ],
+        interet:'Des mollets plus forts encaissent mieux les chocs : c\'est une vraie aide pour les tibias avant de reprendre la course. Tempo lent et amplitude complète, c\'est là que ça travaille.'
+      }},
     ]
   },
   {
-    id:'C', name:'Jour C', subtitle:'Volume & Rattrapage', accent:'#1A9E8F', when:'Vendredi',
+    id:'C', name:'Jour C', subtitle:'Volume & Rattrapage', accent:'#1A9E8F', when:'Samedi',
     exercises: [
       {id:'c1',restTime:120,name:'Développé couché DB',format:'4×10-12',sets:4,
         info:{
@@ -212,6 +232,17 @@ const PROGRAM = [
           ],
           interet:'Curl marteau cible le brachio-radial et le long chef du biceps — donne l\'épaisseur du bras vue de face. Superset antagoniste avec les extensions pour les mêmes raisons que le Jour A. Variante différente (marteau vs EZ) pour diversifier le stimulus.'
         }},
+    {id:'x-presse', restTime:120, name:'Presse à cuisses', format:'3×10-12', sets:3,
+      info:{ gif:'gifs/presse-cuisses.webp',
+        execution:[
+          'Dos et fessiers bien plaqués contre le dossier, pieds largeur de hanches au milieu de la plateforme.',
+          'Déverrouiller les sécurités, descendre en contrôlant jusqu\'à ce que les genoux forment environ 90°.',
+          'Pousser par les talons et le milieu du pied, sans décoller le bas du dos du dossier.',
+          'Ne pas verrouiller complètement les genoux en haut.',
+          'Genoux dans l\'axe des pieds : ils ne rentrent pas vers l\'intérieur.'
+        ],
+        interet:'Le plus simple pour travailler quadriceps et fessiers sans charger le dos ni demander de technique. Les jambes, ce sont les plus gros muscles du corps : plus de muscle, c\'est plus de calories brûlées au repos.'
+      }},
     ]
   }
 ];

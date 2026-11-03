@@ -1,5 +1,5 @@
 // Changer ce numéro force le nettoyage des anciens caches.
-const CACHE = 'ponos-v4';
+const CACHE = 'ponos-v5';
 
 const PRECACHE = [
   './',
@@ -10,6 +10,7 @@ const PRECACHE = [
   './icon-512.png',
   './data/program.js',
   './data/standards.js',
+  './data/exercises.js',
   './data/programs.js',
   './js/state.js',
   './js/utils.js',
