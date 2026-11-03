@@ -268,6 +268,31 @@ const ALTERNATIVES = {
   'x-tractions-ass': ['x-tractions-neg'],
 };
 
+// ── Couleurs des groupes musculaires ─────────────────────────────────────────
+const MUSCLE_COLORS = {
+  'Pectoraux': '#C23B3B',
+  'Dos':       '#2D7DD2',
+  'Épaules':   '#1A9E8F',
+  'Bras':      '#8B5CF6',
+  'Jambes':    '#D2912D',
+  'Abdos':     '#9A9AA8',
+  'Autre':     '#888888',
+};
+
+// Groupe d'un muscle cité dans une fiche (« Deltoïdes postérieurs » → Épaules)
+const MUSCLE_KEYWORDS = [
+  ['Abdos',     /abdo/i],
+  ['Pectoraux', /pector/i],
+  ['Épaules',   /deltoïde|coiffe|épaule/i],
+  ['Bras',      /biceps|triceps|avant-bras|brachia|brachio/i],
+  ['Dos',       /dorsal|\bdos\b|rhombo|trapèze|grand rond|lombaire/i],
+  ['Jambes',    /quadri|fessier|ischio|mollet|jumeau|soléaire|adducteur/i],
+];
+function muscleGroupOf(name) {
+  const hit = MUSCLE_KEYWORDS.find(([, re]) => re.test(name));
+  return hit ? hit[0] : 'Autre';
+}
+
 // ── Recherche d'un exercice partout (programme, programmes perso, catalogue) ──
 function getExerciseById(id) {
   for (const day of PROGRAM) {

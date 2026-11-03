@@ -486,10 +486,7 @@ function renderExPicker() {
   });
 
   // Couleurs par groupe musculaire
-  const muscleColors = {
-    'Pectoraux':'#C23B3B', 'Dos':'#2D7DD2',
-    'Épaules':'#1A9E8F', 'Bras':'#8B5CF6', 'Jambes':'#D2912D', 'Autre':'#888'
-  };
+  const muscleColors = MUSCLE_COLORS;
 
   let html = `<div class="ex-picker-overlay" onclick="closeExPicker()">
     <div class="ex-picker" onclick="event.stopPropagation()">

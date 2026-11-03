@@ -1685,11 +1685,46 @@
   border-bottom: 1px solid var(--border);
 }
 
-/* ── Fiche exercice : muscles et erreurs ── */
-.info-muscles { display: flex; flex-wrap: wrap; gap: 6px; margin: -4px 0 14px; }
-.muscle-chip {
-  font-size: 10px; font-weight: 600; color: var(--text3);
-  border: 1px solid var(--border); border-radius: 999px; padding: 3px 9px;
+/* ── Fiche exercice : muscles, étapes, erreurs ── */
+.info-muscles { display: flex; flex-direction: column; gap: 8px; margin: 2px 0 22px; }
+.info-muscles-row { display: flex; align-items: flex-start; gap: 6px; }
+.info-muscles-chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.info-muscles-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text3); width: 78px; flex-shrink: 0; padding-top: 6px;
 }
-.muscle-chip--main { font-weight: 700; }
-.info-point--err { border-left-color: rgba(194,59,59,0.45); }
+.muscle-chip {
+  font-size: 11px; font-weight: 600; line-height: 1;
+  color: var(--mc); border: 1px solid color-mix(in srgb, var(--mc) 55%, transparent);
+  border-radius: 999px; padding: 5px 10px;
+}
+.muscle-chip--main {
+  font-weight: 700; color: #fff;
+  background: color-mix(in srgb, var(--mc) 80%, transparent); border-color: var(--mc);
+}
+.info-steps, .info-errors { list-style: none; margin: 0; padding: 0; }
+.info-step {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 13.5px; color: var(--text2); line-height: 1.65;
+  margin-bottom: 14px;
+}
+.info-step-num {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: #fff;
+  background: var(--step-accent); margin-top: 1px;
+}
+.info-step-text { flex: 1; }
+.info-error {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13px; color: var(--text2); line-height: 1.6;
+  margin-bottom: 10px;
+}
+.info-error-icon {
+  flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; color: var(--red);
+  background: rgba(194,59,59,0.14); margin-top: 2px;
+}
+.info-section { margin-bottom: 24px; }
+.info-section-title { margin-bottom: 14px; }

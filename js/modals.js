@@ -93,22 +93,31 @@ function openInfoModal(exId) {
   const execHtml = info.execution && info.execution.length
     ? `<div class="info-section">
         <div class="info-section-title" style="color:${day.accent}"><span class="dot" style="background:${day.accent}"></span>Exécution</div>
-        ${info.execution.map(p => `<div class="info-point">${p}</div>`).join('')}
+        <ol class="info-steps" style="--step-accent:${day.accent}">
+          ${info.execution.map((p, i) => `<li class="info-step"><span class="info-step-num">${i + 1}</span><span class="info-step-text">${p}</span></li>`).join('')}
+        </ol>
       </div>`
     : '';
 
+  // Muscles : une couleur par grand groupe (pleine = principal, contour = secondaire)
+  const chip = (m, main) => {
+    const col = MUSCLE_COLORS[muscleGroupOf(m)];
+    return `<span class="muscle-chip${main ? ' muscle-chip--main' : ''}" style="--mc:${col}">${m}</span>`;
+  };
   const muscles = info.muscles;
   const musclesHtml = muscles && (muscles.main || []).length
     ? `<div class="info-muscles">
-        ${muscles.main.map(m => `<span class="muscle-chip muscle-chip--main" style="border-color:${day.accent};color:${day.accent}">${m}</span>`).join('')}
-        ${(muscles.secondary || []).map(m => `<span class="muscle-chip">${m}</span>`).join('')}
+        <div class="info-muscles-row"><span class="info-muscles-label">Principaux</span><span class="info-muscles-chips">${muscles.main.map(m => chip(m, true)).join('')}</span></div>
+        ${(muscles.secondary || []).length ? `<div class="info-muscles-row"><span class="info-muscles-label">Secondaires</span><span class="info-muscles-chips">${muscles.secondary.map(m => chip(m, false)).join('')}</span></div>` : ''}
       </div>`
     : '';
 
   const errHtml = info.erreurs && info.erreurs.length
     ? `<div class="info-section">
         <div class="info-section-title" style="color:var(--red)"><span class="dot" style="background:var(--red)"></span>Erreurs à éviter</div>
-        ${info.erreurs.map(p => `<div class="info-point info-point--err">${p}</div>`).join('')}
+        <ul class="info-errors">
+          ${info.erreurs.map(p => `<li class="info-error"><span class="info-error-icon">✕</span><span>${p}</span></li>`).join('')}
+        </ul>
       </div>`
     : '';
 
