@@ -97,6 +97,21 @@ function openInfoModal(exId) {
       </div>`
     : '';
 
+  const muscles = info.muscles;
+  const musclesHtml = muscles && (muscles.main || []).length
+    ? `<div class="info-muscles">
+        ${muscles.main.map(m => `<span class="muscle-chip muscle-chip--main" style="border-color:${day.accent};color:${day.accent}">${m}</span>`).join('')}
+        ${(muscles.secondary || []).map(m => `<span class="muscle-chip">${m}</span>`).join('')}
+      </div>`
+    : '';
+
+  const errHtml = info.erreurs && info.erreurs.length
+    ? `<div class="info-section">
+        <div class="info-section-title" style="color:var(--red)"><span class="dot" style="background:var(--red)"></span>Erreurs à éviter</div>
+        ${info.erreurs.map(p => `<div class="info-point info-point--err">${p}</div>`).join('')}
+      </div>`
+    : '';
+
   const whyHtml = info.interet
     ? `<div class="info-section">
         <div class="info-section-title" style="color:var(--blue)"><span class="dot" style="background:var(--blue)"></span>Pourquoi cet exercice</div>
@@ -106,7 +121,7 @@ function openInfoModal(exId) {
 
   document.getElementById('swipe-panel-title').innerHTML =
     `${ex.name}<br><span style="font-size:11px;color:${day.accent};font-weight:600">${day.name} · ${ex.format}</span>`;
-  document.getElementById('swipe-panel-body').innerHTML = gifHtml + execHtml + whyHtml;
+  document.getElementById('swipe-panel-body').innerHTML = gifHtml + musclesHtml + execHtml + errHtml + whyHtml;
 
   requestAnimationFrame(() => {
     document.getElementById('swipe-overlay').classList.add('open');
