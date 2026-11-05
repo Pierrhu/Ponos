@@ -42,6 +42,8 @@ function renderWorkout() {
   const exercises   = getSessionExercises(day);
   const suggestions = getSuggestions({ ...day, exercises });
 
+  html += renderWarmup(day, exercises);
+
   // Exercices
   exercises.forEach(ex => {
     const isOpen   = state.activeEx === ex.id;
@@ -58,7 +60,7 @@ function renderWorkout() {
         <div style="flex:1">${tagHtml}
           <div class="ex-name">${ex.name}</div>
           ${ex._slotId ? `<div class="ex-swapped">⇄ à la place de ${ex._slotName}</div>` : ''}
-          <div class="ex-format">${ex.format}${ex.restTime ? ' <span style="color:var(--text3);font-size:10px">· Repos ' + (ex.restTime >= 60 ? Math.floor(ex.restTime/60) + 'min' : ex.restTime + 's') + '</span>' : ''}</div>
+          <div class="ex-format">${ex.format}${ex.restTime ? ' <span style="color:var(--text3);font-size:10px">· Repos ' + (ex.restTime >= 60 ? Math.floor(ex.restTime/60) + 'min' + (ex.restTime % 60 ? String(ex.restTime % 60).padStart(2,'0') : '') : ex.restTime + 's') + '</span>' : ''}</div>
           ${lastPerf ? `<div class="ex-prev" style="text-align:left;margin-top:3px">Préc: <strong style="color:${day.accent}">${lastPerf.kg}kg×${lastPerf.reps}</strong></div>` : ''}
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
@@ -148,6 +150,113 @@ function renderWorkout() {
     card.addEventListener('touchend', () => { tracking = false; }, { passive: true });
   });
 }
+
+// ── Échauffement (6-7 min, haut du corps) ─────────────────────────────────────
+const WARMUP = [
+  { id:'rameur',   gif:'gifs/echauf-rameur.webp', name:'Rameur (ou vélo)', detail:'3-4 min, tranquille',
+    text:'Juste de quoi **monter en température**, pas de quoi s\'essouffler. Le rameur chauffe aussi **le dos et les bras**. Si tous les rameurs sont pris : vélo ou elliptique.' },
+  { id:'passage',  gif:'gifs/echauf-passage-epaule.webp', name:'Passages d\'épaule', detail:'10 allers-retours',
+    text:'Avec un élastique, une corde de poulie ou un manche. **Bras tendus, prise large**, passe la barre de devant les cuisses jusque derrière le dos, puis reviens. Si ça force, **écarte encore les mains**.' },
+  { id:'ecarte',   gif:'gifs/echauf-ecarte-arriere-elastique.webp', name:'Écartés arrière', detail:'15 répétitions, très léger',
+    text:'Élastique ou poulie au plus léger. **Bras tendus devant**, ouvre vers l\'arrière en **serrant les omoplates**. Ça réveille l\'arrière des épaules avant les développés. Un face pull très léger fait la même chose.' },
+  { id:'rotation', gif:'gifs/echauf-rotation-externe-poulie.webp', name:'Rotation externe à la poulie', detail:'10 par bras, très léger',
+    text:'Poulie à hauteur du coude, **coude collé au corps** (une serviette coincée aide), avant-bras plié à 90°. **Tourne l\'avant-bras vers l\'extérieur**, lentement. C\'est la **coiffe des rotateurs** : la petite musculature qui protège l\'épaule.' },
+];
+let warmupOpen = null;   // null = automatique (ouvert tant que pas fini)
+let warmupPreview = null;
+
+function todayKey() { const d = new Date(); return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`; }
+function warmupDone() {
+  if (!state.warmup || state.warmup.date !== todayKey()) state.warmup = { date: todayKey(), done: [] };
+  return state.warmup.done;
+}
+function roundPlate(kg) { return Math.max(0, Math.round(kg / 2.5) * 2.5); }
+
+function warmupItems(exercises) {
+  const first = exercises[0];
+  const items = [...WARMUP];
+  if (first) {
+    const prev = getLastPerf(first.id, 0);
+    const w = prev && parseFloat(prev.kg) > 0 ? parseFloat(prev.kg) : null;
+    const detail = w
+      ? `Léger ×10 · ${roundPlate(w * 0.5)} kg ×6 · ${roundPlate(w * 0.75)} kg ×3`
+      : 'Léger ×10 · ~50 % ×6 · ~75 % ×3';
+    items.push({ id:'approche', gif: first.info && first.info.gif, name:`Séries d'approche : ${first.name}`, detail,
+      text:`Avant tes vraies séries sur le premier gros exo : **barre vide ou très léger ×10**, puis **~50 % de ta charge ×6**, puis **~75 % ×3**. ${w ? `Calculé sur ta dernière charge (**${w} kg**). ` : ''}Pour les exos suivants, **une seule série légère** suffit : tu es déjà chaud.` });
+  }
+  return items;
+}
+
+function renderWarmup(day, exercises) {
+  const items = warmupItems(exercises);
+  const done  = warmupDone();
+  const n     = items.filter(it => done.includes(it.id)).length;
+  const all   = n === items.length;
+  const open  = warmupOpen === null ? !all : warmupOpen;
+  let h = `<div class="card warmup-card${all ? ' warmup-done' : ''}" style="--ex-accent:${day.accent}">
+    <div class="warmup-head" onclick="toggleWarmup(${open})">
+      <div style="flex:1">
+        <div class="warmup-title">${all ? '✓ ' : ''}Échauffement <span class="warmup-time">· 6-7 min</span></div>
+        <div class="warmup-sub">${all ? 'Fait, tu peux attaquer' : `${n}/${items.length} · épaules d'abord, elles protègent tout le reste`}</div>
+      </div>
+      <div class="ex-arrow">${open ? '▾' : '▸'}</div>
+    </div>`;
+  if (open) {
+    h += '<div class="warmup-list">';
+    items.forEach(it => {
+      const ok = done.includes(it.id);
+      const thumb = it.gif ? it.gif.replace(/\.gif$/, '.webp').replace('gifs/', 'gifs/thumbs/') : '';
+      h += `<div class="warmup-item${ok ? ' ok' : ''}">
+        <button class="warmup-thumb" onclick="event.stopPropagation();openWarmupPreview('${it.id}')" aria-label="Voir ${it.name}">${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : ''}</button>
+        <div class="warmup-txt" onclick="event.stopPropagation();openWarmupPreview('${it.id}')">
+          <div class="warmup-name">${it.name}</div>
+          <div class="warmup-detail">${it.detail}</div>
+        </div>
+        <button class="warmup-check${ok ? ' ok' : ''}" style="${ok ? `background:${day.accent};border-color:${day.accent}` : ''}" onclick="event.stopPropagation();toggleWarmupItem('${it.id}')" aria-label="${ok ? 'Décocher' : 'Cocher'} ${it.name}">${ok ? '✓' : ''}</button>
+      </div>`;
+    });
+    h += '</div>';
+  }
+  return h + '</div>';
+}
+
+function toggleWarmup(isOpen) { warmupOpen = !isOpen; render(); }
+function toggleWarmupItem(id) {
+  const done = warmupDone();
+  const i = done.indexOf(id);
+  if (i >= 0) done.splice(i, 1); else done.push(id);
+  const day = getActiveProgram()[state.dayIdx];
+  if (warmupItems(getSessionExercises(day)).every(it => done.includes(it.id))) warmupOpen = null;
+  saveState();
+  render();
+}
+function openWarmupPreview(id) {
+  const day = getActiveProgram()[state.dayIdx];
+  const it  = warmupItems(getSessionExercises(day)).find(x => x.id === id);
+  if (!it) return;
+  const gif = it.gif ? it.gif.replace(/\.gif$/, '.webp') : '';
+  const ok  = warmupDone().includes(id);
+  let el = document.getElementById('warmup-preview');
+  if (!el) { el = document.createElement('div'); el.id = 'warmup-preview'; document.body.appendChild(el); }
+  el.innerHTML = `<div class="ex-picker-overlay" onclick="closeWarmupPreview()">
+    <div class="ex-picker" onclick="event.stopPropagation()">
+      <div class="ex-picker-header">
+        <div class="ex-picker-title">Échauffement</div>
+        <button class="ex-picker-close" onclick="closeWarmupPreview()">✕</button>
+      </div>
+      <div class="ex-picker-list swap-preview"><div class="pe-preview">
+        ${gif ? `<div class="info-gif-container pe-preview-gif"><img src="${gif}" alt="${it.name}"></div>` : ''}
+        <div class="pe-preview-name">${it.name}</div>
+        <div class="warmup-detail" style="margin:-4px 0 12px;font-size:13px">${it.detail}</div>
+        <div class="info-why">${fmtFiche(it.text)}</div>
+      </div></div>
+      <div class="swap-preview-footer">
+        <button class="swap-choose" style="background:${day.accent}" onclick="${ok ? '' : `toggleWarmupItem('${id}');`}closeWarmupPreview()">${ok ? 'Fermer' : '✓ Fait'}</button>
+      </div>
+    </div>
+  </div>`;
+}
+function closeWarmupPreview() { const el = document.getElementById('warmup-preview'); if (el) el.remove(); }
 
 function selectDay(i)  { state.dayIdx = i; state.activeEx = null; state._lastPRs = null; state._lastTimerSet = null; saveState(); render(); }
 function toggleEx(id)  { state.activeEx = state.activeEx === id ? null : id; render(); }

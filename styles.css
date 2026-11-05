@@ -1981,3 +1981,20 @@
 .swap-item .ex-picker-item-add { width: 38px; height: 38px; font-size: 18px; }
 #swap-picker .ex-picker:has(.swap-preview) { max-height: 88vh; }
 .swap-preview .pe-preview-gif img { max-height: 240px; }
+
+/* ── Échauffement ─────────────────────────────────────────────────────────── */
+.warmup-card { padding: 0; overflow: hidden; border-left: 3px solid var(--ex-accent); }
+.warmup-card.warmup-done { opacity: 0.75; }
+.warmup-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; cursor: pointer; }
+.warmup-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.warmup-time { font-weight: 600; color: var(--text3); font-size: 12px; }
+.warmup-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.warmup-list { padding: 0 12px 10px; display: flex; flex-direction: column; gap: 4px; }
+.warmup-item { display: flex; align-items: center; gap: 12px; padding: 8px 4px; border-top: 1px solid rgba(255,255,255,0.06); }
+.warmup-item.ok .warmup-name { color: var(--text3); text-decoration: line-through; }
+.warmup-thumb { width: 48px; height: 48px; border-radius: 8px; overflow: hidden; background: #fff; border: none; padding: 0; flex-shrink: 0; cursor: pointer; }
+.warmup-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.warmup-txt { flex: 1; min-width: 0; cursor: pointer; }
+.warmup-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.warmup-detail { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.warmup-check { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--text3); background: none; color: #fff; font-size: 15px; font-weight: 800; flex-shrink: 0; cursor: pointer; }
