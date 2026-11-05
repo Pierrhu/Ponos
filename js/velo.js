@@ -28,25 +28,3 @@ function saveVeloSession() {
   state.veloSessions.push(entry);
   saveState(); closeVeloModal(); showToast(`Sortie vélo enregistrée ! ${distance}km`); render();
 }
-
-// ── Basic Fit ─────────────────────────────────────────────────────────────────
-function openBasicFit() {
-  const ua        = navigator.userAgent;
-  const isAndroid = /Android/i.test(ua);
-  const isIOS     = /iPhone|iPad|iPod/i.test(ua);
-  const PKG       = 'com.basicfit.trainingApp';
-  const IOS_STORE = 'https://apps.apple.com/fr/app/basic-fit/id1048254718';
-  const AND_STORE = `https://play.google.com/store/apps/details?id=${PKG}`;
-
-  if (isAndroid) {
-    // Chrome n'ouvre une appli que via un lien qu'elle déclare (catégorie BROWSABLE).
-    // L'appli Basic-Fit déclare ses liens basicfit.page.link (assetlinks.json) :
-    // on vise ce lien, en forçant le paquet. Play Store seulement si l'appli est absente.
-    window.location.href = `intent://basicfit.page.link/#Intent;scheme=https;package=${PKG};S.browser_fallback_url=${encodeURIComponent(AND_STORE)};end`;
-  } else if (isIOS) {
-    window.location.href = 'basicfit://';
-    setTimeout(() => { if (!document.hidden) window.location.href = IOS_STORE; }, 1500);
-  } else {
-    window.location.href = AND_STORE;
-  }
-}
