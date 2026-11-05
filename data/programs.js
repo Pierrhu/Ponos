@@ -53,7 +53,7 @@ const MUSCLE_GROUPS = {
   'x-tractions-neg':'Dos', 'x-mollets':'Jambes', 'x-presse':'Jambes',
 };
 
-const MUSCLE_ORDER = ['Pectoraux', 'Dos', 'Épaules', 'Bras', 'Jambes'];
+const MUSCLE_ORDER = ['Pectoraux', 'Dos', 'Épaules', 'Bras', 'Jambes', 'Abdos'];
 
 function muscleOf(ex) { return ex.muscle || MUSCLE_GROUPS[ex.id] || 'Autre'; }
 

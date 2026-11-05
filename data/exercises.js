@@ -308,29 +308,430 @@ const EXTRA_EXERCISES = [
       ],
       interet:'Genoux pliés, c\'est surtout **le soléaire** qui travaille, le muscle sous le mollet visible. Bon complément ou remplaçant des mollets debout.'
     }},
+  // ── Catalogue Basic-Fit (ajouté le 5/11) ──────────────────────────────────────
+  {id:'x-chest-press',muscle:'Pectoraux',restTime:120,name:'Développé assis (machine)',reps:'8-12',format:'3×8-12',sets:3,
+    info:{
+      gif:'gifs/chest-press-machine.webp',
+      muscles:{ main:['Pectoraux'], secondary:['Triceps', 'Deltoïdes antérieurs'] },
+      execution:[
+        'Règle le siège : **poignées au niveau du milieu de la poitrine**.',
+        'Dos collé au dossier, **omoplates serrées**, pieds à plat.',
+        'Pousse **jusqu\'aux bras presque tendus**, sans verrouiller les coudes.',
+        '**Reviens lentement** jusqu\'à sentir l\'étirement des pecs, sans reposer la charge.',
+      ],
+      erreurs:[
+        '**Siège trop haut ou trop bas** : les épaules prennent le relais.',
+        '**Décoller le dos** du dossier pour pousser plus lourd.',
+      ],
+      interet:'Le développé le plus simple qui soit : **pas d\'équilibre à gérer**, idéal pour débuter ou quand le banc est pris.'
+    }},
+  {id:'x-dips-assistes',muscle:'Pectoraux',restTime:120,name:'Dips assistés (machine)',reps:'8-12',format:'3×8-12',sets:3,
+    info:{
+      gif:'gifs/dips-assistes-machine.webp',
+      muscles:{ main:['Pectoraux (bas)', 'Triceps'], secondary:['Deltoïdes antérieurs'] },
+      execution:[
+        'Choisis l\'assistance : **plus le poids est lourd, plus la machine t\'aide**.',
+        'Genoux sur le coussin, mains sur les poignées, **buste légèrement penché en avant**.',
+        'Descends **jusqu\'à ce que les coudes forment environ 90°**.',
+        'Remonte en poussant, **sans verrouiller les coudes** en haut.',
+      ],
+      erreurs:[
+        '**Descendre trop bas** : ça tire sur l\'avant des épaules.',
+        '**Hausser les épaules** vers les oreilles.',
+      ],
+      interet:'La version accessible des dips : tu progresses en **retirant de l\'assistance** au fil des semaines, jusqu\'aux dips au poids du corps.'
+    }},
+  {id:'x-row-machine',muscle:'Dos',restTime:120,name:'Rowing assis (machine)',reps:'8-12',format:'3×8-12',sets:3,
+    info:{
+      gif:'gifs/rowing-assis-machine.webp',
+      muscles:{ main:['Milieu du dos (rhomboïdes, trapèzes)', 'Grand dorsal'], secondary:['Biceps', 'Deltoïdes postérieurs'] },
+      execution:[
+        'Règle le siège : **poignées à hauteur du bas de la poitrine**, poitrine contre le coussin.',
+        'Bras tendus, **épaules basses**.',
+        'Tire en amenant **les coudes vers l\'arrière**, près du corps. **Serre les omoplates** 1 seconde.',
+        '**Reviens lentement** jusqu\'aux bras tendus.',
+      ],
+      erreurs:[
+        '**Décoller la poitrine** du coussin pour tirer plus lourd.',
+        '**Tirer avec les bras** : pense coudes, pas mains.',
+      ],
+      interet:'Poitrine calée : **zéro stress sur le bas du dos**. Parfait remplaçant des rowings libres quand le dos est fatigué.'
+    }},
+  {id:'x-tbar',muscle:'Dos',restTime:120,name:'Rowing T-bar (machine)',reps:'8-10',format:'3×8-10',sets:3,
+    info:{
+      gif:'gifs/rowing-t-bar-machine.webp',
+      muscles:{ main:['Milieu du dos', 'Grand dorsal'], secondary:['Biceps', 'Lombaires (gainage)', 'Deltoïdes postérieurs'] },
+      execution:[
+        'Pieds sur la plateforme, **poitrine contre le coussin** (ou buste penché à 45° dos plat si pas de coussin).',
+        'Attrape les poignées, **dos plat, abdos serrés**.',
+        'Tire la barre **vers le bas de la poitrine** en serrant les omoplates.',
+        '**Redescends sous contrôle** jusqu\'aux bras tendus.',
+      ],
+      erreurs:[
+        '**Arrondir le dos** : c\'est le piège numéro un.',
+        '**Donner des coups de reins** pour monter la charge.',
+      ],
+      interet:'Un rowing **lourd et stable** : tu peux charger plus qu\'aux haltères, avec un dos bien protégé.'
+    }},
+  {id:'x-pullover-poulie',muscle:'Dos',restTime:75,name:'Pull-over à la poulie',reps:'12-15',format:'3×12-15',sets:3,
+    info:{
+      gif:'gifs/pull-over-poulie.webp',
+      muscles:{ main:['Grand dorsal'], secondary:['Grand rond', 'Triceps (longue portion)'] },
+      execution:[
+        'Face à la poulie haute, barre droite ou corde, **bras presque tendus**, buste légèrement penché.',
+        '**Abdos serrés**, épaules basses.',
+        'Ramène la barre **en arc de cercle jusqu\'aux cuisses** en gardant les bras quasi tendus.',
+        '**Remonte lentement** jusqu\'à sentir l\'étirement sous les aisselles.',
+      ],
+      erreurs:[
+        '**Plier les coudes** : ça devient un exercice de triceps.',
+        '**Charger trop lourd** et balancer le buste.',
+      ],
+      interet:'Isole le grand dorsal **sans les biceps**. Parfait en fin de séance dos, ou pour apprendre à « sentir » ton dos.'
+    }},
+  {id:'x-lombaires',muscle:'Dos',restTime:90,name:'Extension lombaire (banc à 45°)',reps:'12-15',format:'3×12-15',sets:3,
+    info:{
+      gif:'gifs/extension-lombaire-45.webp',
+      muscles:{ main:['Lombaires'], secondary:['Fessiers', 'Ischio-jambiers'] },
+      execution:[
+        'Règle le banc : **le bord du coussin juste sous les hanches**, chevilles calées.',
+        'Bras croisés sur la poitrine, **dos droit**.',
+        'Descends lentement en **pliant aux hanches**, dos plat.',
+        'Remonte **jusqu\'à l\'alignement jambes-buste**, pas plus haut.',
+      ],
+      erreurs:[
+        '**Remonter au-delà de l\'alignement** en se cambrant.',
+        '**Faire des à-coups** : tout se fait lentement.',
+      ],
+      interet:'Renforce le bas du dos et les fessiers : **un dos solide protège tout le reste**, du soulevé de terre aux longues heures assis.'
+    }},
+  {id:'x-shrugs',muscle:'Dos',restTime:60,name:'Shrugs (haltères)',reps:'12-15',format:'3×12-15',sets:3,
+    info:{
+      gif:'gifs/shrugs-halteres.webp',
+      muscles:{ main:['Trapèzes supérieurs'], secondary:['Avant-bras (prise)'] },
+      execution:[
+        'Debout, un haltère dans chaque main, **bras le long du corps**.',
+        'Monte les épaules **droit vers les oreilles**, le plus haut possible.',
+        '**Tiens 1 seconde** en haut.',
+        'Redescends lentement.',
+      ],
+      erreurs:[
+        '**Rouler les épaules** en cercle : inutile et mauvais pour l\'articulation.',
+        '**Plier les coudes** pour aider.',
+      ],
+      interet:'Développe les trapèzes, ce qui donne **une carrure plus épaisse** vue de face.'
+    }},
+  {id:'x-curl-machine',muscle:'Bras',restTime:60,name:'Curl biceps (machine)',reps:'10-12',format:'3×10-12',sets:3,
+    info:{
+      gif:'gifs/curl-biceps-machine.webp',
+      muscles:{ main:['Biceps'], secondary:['Avant-bras'] },
+      execution:[
+        'Règle le siège : **coudes alignés avec l\'axe de la machine**, bras à plat sur le pupitre.',
+        'Prise en supination (paumes vers le haut).',
+        'Monte **en contractant le biceps**, sans décoller les coudes.',
+        '**Redescends lentement** jusqu\'aux bras presque tendus.',
+      ],
+      erreurs:[
+        '**Coudes mal alignés** avec l\'axe : ça tire sur l\'articulation.',
+        '**Soulever les fesses** pour finir la rep.',
+      ],
+      interet:'Le pupitre bloque toute triche : **100 % biceps**, idéal pour finir une séance bras.'
+    }},
+  {id:'x-curl-incline',muscle:'Bras',restTime:60,name:'Curl incliné (haltères)',reps:'10-12',format:'3×10-12',sets:3,
+    info:{
+      gif:'gifs/curl-incline-halteres.webp',
+      muscles:{ main:['Biceps (longue portion)'], secondary:['Avant-bras'] },
+      execution:[
+        'Banc incliné à **45-60°**, dos collé, **bras pendants à la verticale**.',
+        'Paumes vers l\'avant.',
+        'Monte les haltères **sans avancer les coudes**.',
+        '**Redescends complètement**, bras tendus : c\'est l\'étirement qui fait tout.',
+      ],
+      erreurs:[
+        '**Avancer les coudes** pendant la montée.',
+        '**Charger trop lourd** et perdre l\'amplitude.',
+      ],
+      interet:'Bras derrière le corps, le biceps est **étiré au maximum** : un des curls les plus efficaces pour le développer.'
+    }},
+  {id:'x-curl-pupitre',muscle:'Bras',restTime:60,name:'Curl pupitre (barre EZ)',reps:'8-12',format:'3×8-12',sets:3,
+    info:{
+      gif:'gifs/curl-pupitre-ez.webp',
+      muscles:{ main:['Biceps'], secondary:['Brachial', 'Avant-bras'] },
+      execution:[
+        'Assis au pupitre, **aisselles calées en haut du coussin**, bras à plat.',
+        'Prise sur les parties inclinées de la barre EZ.',
+        'Monte **jusqu\'à ce que les avant-bras soient presque verticaux**.',
+        '**Redescends lentement** sans tendre complètement les coudes en bas.',
+      ],
+      erreurs:[
+        '**Lâcher la descente** : c\'est là que les coudes trinquent.',
+        '**Décoller les bras** du pupitre.',
+      ],
+      interet:'Le classique pour **isoler les biceps**. La barre EZ soulage les poignets.'
+    }},
+  {id:'x-triceps-machine',muscle:'Bras',restTime:60,name:'Extensions triceps (machine)',reps:'10-12',format:'3×10-12',sets:3,
+    info:{
+      gif:'gifs/triceps-machine.webp',
+      muscles:{ main:['Triceps'], secondary:[] },
+      execution:[
+        'Règle le siège : **coudes alignés avec l\'axe**, bras sur le coussin.',
+        'Dos contre le dossier.',
+        'Pousse **jusqu\'aux bras tendus**, en contractant les triceps 1 seconde.',
+        '**Reviens lentement**.',
+      ],
+      erreurs:[
+        '**Décoller les coudes** du coussin.',
+        '**Pencher le buste** pour pousser avec le corps.',
+      ],
+      interet:'Triceps isolés, **sans stress sur les épaules**. Très bien en fin de séance.'
+    }},
+  {id:'x-triceps-poulie',muscle:'Bras',restTime:60,name:'Extensions triceps poulie haute (corde)',reps:'10-15',format:'3×10-15',sets:3,
+    info:{
+      gif:'gifs/triceps-poulie-haute.webp',
+      muscles:{ main:['Triceps'], secondary:[] },
+      execution:[
+        'Face à la poulie haute, corde en main, **coudes collés au corps**.',
+        'Buste légèrement penché, abdos serrés.',
+        'Pousse vers le bas **jusqu\'aux bras tendus** en écartant la corde en bas.',
+        '**Remonte lentement** jusqu\'à ce que les avant-bras soient à l\'horizontale.',
+      ],
+      erreurs:[
+        '**Coudes qui partent devant** : ils restent fixes.',
+        '**Utiliser le poids du corps** pour descendre la charge.',
+      ],
+      interet:'Le grand classique du triceps : simple, efficace, **facile à doser**.'
+    }},
+  {id:'x-dips-assis',muscle:'Bras',restTime:90,name:'Dips assis (machine)',reps:'8-12',format:'3×8-12',sets:3,
+    info:{
+      gif:'gifs/dips-assis-machine.webp',
+      muscles:{ main:['Triceps'], secondary:['Pectoraux (bas)', 'Deltoïdes antérieurs'] },
+      execution:[
+        'Règle le siège : **poignées à hauteur des côtes**, dos contre le dossier.',
+        'Coudes près du corps.',
+        'Pousse vers le bas **jusqu\'aux bras tendus**.',
+        '**Remonte lentement** sans dépasser 90° aux coudes.',
+      ],
+      erreurs:[
+        '**Ouvrir les coudes** sur les côtés.',
+        '**Remonter trop haut** : l\'avant de l\'épaule souffre.',
+      ],
+      interet:'Les dips **sans le poids du corps** : tu choisis la charge, parfait pour charger lourd les triceps en sécurité.'
+    }},
+  {id:'x-squat-smith',muscle:'Jambes',restTime:150,name:'Squat (Smith machine)',reps:'8-10',format:'3×8-10',sets:3,
+    info:{
+      gif:'gifs/squat-smith.webp',
+      muscles:{ main:['Quadriceps', 'Fessiers'], secondary:['Ischio-jambiers', 'Lombaires (gainage)'] },
+      execution:[
+        'Barre sur le **haut du dos** (trapèzes), **pieds un peu en avant** de la barre, largeur d\'épaules.',
+        'Déverrouille en tournant les poignets, **abdos serrés**.',
+        'Descends **jusqu\'aux cuisses parallèles** au sol, dos droit.',
+        'Remonte en poussant dans les talons, puis **reverrouille** la barre.',
+      ],
+      erreurs:[
+        '**Pieds sous la barre** : les genoux et le bas du dos prennent tout.',
+        '**Genoux qui rentrent** vers l\'intérieur.',
+      ],
+      interet:'Le squat **sans gérer l\'équilibre**, avec des crochets de sécurité à chaque cran. Bonne porte d\'entrée vers le squat libre.'
+    }},
+  {id:'x-hack',muscle:'Jambes',restTime:150,name:'Hack squat',reps:'8-12',format:'3×8-12',sets:3,
+    info:{
+      gif:'gifs/hack-squat.webp',
+      muscles:{ main:['Quadriceps'], secondary:['Fessiers', 'Adducteurs'] },
+      execution:[
+        'Dos et épaules **bien calés** contre les coussins, pieds au milieu de la plateforme, largeur d\'épaules.',
+        'Débloque les sécurités.',
+        'Descends **lentement jusqu\'à 90°** ou un peu plus bas si c\'est confortable.',
+        'Remonte en poussant dans toute la plante du pied, **sans verrouiller les genoux**, puis remets les sécurités.',
+      ],
+      erreurs:[
+        '**Talons qui décollent** : avance un peu les pieds.',
+        '**Verrouiller les genoux** en haut.',
+      ],
+      interet:'Le meilleur ami des quadriceps : **dos protégé**, charge lourde possible.'
+    }},
+  {id:'x-legcurl-allonge',muscle:'Jambes',restTime:90,name:'Leg curl allongé',reps:'10-12',format:'3×10-12',sets:3,
+    info:{
+      gif:'gifs/leg-curl-allonge.webp',
+      muscles:{ main:['Ischio-jambiers'], secondary:['Mollets'] },
+      execution:[
+        'Allongé sur le ventre, **genoux juste au bord du coussin**, boudin au-dessus des talons.',
+        'Hanches **plaquées** sur le banc.',
+        'Ramène les talons **vers les fesses**, serre 1 seconde.',
+        '**Redescends lentement** sans reposer la charge.',
+      ],
+      erreurs:[
+        '**Décoller les hanches** du banc.',
+        '**Lâcher la descente**.',
+      ],
+      interet:'L\'autre version du leg curl, **si la machine assise est prise**. Même muscles, même efficacité.'
+    }},
+  {id:'x-bulgare',muscle:'Jambes',restTime:90,name:'Squat bulgare (haltères)',reps:'8-10/jambe',format:'3×8-10/jambe',sets:3,
+    info:{
+      gif:'gifs/squat-bulgare-halteres.webp',
+      muscles:{ main:['Quadriceps', 'Fessiers'], secondary:['Ischio-jambiers', 'Adducteurs'] },
+      execution:[
+        'Un haltère dans chaque main, **pied arrière posé sur un banc**, pied avant à un grand pas devant.',
+        'Buste droit ou légèrement penché, **abdos serrés**.',
+        'Descends **le genou arrière vers le sol**, le genou avant suit la pointe du pied.',
+        'Remonte en poussant dans **le talon avant**. Fais toutes les reps d\'une jambe puis change.',
+      ],
+      erreurs:[
+        '**Pied avant trop proche** du banc : le genou part loin devant.',
+        '**Perdre l\'équilibre** : commence sans charge.',
+      ],
+      interet:'Une jambe à la fois : **corrige les déséquilibres** et brûle les cuisses comme peu d\'exos. Dur, mais redoutable.'
+    }},
+  {id:'x-rdl',muscle:'Jambes',restTime:120,name:'Soulevé de terre roumain',reps:'8-10',format:'3×8-10',sets:3,
+    info:{
+      gif:'gifs/souleve-de-terre-roumain.webp',
+      muscles:{ main:['Ischio-jambiers', 'Fessiers'], secondary:['Lombaires', 'Avant-bras (prise)'] },
+      execution:[
+        'Debout, barre (ou haltères) devant les cuisses, **genoux légèrement fléchis**.',
+        'Pousse les **fesses vers l\'arrière**, dos plat : la barre glisse le long des cuisses.',
+        'Descends **jusqu\'à sentir l\'étirement** derrière les cuisses (souvent sous les genoux).',
+        'Remonte en **poussant les hanches vers l\'avant**, serre les fessiers.',
+      ],
+      erreurs:[
+        '**Arrondir le dos** : arrête la descente avant.',
+        '**Plier les genoux** comme un squat.',
+      ],
+      interet:'Le roi des ischio-jambiers et des fessiers. **Charnière de hanche** : un mouvement utile au quotidien pour soulever sans se faire mal.'
+    }},
+  {id:'x-hip-thrust',muscle:'Jambes',restTime:90,name:'Hip thrust',reps:'8-12',format:'3×8-12',sets:3,
+    info:{
+      gif:'gifs/hip-thrust.webp',
+      muscles:{ main:['Fessiers'], secondary:['Ischio-jambiers', 'Quadriceps'] },
+      execution:[
+        'Haut du dos contre un banc, **barre sur les hanches** (avec une mousse), pieds à plat.',
+        'Menton rentré, **regard vers l\'avant**.',
+        'Monte les hanches **jusqu\'à l\'alignement épaules-genoux**, serre les fessiers 1 seconde.',
+        'Redescends sous contrôle.',
+      ],
+      erreurs:[
+        '**Se cambrer** en haut au lieu de serrer les fessiers.',
+        '**Pieds trop loin** : ce sont les ischios qui travaillent.',
+      ],
+      interet:'Le meilleur exercice pour **les fessiers**, sans charge sur le dos. Existe aussi en machine ou à la Smith.'
+    }},
+  {id:'x-fentes',muscle:'Jambes',restTime:90,name:'Fentes avant (haltères)',reps:'10/jambe',format:'3×10/jambe',sets:3,
+    info:{
+      gif:'gifs/fentes-avant-halteres.webp',
+      muscles:{ main:['Quadriceps', 'Fessiers'], secondary:['Ischio-jambiers', 'Mollets'] },
+      execution:[
+        'Debout, un haltère dans chaque main.',
+        'Fais **un grand pas en avant** et descends jusqu\'à ce que **le genou arrière frôle le sol**.',
+        'Buste droit, **genou avant aligné** avec la pointe du pied.',
+        'Pousse dans le talon avant pour **revenir à la position de départ**. Alterne les jambes.',
+      ],
+      erreurs:[
+        '**Pas trop court** : le genou avant part loin devant.',
+        '**Pencher le buste** en avant.',
+      ],
+      interet:'Travaille chaque jambe séparément, **l\'équilibre et la stabilité**. Très bon complément à la presse.'
+    }},
+  {id:'x-ext-hanche',muscle:'Jambes',restTime:60,name:'Extension de hanche (machine)',reps:'12-15/jambe',format:'3×12-15/jambe',sets:3,
+    info:{
+      gif:'gifs/extension-hanche-machine.webp',
+      muscles:{ main:['Fessiers'], secondary:['Ischio-jambiers'] },
+      execution:[
+        'Règle la machine : **le coussin derrière la cuisse**, juste au-dessus du genou.',
+        'Mains sur les poignées, buste stable.',
+        'Pousse la jambe **vers l\'arrière** en serrant le fessier, sans te cambrer.',
+        '**Reviens lentement**. Toutes les reps d\'un côté, puis l\'autre.',
+      ],
+      erreurs:[
+        '**Se cambrer** pour aller plus loin.',
+        '**Balancer la jambe** avec élan.',
+      ],
+      interet:'Isole les fessiers, **une jambe après l\'autre**. Bon en fin de séance jambes.'
+    }},
+  {id:'x-crunch-machine',muscle:'Abdos',restTime:60,name:'Crunch (machine)',reps:'12-15',format:'3×12-15',sets:3,
+    info:{
+      gif:'gifs/crunch-machine.webp',
+      muscles:{ main:['Grand droit (abdos)'], secondary:['Obliques'] },
+      execution:[
+        'Règle le siège, **mains sur les poignées**, pieds calés.',
+        'Enroule le buste **en rapprochant les côtes du bassin**.',
+        '**Serre les abdos** 1 seconde en bas.',
+        'Reviens lentement sans laisser la charge retomber.',
+      ],
+      erreurs:[
+        '**Tirer avec les bras** au lieu d\'enrouler le dos.',
+        '**Aller trop vite**.',
+      ],
+      interet:'Des abdos **chargés comme un vrai muscle** : tu progresses en poids, comme sur le reste.'
+    }},
+  {id:'x-crunch-poulie',muscle:'Abdos',restTime:60,name:'Crunch à la poulie haute',reps:'12-15',format:'3×12-15',sets:3,
+    info:{
+      gif:'gifs/crunch-poulie.webp',
+      muscles:{ main:['Grand droit (abdos)'], secondary:['Obliques'] },
+      execution:[
+        'À genoux face à la poulie haute, **corde tenue près de la tête**.',
+        'Hanches fixes.',
+        'Enroule le buste **vers le sol en arrondissant le dos**, coudes vers les cuisses.',
+        'Remonte lentement **sans relâcher la tension**.',
+      ],
+      erreurs:[
+        '**Bouger les hanches** : c\'est le dos qui doit s\'enrouler.',
+        '**Tirer avec les bras**.',
+      ],
+      interet:'Très efficace et facile à doser. **La poulie garde la tension** sur tout le mouvement.'
+    }},
+  {id:'x-releve-jambes',muscle:'Abdos',restTime:60,name:'Relevé de jambes (chaise romaine)',reps:'10-15',format:'3×10-15',sets:3,
+    info:{
+      gif:'gifs/releve-jambes-chaise-romaine.webp',
+      muscles:{ main:['Bas des abdos', 'Fléchisseurs de hanche'], secondary:['Obliques'] },
+      execution:[
+        'Avant-bras sur les appuis, **dos collé au dossier**, jambes pendantes.',
+        'Monte les genoux **vers la poitrine** en enroulant le bassin.',
+        '**Tiens 1 seconde** en haut.',
+        'Redescends lentement, **sans balancer**.',
+      ],
+      erreurs:[
+        '**Se balancer** pour monter.',
+        '**Monter les jambes sans enrouler le bassin** : ce sont les hanches qui bossent.',
+      ],
+      interet:'Cible **le bas des abdos**. Genoux pliés pour commencer, jambes tendues quand ça devient facile.'
+    }},
+  {id:'x-planche',muscle:'Abdos',restTime:45,name:'Planche (gainage)',reps:'30-60 s',format:'3×30-60 s',sets:3,
+    info:{
+      gif:'gifs/planche.webp',
+      muscles:{ main:['Abdos (transverse, grand droit)'], secondary:['Lombaires', 'Épaules', 'Fessiers'] },
+      execution:[
+        'Sur les avant-bras, **coudes sous les épaules**.',
+        'Corps **droit de la tête aux talons**.',
+        '**Serre les fessiers et les abdos**, respire normalement.',
+        'Tiens le temps prévu, sans laisser les hanches tomber.',
+      ],
+      erreurs:[
+        '**Hanches qui tombent** : le dos se creuse.',
+        '**Fesses en l\'air** : c\'est trop facile.',
+      ],
+      interet:'Le gainage de base : **un tronc solide** protège le dos sur tous les autres exercices. Note le temps tenu dans la case répétitions.'
+    }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent
 // accessibles par groupe musculaire).
 const ALTERNATIVES = {
-  a1: ['c1', 'x-dc-machine'],
-  a2: ['x-divrow', 'b3', 'c2'],
+  a1: ['c1', 'x-dc-machine', 'x-chest-press'],
+  a2: ['x-divrow', 'b3', 'c2', 'x-tbar', 'x-row-machine'],
   a3: ['x-incline-machine', 'c1', 'x-pecfly'],
   a4: ['b2', 'x-tirage-machine', 'x-tractions-ass'],
   a5: ['b4', 'x-lat-machine'],
-  a6: ['x-curl-poulie', 'x-triceps-corde', 'c6'],
+  a6: ['x-curl-poulie', 'x-triceps-corde', 'c6', 'x-curl-machine', 'x-triceps-poulie'],
   b1: ['x-epaules-machine', 'x-militaire-smith'],
   b2: ['x-tirage-machine', 'a4', 'x-tractions-ass'],
-  b3: ['x-divrow', 'c2', 'a2'],
+  b3: ['x-divrow', 'c2', 'a2', 'x-row-machine'],
   b4: ['x-lat-machine', 'a5'],
   b5: ['x-oiseau-machine'],
-  c1: ['a1', 'x-dc-machine', 'x-incline-machine'],
-  c2: ['x-divrow', 'b3'],
+  c1: ['a1', 'x-dc-machine', 'x-incline-machine', 'x-chest-press'],
+  c2: ['x-divrow', 'b3', 'x-row-machine', 'x-tbar'],
   c3: ['x-pecfly'],
   c4: ['x-lat-machine', 'a5', 'b4'],
   c5: ['x-oiseau-machine'],
-  c6: ['x-curl-poulie', 'x-triceps-corde', 'a6'],
-  'x-presse':        ['x-goblet', 'x-legext'],
+  c6: ['x-curl-poulie', 'x-triceps-corde', 'a6', 'x-curl-incline', 'x-triceps-machine'],
+  'x-presse': ['x-goblet', 'x-legext', 'x-hack', 'x-squat-smith'],
   'x-mollets':       ['x-mollets-presse', 'x-mollets-assis'],
   'x-tractions-neg': ['x-tractions-ass'],
   'x-tractions-ass': ['x-tractions-neg'],
@@ -338,6 +739,36 @@ const ALTERNATIVES = {
   'x-tirage-machine': ['b2', 'a4'],
   'x-lat-machine':   ['b4', 'a5'],
   'x-militaire-smith': ['b1', 'x-epaules-machine'],
+  'x-curl-poulie': ['x-curl-machine', 'x-curl-incline'],
+  'x-triceps-corde': ['x-triceps-poulie', 'x-triceps-machine'],
+  'x-goblet': ['x-squat-smith', 'x-bulgare'],
+  'x-legcurl': ['x-legcurl-allonge', 'x-rdl'],
+  'x-legext': ['x-hack'],
+  'x-chest-press': ['c1', 'x-dc-machine', 'a1'],
+  'x-dips-assistes': ['x-dips-assis', 'x-chest-press'],
+  'x-row-machine': ['x-divrow', 'b3', 'c2'],
+  'x-tbar': ['a2', 'x-row-machine', 'x-divrow'],
+  'x-pullover-poulie': ['a4', 'b2'],
+  'x-lombaires': ['x-rdl'],
+  'x-shrugs': [],
+  'x-curl-machine': ['x-curl-poulie', 'x-curl-incline', 'x-curl-pupitre'],
+  'x-curl-incline': ['x-curl-machine', 'x-curl-pupitre', 'x-curl-poulie'],
+  'x-curl-pupitre': ['x-curl-machine', 'x-curl-incline', 'x-curl-poulie'],
+  'x-triceps-machine': ['x-triceps-poulie', 'x-triceps-corde', 'x-dips-assis'],
+  'x-triceps-poulie': ['x-triceps-machine', 'x-triceps-corde', 'x-dips-assis'],
+  'x-dips-assis': ['x-triceps-machine', 'x-dips-assistes'],
+  'x-squat-smith': ['x-hack', 'x-presse', 'x-goblet'],
+  'x-hack': ['x-presse', 'x-squat-smith', 'x-goblet'],
+  'x-legcurl-allonge': ['x-legcurl', 'x-rdl'],
+  'x-bulgare': ['x-fentes', 'x-goblet'],
+  'x-rdl': ['x-legcurl', 'x-hip-thrust'],
+  'x-hip-thrust': ['x-ext-hanche', 'x-rdl'],
+  'x-fentes': ['x-bulgare', 'x-goblet'],
+  'x-ext-hanche': ['x-hip-thrust'],
+  'x-crunch-machine': ['x-crunch-poulie', 'x-releve-jambes'],
+  'x-crunch-poulie': ['x-crunch-machine', 'x-releve-jambes'],
+  'x-releve-jambes': ['x-crunch-machine', 'x-planche'],
+  'x-planche': ['x-releve-jambes'],
 };
 
 // ── Couleurs des groupes musculaires ─────────────────────────────────────────
