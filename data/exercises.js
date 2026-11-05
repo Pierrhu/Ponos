@@ -243,6 +243,7 @@ const EXTRA_EXERCISES = [
   // ── Variantes machine (ajoutées le 5/11) ────────────────────────────────────
   {id:'x-militaire-smith',muscle:'Épaules',restTime:150,name:'Développé militaire (Smith)',reps:'6-8',format:'3×6-8',sets:3,
     info:{
+      gif:'gifs/developpe-epaules-smith.webp',
       muscles:{ main:['Deltoïdes antérieurs et latéraux'], secondary:['Triceps', 'Haut des pectoraux'] },
       execution:[
         'Banc **réglé à 80-90°** sous la barre guidée, la barre passe **juste devant ton visage**.',
@@ -257,8 +258,9 @@ const EXTRA_EXERCISES = [
       ],
       interet:'Même mouvement que le militaire, mais **la barre est guidée** : pas d\'équilibre à gérer, et tu peux **verrouiller à tout moment** si tu échoues. Pratique quand le rack est pris.'
     }},
-  {id:'x-tirage-machine',muscle:'Dos',restTime:120,name:'Tirage vertical (machine convergente)',reps:'8-10',format:'3×8-10',sets:3,
+  {id:'x-tirage-machine',muscle:'Dos',restTime:120,name:'Tirage vertical (machine Hammer)',reps:'8-10',format:'3×8-10',sets:3,
     info:{
+      gif:'gifs/tirage-vertical-machine.webp',
       muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Rhomboïdes'] },
       execution:[
         'Règle le siège : **cuisses bien calées** sous les boudins, bras tendus pour attraper les poignées.',
@@ -275,6 +277,7 @@ const EXTRA_EXERCISES = [
     }},
   {id:'x-lat-machine',muscle:'Épaules',restTime:75,name:'Élévations latérales (machine)',reps:'12-15',format:'3×12-15',sets:3,
     info:{
+      gif:'gifs/elevations-laterales-machine.webp',
       muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs'] },
       execution:[
         'Règle le siège : **l\'axe de la machine aligné avec tes épaules**, coussins contre l\'extérieur des bras.',
@@ -291,6 +294,7 @@ const EXTRA_EXERCISES = [
     }},
   {id:'x-mollets-assis',muscle:'Jambes',restTime:60,name:'Mollets assis (machine)',reps:'15-20',format:'3×15-20',sets:3,
     info:{
+      gif:'gifs/mollets-assis-machine.webp',
       muscles:{ main:['Soléaire'], secondary:['Mollets (jumeaux)'] },
       execution:[
         'Assis, **avant des pieds sur la marche**, talons dans le vide, **genoux sous les boudins**.',
