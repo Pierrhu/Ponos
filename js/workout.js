@@ -128,7 +128,6 @@ function renderWorkout() {
   // Bouton terminer
   html += `<button class="btn-primary" style="background:${day.accent}" onclick="requestFinish('${day.id}')">Terminer la séance ✓</button>`;
 
-  html += `<button class="velo-btn"     onclick="openVeloModal()">🚴 Ajouter une sortie vélo</button>`;
   html += `<button class="basicfit-btn" onclick="openBasicFit()">⚔️ Aller au champ de bataille</button>`;
 
   document.getElementById('page-workout').innerHTML = html;

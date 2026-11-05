@@ -34,11 +34,13 @@ function openBasicFit() {
   const ua        = navigator.userAgent;
   const isAndroid = /Android/i.test(ua);
   const isIOS     = /iPhone|iPad|iPod/i.test(ua);
+  const PKG       = 'com.basicfit.trainingApp';
   const IOS_STORE = 'https://apps.apple.com/fr/app/basic-fit/id1048254718';
-  const AND_STORE = 'https://play.google.com/store/apps/details?id=com.basicfit.trainingApp';
+  const AND_STORE = `https://play.google.com/store/apps/details?id=${PKG}`;
 
   if (isAndroid) {
-    window.location.href = AND_STORE;
+    // Lance directement l'appli installée ; le Play Store seulement si elle est absente
+    window.location.href = `intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${PKG};S.browser_fallback_url=${encodeURIComponent(AND_STORE)};end`;
   } else if (isIOS) {
     window.location.href = 'basicfit://';
     setTimeout(() => { if (!document.hidden) window.location.href = IOS_STORE; }, 1500);

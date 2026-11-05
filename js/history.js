@@ -21,7 +21,7 @@ function renderHistory() {
   const filters = [
     { id:'all',   label:'Tout',    n: all.length },
     { id:'muscu', label:'Muscu',   n: count('muscu') },
-    { id:'velo',  label:'Vélo',    n: count('velo') },
+    ...(count('velo') ? [{ id:'velo',  label:'Vélo',    n: count('velo') }] : []),
     { id:'body',  label:'Mesures', n: count('body') },
   ];
   const entries = histFilter === 'all' ? all : all.filter(e => e.type === histFilter);
