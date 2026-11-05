@@ -458,12 +458,13 @@ function openSwapPicker(slotId) {
 
   const item = ex => {
     const prev = getLastPerf(ex.id, 0);
-    return `<div class="ex-picker-item" onclick="chooseSwap('${slotId}','${ex.id}')">
-      <div>
+    return `<div class="ex-picker-item swap-item" onclick="previewSwap('${slotId}','${ex.id}')">
+      ${exThumb(ex)}
+      <div class="swap-item-text">
         <div class="ex-picker-item-name">${ex.name}</div>
         <div class="ex-picker-item-meta">${slot.sets}×${repRange(ex)}${prev ? ` · Préc : ${prev.kg}kg×${prev.reps}` : ''}</div>
       </div>
-      <div class="ex-picker-item-add" style="background:${day.accent}26;color:${day.accent}">⇄</div>
+      <button class="ex-picker-item-add" aria-label="Prendre ${ex.name}" style="background:${day.accent}26;color:${day.accent}" onclick="event.stopPropagation();chooseSwap('${slotId}','${ex.id}')">⇄</button>
     </div>`;
   };
 
@@ -495,6 +496,28 @@ function openSwapPicker(slotId) {
   let el = document.getElementById('swap-picker');
   if (!el) { el = document.createElement('div'); el.id = 'swap-picker'; document.body.appendChild(el); }
   el.innerHTML = html;
+}
+
+// Aperçu de la fiche avant de choisir
+function previewSwap(slotId, exId) {
+  const ex  = getExerciseById(exId);
+  const day = getActiveProgram()[state.dayIdx];
+  const el  = document.getElementById('swap-picker');
+  if (!ex || !el) return;
+  const slot = day.exercises.find(e => e.id === slotId);
+  const backToProgram = slot && exId === slot.id;
+  const box = el.querySelector('.ex-picker');
+  box.innerHTML = `
+    <div class="ex-picker-header">
+      <button class="swap-back" onclick="openSwapPicker('${slotId}')" aria-label="Retour à la liste">‹ Liste</button>
+      <button class="ex-picker-close" onclick="closeSwapPicker()">✕</button>
+    </div>
+    <div class="ex-picker-list swap-preview">
+      <div class="pe-preview">${ex.info ? renderExFicheHtml(ex) : `<div class="pe-preview-name">${ex.name}</div>`}</div>
+    </div>
+    <div class="swap-preview-footer">
+      <button class="swap-choose" style="background:${day.accent}" onclick="chooseSwap('${slotId}',${backToProgram ? 'null' : `'${exId}'`})">⇄ Prendre cet exercice</button>
+    </div>`;
 }
 
 function closeSwapPicker() {

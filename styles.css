@@ -1968,3 +1968,16 @@
 .bd-row-vals { flex: 1; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--text3); }
 .bd-row-vals strong { color: var(--text); font-size: 13px; }
 .bd-row-edit { color: var(--text3); }
+
+/* ── Aperçu dans « Changer d'exercice » ───────────────────────────────────── */
+.swap-item { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.swap-item .pe-thumb { flex-shrink: 0; }
+.swap-item-text { flex: 1; min-width: 0; }
+.swap-item .ex-picker-item-add { border: none; cursor: pointer; flex-shrink: 0; }
+.swap-back { background: none; border: none; color: var(--text); font-size: 15px; font-weight: 700; padding: 6px 0; cursor: pointer; }
+.swap-preview { padding: 4px 16px 16px; }
+.swap-preview-footer { padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border, rgba(255,255,255,0.08)); }
+.swap-choose { width: 100%; height: 50px; border: none; border-radius: 12px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; }
+.swap-item .ex-picker-item-add { width: 38px; height: 38px; font-size: 18px; }
+#swap-picker .ex-picker:has(.swap-preview) { max-height: 88vh; }
+.swap-preview .pe-preview-gif img { max-height: 240px; }
