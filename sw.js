@@ -1,5 +1,5 @@
 // Changer ce numéro force le nettoyage des anciens caches.
-const CACHE = 'ponos-v11';
+const CACHE = 'ponos-v12';
 
 const PRECACHE = [
   './',
@@ -58,7 +58,7 @@ function putInCache(request, response) {
 // Le code de l'app (HTML, JS, CSS, JSON) : réseau d'abord, pour que chaque
 // mise à jour poussée sur GitHub arrive tout de suite. Cache si hors-ligne.
 function networkFirst(request) {
-  return fetch(request)
+  return fetch(request, { cache: 'no-cache' })
     .then(response => putInCache(request, response))
     .catch(() => caches.match(request, { ignoreSearch: true })
       .then(cached => cached || caches.match('./index.html')));
