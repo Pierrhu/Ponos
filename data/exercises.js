@@ -709,6 +709,59 @@ const EXTRA_EXERCISES = [
       ],
       interet:'Le gainage de base : **un tronc solide** protège le dos sur tous les autres exercices. Note le temps tenu dans la case répétitions.'
     }},
+  // ── Retirés du programme le 5/11 (séances trop longues), gardés au catalogue ──
+    {id:'x-tractions-neg',muscle:'Dos',restTime:120,name:'Tractions négatives',format:'2×3-5',sets:2,
+      info:{
+        gif:'gifs/tractions-negatives.webp',
+        muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Trapèzes inférieurs', 'Avant-bras'] },
+        execution:[
+          '**Barre bien fixée**, banc ou caisse dessous. Monte en position haute, **menton au-dessus de la barre**, poitrine proche.',
+          '**Gaine les abdos** et serre les omoplates vers le bas avant de commencer.',
+          'Descends **le plus lentement possible** jusqu\'aux bras tendus : vise **au moins 5 secondes**.',
+          'Pour corser : fais **2 ou 3 pauses de 2 secondes** à différentes hauteurs pendant la descente.',
+          '**Remonte avec le banc**, jamais en sautant de toute ta force, et recommence. Quand tu tiens **5 descentes de 8 secondes**, tente une vraie traction.',
+        ],
+        erreurs:[
+          '**Se laisser tomber en bas** : c\'est la descente contrôlée qui fait tout le travail.',
+          '**Lâcher les épaules en bas** (bras pendants, épaules aux oreilles) : garde-les un peu engagées.',
+          'Utiliser une **barre de porte** peu stable.',
+        ],
+        interet:'Tes muscles sont **plus forts en descente qu\'en montée** : les négatives construisent la force de la traction avant même que tu puisses en faire une. C\'est la méthode la plus rapide pour retrouver **tes 3 tractions strictes**, en complément du tirage vertical neutre.'
+      }},
+    {id:'x-mollets',muscle:'Jambes',restTime:60,name:'Mollets debout (machine)',format:'3×12-15',sets:3,
+      info:{
+        gif:'gifs/mollets-debout.webp',
+        muscles:{ main:['Mollets (jumeaux)'], secondary:['Soléaire'] },
+        execution:[
+          'Règle les appuis à ta taille : épaules sous les coussins, avant des pieds sur la marche, **talons dans le vide**, orteils vers l\'avant.',
+          'Descends les talons **le plus bas possible** et marque **1 seconde d\'étirement**.',
+          'Monte sur la pointe des pieds **le plus haut possible** en soufflant, **tiens 1 seconde en haut**.',
+          'Genoux presque tendus et fixes du début à la fin. **Tempo lent, sans rebond**.',
+        ],
+        erreurs:[
+          '**Rebondir en bas** : l\'élan fait le travail à la place du muscle.',
+          'Faire des **demi-répétitions** : l\'amplitude complète est ce qui fait progresser ce muscle.',
+          '**Verrouiller les genoux** : si l\'arrière du genou tire, garde une légère flexion.',
+        ],
+        interet:'Des mollets plus forts encaissent mieux les chocs : c\'est **une vraie aide pour tes tibias** avant la reprise de la course. Le mollet est têtu et répond **au tempo lent et à l\'amplitude complète**, pas à la charge.'
+      }},
+    {id:'x-presse',muscle:'Jambes',restTime:120,name:'Presse à cuisses',format:'3×10-12',sets:3,
+      info:{
+        gif:'gifs/presse-cuisses.webp',
+        muscles:{ main:['Quadriceps', 'Fessiers'], secondary:['Ischio-jambiers', 'Adducteurs'] },
+        execution:[
+          '**Dos et fessiers plaqués au dossier**. Pieds à plat, **largeur de hanches**, au milieu ou un peu haut sur la plateforme, pointes légèrement ouvertes.',
+          '**Déverrouille les sécurités**. Inspire et descends lentement jusqu\'à **environ 90° aux genoux**, ou **plus bas** si le bas du dos reste collé.',
+          'Pousse en soufflant, **par les talons et le milieu du pied**, **genoux dans l\'axe des orteils**.',
+          'Arrête **juste avant de verrouiller** les genoux en haut. **Remets les sécurités** à la fin.',
+        ],
+        erreurs:[
+          '**Décoller le bas du dos** ou les fessiers en bas : c\'est que tu descends trop bas pour ta mobilité.',
+          'Laisser les genoux **rentrer vers l\'intérieur**.',
+          '**Verrouiller les genoux** en haut ou faire des demi-répétitions pour charger plus.',
+        ],
+        interet:'Le plus simple pour travailler les jambes **sans charger le dos** ni apprendre de technique. **Pieds plus hauts**, tu travailles plus les fessiers ; plus bas, plus les quadriceps. Les jambes sont les plus gros muscles du corps : plus de muscle, **plus de calories brûlées au repos**.'
+      }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent
