@@ -155,12 +155,12 @@ function renderWorkout() {
 const WARMUP = [
   { id:'rameur',   gif:'gifs/echauf-rameur.webp', name:'Rameur (ou vélo)', detail:'3-4 min, tranquille',
     text:'Juste de quoi **monter en température**, pas de quoi s\'essouffler. Le rameur chauffe aussi **le dos et les bras**. Si tous les rameurs sont pris : vélo ou elliptique.' },
-  { id:'passage',  gif:'gifs/echauf-passage-epaule.webp', name:'Passages d\'épaule', detail:'10 allers-retours',
-    text:'Avec un élastique, une corde de poulie ou un manche. **Bras tendus, prise large**, passe la barre de devant les cuisses jusque derrière le dos, puis reviens. Si ça force, **écarte encore les mains**.' },
-  { id:'ecarte',   gif:'gifs/echauf-ecarte-arriere-elastique.webp', name:'Écartés arrière', detail:'15 répétitions, très léger',
-    text:'Élastique ou poulie au plus léger. **Bras tendus devant**, ouvre vers l\'arrière en **serrant les omoplates**. Ça réveille l\'arrière des épaules avant les développés. Un face pull très léger fait la même chose.' },
+  { id:'facepull', gif:'gifs/face-pull.webp', name:'Face pull à la poulie', detail:'15 répétitions, très léger',
+    text:'Poulie à hauteur du visage, corde, **charge très légère**. Tire la corde vers ton front en **écartant les mains** et en serrant les omoplates. Ça réveille **l\'arrière des épaules** avant les développés.' },
   { id:'rotation', gif:'gifs/echauf-rotation-externe-poulie.webp', name:'Rotation externe à la poulie', detail:'10 par bras, très léger',
     text:'Poulie à hauteur du coude, **coude collé au corps** (une serviette coincée aide), avant-bras plié à 90°. **Tourne l\'avant-bras vers l\'extérieur**, lentement. C\'est la **coiffe des rotateurs** : la petite musculature qui protège l\'épaule.' },
+  { id:'laterales', gif:'gifs/elevations-laterales-halteres.webp', name:'Élévations latérales (haltères)', detail:'15 répétitions, 2-4 kg',
+    text:'**Haltères très légers.** Monte les bras sur les côtés jusqu\'à hauteur d\'épaules, sans à-coups. Le but n\'est pas de travailler : c\'est de **faire circuler le sang** dans les épaules.' },
 ];
 let warmupOpen = null;   // null = automatique (ouvert tant que pas fini)
 let warmupPreview = null;
