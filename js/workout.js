@@ -153,8 +153,6 @@ function renderWorkout() {
 
 // ── Échauffement (6-7 min, haut du corps) ─────────────────────────────────────
 const WARMUP = [
-  { id:'rameur',   gif:'gifs/echauf-rameur.webp', name:'Rameur (ou vélo)', detail:'3-4 min, tranquille',
-    text:'Juste de quoi **monter en température**, pas de quoi s\'essouffler. Le rameur chauffe aussi **le dos et les bras**. Si tous les rameurs sont pris : vélo ou elliptique.' },
   { id:'facepull', gif:'gifs/face-pull.webp', name:'Face pull à la poulie', detail:'15 répétitions, très léger',
     text:'Poulie à hauteur du visage, corde, **charge très légère**. Tire la corde vers ton front en **écartant les mains** et en serrant les omoplates. Ça réveille **l\'arrière des épaules** avant les développés.' },
   { id:'rotation', gif:'gifs/echauf-rotation-externe-poulie.webp', name:'Rotation externe à la poulie', detail:'10 par bras, très léger',
@@ -196,7 +194,7 @@ function renderWarmup(day, exercises) {
   let h = `<div class="card warmup-card${all ? ' warmup-done' : ''}" style="--ex-accent:${day.accent}">
     <div class="warmup-head" onclick="toggleWarmup(${open})">
       <div style="flex:1">
-        <div class="warmup-title">${all ? '✓ ' : ''}Échauffement <span class="warmup-time">· 6-7 min</span></div>
+        <div class="warmup-title">${all ? '✓ ' : ''}Échauffement <span class="warmup-time">· 4-5 min</span></div>
         <div class="warmup-sub">${all ? 'Fait, tu peux attaquer' : `${n}/${items.length} · épaules d'abord, elles protègent tout le reste`}</div>
       </div>
       <div class="ex-arrow">${open ? '▾' : '▸'}</div>
