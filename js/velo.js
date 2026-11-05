@@ -39,8 +39,10 @@ function openBasicFit() {
   const AND_STORE = `https://play.google.com/store/apps/details?id=${PKG}`;
 
   if (isAndroid) {
-    // Lance directement l'appli installée ; le Play Store seulement si elle est absente
-    window.location.href = `intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${PKG};S.browser_fallback_url=${encodeURIComponent(AND_STORE)};end`;
+    // Chrome n'ouvre une appli que via un lien qu'elle déclare (catégorie BROWSABLE).
+    // L'appli Basic-Fit déclare ses liens basicfit.page.link (assetlinks.json) :
+    // on vise ce lien, en forçant le paquet. Play Store seulement si l'appli est absente.
+    window.location.href = `intent://basicfit.page.link/#Intent;scheme=https;package=${PKG};S.browser_fallback_url=${encodeURIComponent(AND_STORE)};end`;
   } else if (isIOS) {
     window.location.href = 'basicfit://';
     setTimeout(() => { if (!document.hidden) window.location.href = IOS_STORE; }, 1500);
