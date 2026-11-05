@@ -240,6 +240,70 @@ const EXTRA_EXERCISES = [
       ],
       interet:'Bras au-dessus de la tête, **la longue portion du triceps**, qui fait la plus grosse partie du bras, **travaille étirée** : c\'est là qu\'elle progresse le mieux. À faire si tu remplaces le superset curl/extension par un curl seul.'
     }},
+  // ── Variantes machine (ajoutées le 5/11) ────────────────────────────────────
+  {id:'x-militaire-smith',muscle:'Épaules',restTime:150,name:'Développé militaire (Smith)',reps:'6-8',format:'3×6-8',sets:3,
+    info:{
+      muscles:{ main:['Deltoïdes antérieurs et latéraux'], secondary:['Triceps', 'Haut des pectoraux'] },
+      execution:[
+        'Banc **réglé à 80-90°** sous la barre guidée, la barre passe **juste devant ton visage**.',
+        'Prise un peu plus large que les épaules, **dos et fessiers collés au dossier**, abdos gainés.',
+        'Déverrouille en tournant les poignets, puis **pousse jusqu\'aux bras presque tendus**.',
+        'Redescends **jusqu\'au menton**, sous contrôle, et **reverrouille** les crochets à la fin de la série.',
+      ],
+      erreurs:[
+        '**Banc mal placé** : la barre doit descendre devant le visage, pas sur le front.',
+        '**Cambrer le bas du dos** pour finir la rep.',
+        '**Oublier de verrouiller** la barre avant de la lâcher.',
+      ],
+      interet:'Même mouvement que le militaire, mais **la barre est guidée** : pas d\'équilibre à gérer, et tu peux **verrouiller à tout moment** si tu échoues. Pratique quand le rack est pris.'
+    }},
+  {id:'x-tirage-machine',muscle:'Dos',restTime:120,name:'Tirage vertical (machine convergente)',reps:'8-10',format:'3×8-10',sets:3,
+    info:{
+      muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Rhomboïdes'] },
+      execution:[
+        'Règle le siège : **cuisses bien calées** sous les boudins, bras tendus pour attraper les poignées.',
+        'Poitrine haute, **épaules basses** avant de tirer.',
+        'Tire les poignées **vers le haut de la poitrine en amenant les coudes vers les hanches**. Serre le dos 1 seconde.',
+        '**Remonte lentement** jusqu\'aux bras tendus, en gardant les épaules basses.',
+      ],
+      erreurs:[
+        '**Tirer avec les bras** au lieu des coudes : pense « coudes dans les poches ».',
+        '**Se pencher en arrière** pour s\'aider avec le poids du corps.',
+        '**Lâcher la remontée** : la phase lente travaille autant que la montée.',
+      ],
+      interet:'Remplace le tirage à la poulie quand elle est prise. Les deux bras travaillent **chacun de leur côté** : le plus faible ne peut pas tricher.'
+    }},
+  {id:'x-lat-machine',muscle:'Épaules',restTime:75,name:'Élévations latérales (machine)',reps:'12-15',format:'3×12-15',sets:3,
+    info:{
+      muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs'] },
+      execution:[
+        'Règle le siège : **l\'axe de la machine aligné avec tes épaules**, coussins contre l\'extérieur des bras.',
+        'Dos droit, **épaules basses**, poignées en main.',
+        'Monte les bras sur les côtés **jusqu\'à hauteur d\'épaules**, pas plus haut.',
+        '**Redescends lentement** sans reposer la charge en bas.',
+      ],
+      erreurs:[
+        '**Hausser les épaules** : c\'est les trapèzes qui bossent, allège.',
+        '**Monter au-dessus des épaules** : ça n\'apporte rien de plus.',
+        '**Donner des à-coups** pour finir la série.',
+      ],
+      interet:'La machine garde **la tension sur tout le mouvement**, même en bas, et tu ne peux pas tricher avec le dos. Excellente quand les poulies sont prises.'
+    }},
+  {id:'x-mollets-assis',muscle:'Jambes',restTime:60,name:'Mollets assis (machine)',reps:'15-20',format:'3×15-20',sets:3,
+    info:{
+      muscles:{ main:['Soléaire'], secondary:['Mollets (jumeaux)'] },
+      execution:[
+        'Assis, **avant des pieds sur la marche**, talons dans le vide, **genoux sous les boudins**.',
+        'Débloque la sécurité, laisse **les talons descendre** pour bien étirer.',
+        'Monte sur la pointe des pieds **le plus haut possible**, **tiens 1 seconde**.',
+        '**Redescends lentement**, et remets la sécurité à la fin.',
+      ],
+      erreurs:[
+        '**Faire des demi-reps** rapides en rebond.',
+        '**Oublier l\'étirement en bas** : c\'est là que le mollet travaille le plus.',
+      ],
+      interet:'Genoux pliés, c\'est surtout **le soléaire** qui travaille, le muscle sous le mollet visible. Bon complément ou remplaçant des mollets debout.'
+    }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent
@@ -248,24 +312,28 @@ const ALTERNATIVES = {
   a1: ['c1', 'x-dc-machine'],
   a2: ['x-divrow', 'b3', 'c2'],
   a3: ['x-incline-machine', 'c1', 'x-pecfly'],
-  a4: ['b2', 'x-tractions-ass'],
-  a5: ['b4'],
+  a4: ['b2', 'x-tirage-machine', 'x-tractions-ass'],
+  a5: ['b4', 'x-lat-machine'],
   a6: ['x-curl-poulie', 'x-triceps-corde', 'c6'],
-  b1: ['x-epaules-machine'],
-  b2: ['a4', 'x-tractions-ass'],
+  b1: ['x-epaules-machine', 'x-militaire-smith'],
+  b2: ['x-tirage-machine', 'a4', 'x-tractions-ass'],
   b3: ['x-divrow', 'c2', 'a2'],
-  b4: ['a5'],
+  b4: ['x-lat-machine', 'a5'],
   b5: ['x-oiseau-machine'],
   c1: ['a1', 'x-dc-machine', 'x-incline-machine'],
   c2: ['x-divrow', 'b3'],
   c3: ['x-pecfly'],
-  c4: ['a5', 'b4'],
+  c4: ['x-lat-machine', 'a5', 'b4'],
   c5: ['x-oiseau-machine'],
   c6: ['x-curl-poulie', 'x-triceps-corde', 'a6'],
   'x-presse':        ['x-goblet', 'x-legext'],
-  'x-mollets':       ['x-mollets-presse'],
+  'x-mollets':       ['x-mollets-presse', 'x-mollets-assis'],
   'x-tractions-neg': ['x-tractions-ass'],
   'x-tractions-ass': ['x-tractions-neg'],
+  'x-mollets-assis': ['x-mollets', 'x-mollets-presse'],
+  'x-tirage-machine': ['b2', 'a4'],
+  'x-lat-machine':   ['b4', 'a5'],
+  'x-militaire-smith': ['b1', 'x-epaules-machine'],
 };
 
 // ── Couleurs des groupes musculaires ─────────────────────────────────────────
