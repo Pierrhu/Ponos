@@ -152,14 +152,25 @@ function renderWorkout() {
 }
 
 // ── Échauffement (6-7 min, haut du corps) ─────────────────────────────────────
-const WARMUP = [
-  { id:'facepull', gif:'gifs/face-pull.webp', name:'Face pull à la poulie', detail:'15 répétitions, très léger',
+const WARMUP_MOVES = {
+  facepull: { gif:'gifs/face-pull.webp', name:'Face pull à la poulie', detail:'15 répétitions, très léger',
     text:'Poulie à hauteur du visage, corde, **charge très légère**. Tire la corde vers ton front en **écartant les mains** et en serrant les omoplates. Ça réveille **l\'arrière des épaules** avant les développés.' },
-  { id:'rotation', gif:'gifs/echauf-rotation-externe-poulie.webp', name:'Rotation externe à la poulie', detail:'10 par bras, très léger',
+  rotation: { gif:'gifs/echauf-rotation-externe-poulie.webp', name:'Rotation externe à la poulie', detail:'10 par bras, très léger',
     text:'Poulie à hauteur du coude, **coude collé au corps** (une serviette coincée aide), avant-bras plié à 90°. **Tourne l\'avant-bras vers l\'extérieur**, lentement. C\'est la **coiffe des rotateurs** : la petite musculature qui protège l\'épaule.' },
-  { id:'laterales', gif:'gifs/elevations-laterales-halteres.webp', name:'Élévations latérales (haltères)', detail:'15 répétitions, 2-4 kg',
-    text:'**Haltères très légers.** Monte les bras sur les côtés jusqu\'à hauteur d\'épaules, sans à-coups. Le but n\'est pas de travailler : c\'est de **faire circuler le sang** dans les épaules.' },
-];
+  zottman: { gif:'gifs/echauf-curl-zottman.webp', name:'Curl Zottman léger (poignets, coudes)', detail:'12 répétitions, 4-6 kg',
+    text:'Haltères légers. Monte **paumes vers le haut**, tourne les poignets **paumes vers le bas** en haut, redescends lentement, retourne en bas. Ça fait tourner **les poignets et les coudes** dans tous les sens : parfait avant de tenir une barre lourde.' },
+  laterales: { gif:'gifs/elevations-laterales-halteres.webp', name:'Élévations latérales (haltères)', detail:'15 répétitions, 2-4 kg',
+    text:'**Haltères très légers.** Monte les bras sur les côtés jusqu\'à hauteur d\'épaules, sans à-coups. Le but n\'est pas de travailler : c\'est de **faire circuler le sang** dans les épaules avant de pousser au-dessus de la tête.' },
+  goodmorning: { gif:'gifs/echauf-good-morning.webp', name:'Good morning barre vide (bas du dos)', detail:'10 répétitions, barre vide',
+    text:'Barre vide sur le haut du dos, **genoux légèrement fléchis**. Penche le buste en **poussant les fesses vers l\'arrière**, dos plat, jusqu\'à sentir l\'arrière des cuisses, puis remonte. Ça prépare **le bas du dos et les ischios** au rowing buste penché.' },
+};
+// Adapté au jour : épaules toujours, puis ce que la séance sollicite le plus
+const WARMUP_BY_DAY = {
+  A: ['facepull', 'rotation', 'zottman', 'goodmorning'],  // couché + rowing barre buste penché
+  B: ['facepull', 'rotation', 'zottman', 'laterales'],    // militaire au-dessus de la tête
+  C: ['facepull', 'rotation', 'zottman'],                 // haltères, volume
+};
+const WARMUP_DEFAULT = ['facepull', 'rotation', 'zottman'];
 let warmupOpen = null;   // null = automatique (ouvert tant que pas fini)
 let warmupPreview = null;
 
@@ -171,8 +182,9 @@ function warmupDone() {
 function roundPlate(kg) { return Math.max(0, Math.round(kg / 2.5) * 2.5); }
 
 function warmupItems(exercises) {
+  const day = getActiveProgram()[state.dayIdx];
   const first = exercises[0];
-  const items = [...WARMUP];
+  const items = (WARMUP_BY_DAY[day && day.id] || WARMUP_DEFAULT).map(id => ({ id, ...WARMUP_MOVES[id] }));
   if (first) {
     const prev = getLastPerf(first.id, 0);
     const w = prev && parseFloat(prev.kg) > 0 ? parseFloat(prev.kg) : null;
