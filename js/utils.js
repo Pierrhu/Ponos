@@ -25,14 +25,15 @@ function getProgressInRank(ratio, thresholds, rankIdx) {
 
 // ── Historique ────────────────────────────────────────────────────────────────
 function getBest1RM(rankKey) {
+  // Tous les exercices portant cette clé : programme actuel + anciens (catalogue),
+  // pour que les records survivent à un changement de programme.
+  const exs = new Map();
+  PROGRAM.forEach(d => d.exercises.forEach(ex => { if (ex.rankKey === rankKey) exs.set(ex.id, ex); }));
+  (typeof EXTRA_EXERCISES !== 'undefined' ? EXTRA_EXERCISES : []).forEach(ex => { if (ex.rankKey === rankKey && !exs.has(ex.id)) exs.set(ex.id, ex); });
   let best = 0;
   state.history.forEach(h => {
-    const found = findDayInfo(h.dayId);
-    const day = found ? found.day : null;
-    if (!day) return;
-    day.exercises.forEach(ex => {
-      if (ex.rankKey !== rankKey) return;
-      for (let i = 0; i < ex.sets; i++) {
+    exs.forEach(ex => {
+      for (let i = 0; i < Math.max(ex.sets || 0, 6); i++) {
         const s = h.sets[`${ex.id}_${i}`];
         if (s) {
           const rm = calc1RM(parseFloat(s.kg), parseInt(s.reps));
