@@ -93,8 +93,8 @@ function guideProg() {
 function guideWhy() {
   const vol = [
     { m: 'Épaules (latéraux)', n: 11, max: 16, c: 'var(--orange, #D9702E)', tag: 'Priorité' },
-    { m: 'Dos (dorsaux)',      n: 15, max: 16, c: 'var(--blue, #2D7DD2)',   tag: 'Priorité' },
-    { m: 'Pectoraux',          n: 12, max: 16, c: 'var(--red, #C23B3B)' },
+    { m: 'Dos (dorsaux)',      n: 12, max: 16, c: 'var(--blue, #2D7DD2)',   tag: 'Priorité' },
+    { m: 'Pectoraux',          n: 15, max: 16, c: 'var(--red, #C23B3B)' },
     { m: 'Biceps',             n: 9,  max: 16, c: 'var(--purple, #8E5BD6)' },
     { m: 'Triceps',            n: 9,  max: 16, c: 'var(--purple, #8E5BD6)' },
   ];
@@ -118,7 +118,7 @@ function guideWhy() {
       <li><strong>Proximité de l'échec</strong> : plus tu t'en approches, plus le muscle grossit ; pour la force, ça change peu (Robinson et al., 2024). D'où RIR 1-2 sur les gros exos, 0-1 sur l'isolation.</li>
       <li><strong>Repos</strong> : au-delà de 60-90 s, petit bonus de croissance (Singer et al., 2024). D'où 2-3 min sur les gros exos, 60-90 s sur l'isolation.</li>
       <li><strong>Latérales</strong> : haltères et poulie font aussi bien, à 12-16 reps proches de l'échec (Frontiers in Physiology, 2025). On alterne pour varier.</li>
-      <li><strong>Position étirée</strong> : un muscle travaillé étiré grossit plus (Maeo et al., 2023). D'où le triceps au-dessus de la tête, le curl incliné et le pull-over.</li>
+      <li><strong>Position étirée</strong> : un muscle travaillé étiré grossit plus (Maeo et al., 2023). D'où le triceps au-dessus de la tête et le curl incliné.</li>
       <li><strong>Barre ou machine</strong> : même croissance (Haugen et al., 2023). La barre reste pour le couché et le militaire, parce que tes records y sont.</li>
     </ul>`;
 }

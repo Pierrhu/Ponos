@@ -289,21 +289,21 @@ const PROGRAM = [
         ],
         interet:'Remplace le tirage à la poulie quand elle est prise. Les deux bras travaillent **chacun de leur côté** : le plus faible ne peut pas tricher.'
       }},
-    {id:'x-pullover-poulie',restTime:75,name:'Pull-over à la poulie',reps:'12-15',format:'3×12-15 · RIR 0-1',sets:3,
+    {id:'x-dips-assistes',restTime:120,name:'Dips assistés (machine)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
-        gif:'gifs/pull-over-poulie.webp',
-        muscles:{ main:['Grand dorsal'], secondary:['Grand rond', 'Triceps (longue portion)'] },
+        gif:'gifs/dips-assistes-machine.webp',
+        muscles:{ main:['Pectoraux (bas)', 'Triceps'], secondary:['Deltoïdes antérieurs'] },
         execution:[
-          'Face à la poulie haute, barre droite ou corde, **bras presque tendus**, buste légèrement penché.',
-          '**Abdos serrés**, épaules basses.',
-          'Ramène la barre **en arc de cercle jusqu\'aux cuisses** en gardant les bras quasi tendus.',
-          '**Remonte lentement** jusqu\'à sentir l\'étirement sous les aisselles.',
+          'Choisis l\'assistance : **plus le poids est lourd, plus la machine t\'aide**.',
+          'Genoux sur le coussin, mains sur les poignées, **buste légèrement penché en avant**.',
+          'Descends **jusqu\'à ce que les coudes forment environ 90°**.',
+          'Remonte en poussant, **sans verrouiller les coudes** en haut.',
         ],
         erreurs:[
-          '**Plier les coudes** : ça devient un exercice de triceps.',
-          '**Charger trop lourd** et balancer le buste.',
+          '**Descendre trop bas** : ça tire sur l\'avant des épaules.',
+          '**Hausser les épaules** vers les oreilles.',
         ],
-        interet:'Isole le grand dorsal **sans les biceps**. Parfait en fin de séance dos, ou pour apprendre à « sentir » ton dos.'
+        interet:'La version accessible des dips : tu progresses en **retirant de l\'assistance** au fil des semaines, jusqu\'aux dips au poids du corps.'
       }},
       {id:'c3',restTime:75,name:'Écarté poulie vis-à-vis',format:'3×12-15 · RIR 0-1',sets:3,
         info:{
