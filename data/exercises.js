@@ -853,41 +853,6 @@ const EXTRA_EXERCISES = [
         ],
         interet:'Le gros exercice composé pour **l\'épaisseur du dos**, qui équilibre le développé couché. Un top set et deux back-off, comme au couché, pour garder autant de tirage que de poussée. Si le bas du dos est fatigué, remplace-le par le **divergent row**.'
       }},
-    {id:'a3',muscle:'Pectoraux',restTime:90,name:'Développé incliné DB 30°',format:'3×8-10',sets:3,
-      info:{
-        gif:'gifs/developpe-incline-db.webp',
-        muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
-        execution:[
-          '**Banc à 30°, pas plus** : au-delà, ce sont les épaules qui prennent le relais.',
-          'Assis, haltères sur les cuisses, puis allonge-toi en les ramenant près de la poitrine. **Omoplates serrées**, dos collé au banc.',
-          'Inspire, et pousse **en arc de cercle** : les haltères se rapprochent en haut **sans se toucher**.',
-          'Descends lentement, coudes à ~45° du buste, jusqu\'à **un bon étirement des pecs** : c\'est là que le muscle travaille le plus.',
-          'Garde une **légère flexion des coudes** en haut pour ne pas perdre la tension.',
-        ],
-        erreurs:[
-          '**Entrechoquer les haltères** en haut.',
-          'Décoller les omoplates ou cambrer fort le bas du dos.',
-          'Partir aussi lourd qu\'au plat : l\'incliné se fait avec **une charge plus légère**.',
-        ],
-        interet:'Vise **le haut des pectoraux**, souvent en retard. Placé après le couché, il n\'a **pas besoin d\'être lourd** pour être efficace. Les haltères donnent une plus grande amplitude et font travailler chaque bras seul.'
-      }},
-    {id:'a5',muscle:'Épaules',restTime:60,name:'Élévations latérales',format:'3×12-15',sets:3,
-      info:{
-        gif:'gifs/elevations-laterales-halteres.webp',
-        muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
-        execution:[
-          'Debout, pieds largeur de bassin, genoux souples, **buste légèrement penché** vers l\'avant (~10-15°).',
-          'Haltères le long du corps, **coudes légèrement fléchis et fixes**.',
-          'Monte les bras sur les côtés jusqu\'à ce que **les coudes arrivent à l\'horizontale**. **Les coudes mènent**, les mains restent sous les coudes (comme pour verser une carafe).',
-          'Courte pause en haut, puis **redescends lentement (2 s)**. Pour garder la tension, **ne repose pas les haltères** contre les cuisses.',
-        ],
-        erreurs:[
-          'Charger trop lourd et monter avec un coup de reins.',
-          '**Hausser les épaules** : ce sont les trapèzes qui travaillent alors.',
-          'Monter les mains **plus haut que les coudes**.',
-        ],
-        interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
-      }},
     {id:'a6',muscle:'Bras',restTime:60,name:'SS: Curl EZ / Ext. corde',format:'2×8-10 / 10-12',sets:2,superset:true,
       info:{
         gif:'gifs/curl-ez.webp',
@@ -921,40 +886,6 @@ const EXTRA_EXERCISES = [
           '**Trop cambrer** le bas du dos ou décoller les fessiers. Si l\'avant de l\'épaule tire, resserre les omoplates.',
         ],
         interet:'Complète la barre du Jour A : l\'amplitude est plus grande et **chaque bras travaille seul**, ce qui corrige les déséquilibres et recrute plus les stabilisateurs. Jour de volume : **charges modérées en 10-12**, pas de top set.'
-      }},
-    {id:'c4',muscle:'Épaules',restTime:60,name:'Latérales drop set méca.',format:'3×(8+8)',sets:3,dropSet:true,
-      info:{
-        gif:'gifs/elevations-laterales-halteres.webp',
-        muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes postérieurs', 'Trapèzes'] },
-        execution:[
-          '**Phase 1, buste penché à ~45°** : **8 élévations** latérales, coudes qui mènent, jusqu\'à l\'horizontale.',
-          '**Phase 2, sans repos** : redresse-toi et fais **8 élévations classiques debout**, avec **les mêmes haltères**.',
-          'Debout, le mouvement est plus facile : c\'est ce qui te permet de continuer sans changer de poids.',
-          '**Mouvement lent et contrôlé** dans les deux phases. **1:30 de repos** après chaque série complète.',
-        ],
-        erreurs:[
-          '**Prendre trop lourd** : tu dois tenir **les 16 répétitions** proprement.',
-          '**Hausser les épaules** quand la fatigue arrive.',
-          'Accélérer la deuxième phase avec de l\'élan.',
-        ],
-        interet:'**Drop set mécanique** : on change d\'angle au lieu de baisser la charge, pour aller chercher **16 répétitions efficaces** par série. Beaucoup de travail pour le deltoïde latéral en peu de temps.'
-      }},
-    {id:'c6',muscle:'Bras',restTime:60,name:'SS: Curl marteau / Ext.',format:'2×10-12 / 10-12',sets:2,superset:true,
-      info:{
-        gif:'gifs/curl-marteau.webp',
-        muscles:{ main:['Biceps', 'Brachio-radial (avant-bras)', 'Triceps'], secondary:['Brachial'] },
-        execution:[
-          '**Curl marteau** : debout, haltères en **prise neutre** (paumes face au corps), **coudes collés et fixes**. Monte le plus haut possible, contracte, **descends lentement**.',
-          '**Extension à la poulie haute** : coudes collés au corps, pousse jusqu\'à l\'extension complète, **tiens 1 s en bas**, remonte jusqu\'à 90°.',
-          'Enchaîne les deux **sans repos**, **1:30 de repos** après le tour complet.',
-          'Mouvements stricts, **pas d\'élan**.',
-        ],
-        erreurs:[
-          '**Se pencher en arrière** ou balancer les haltères.',
-          '**Bâcler la descente**.',
-          '**Laisser les coudes bouger** pendant l\'extension.',
-        ],
-        interet:'Le curl marteau vise l\'avant-bras et le brachial, qui donnent **l\'épaisseur du bras**. Variante différente du curl EZ du Jour A, pour varier le travail. Superset avec le triceps pour les mêmes raisons qu\'au Jour A : **deux fois moins de temps**, presque sans perte de force.'
       }},
 ];
 

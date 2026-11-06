@@ -39,23 +39,24 @@ const PROGRAM = [
         ],
         interet:'Poitrine calée : **zéro stress sur le bas du dos**. Parfait remplaçant des rowings libres quand le dos est fatigué.'
       }},
-    {id:'x-incline-machine',restTime:90,name:'Développé incliné (machine)',reps:'8-10',format:'3×8-10',sets:3,
-      info:{
-        gif:'gifs/developpe-incline-machine.webp',
-        muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
-        execution:[
-          '**Règle le siège** : poignées un peu sous la hauteur des épaules, là où serait la barre en bas d\'un développé.',
-          'Inspire et **serre les omoplates contre le dossier**, pieds à plat, abdos gainés.',
-          'Pousse en soufflant, **sans que les épaules partent vers l\'avant**.',
-          '**Reviens lentement** jusqu\'à l\'étirement des pecs, sans reposer la charge.',
-        ],
-        erreurs:[
-          '**Décoller les omoplates** du dossier, surtout si l\'avant de l\'épaule tire.',
-          '**Cambrer fort** le bas du dos.',
-          '**Pousser avec les jambes** ou bouger le bassin.',
-        ],
-        interet:'Même rôle que le développé incliné haltères (**le haut des pectoraux**), mais **guidé** : tu peux pousser fort sans gérer l\'équilibre. Parfait quand la salle est pleine ou en fin de séance pecs.'
-      }},
+      {id:'a3',restTime:90,name:'Développé incliné DB 30°',format:'3×8-10',sets:3,
+        info:{
+          gif:'gifs/developpe-incline-db.webp',
+          muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
+          execution:[
+            '**Banc à 30°, pas plus** : au-delà, ce sont les épaules qui prennent le relais.',
+            'Assis, haltères sur les cuisses, puis allonge-toi en les ramenant près de la poitrine. **Omoplates serrées**, dos collé au banc.',
+            'Inspire, et pousse **en arc de cercle** : les haltères se rapprochent en haut **sans se toucher**.',
+            'Descends lentement, coudes à ~45° du buste, jusqu\'à **un bon étirement des pecs** : c\'est là que le muscle travaille le plus.',
+            'Garde une **légère flexion des coudes** en haut pour ne pas perdre la tension.',
+          ],
+          erreurs:[
+            '**Entrechoquer les haltères** en haut.',
+            'Décoller les omoplates ou cambrer fort le bas du dos.',
+            'Partir aussi lourd qu\'au plat : l\'incliné se fait avec **une charge plus légère**.',
+          ],
+          interet:'Vise **le haut des pectoraux**, souvent en retard. Placé après le couché, il n\'a **pas besoin d\'être lourd** pour être efficace. Les haltères donnent une plus grande amplitude et font travailler chaque bras seul.'
+        }},
       {id:'a4',restTime:90,name:'Tirage vertical large',format:'3×10-12',sets:3,
         info:{
           gif:'gifs/tirage-vertical-large.webp',
@@ -74,54 +75,55 @@ const PROGRAM = [
           ],
           interet:'Ajoute un tirage vertical au rowing du Jour A. La prise large vise **la largeur du dos**. En volume modéré (10-12) pour accumuler du travail **sans fatiguer le bas du dos**, déjà sollicité par le rowing barre.'
         }},
-    {id:'x-lat-machine',restTime:60,name:'Élévations latérales (machine)',reps:'12-15',format:'3×12-15',sets:3,
+      {id:'a5',restTime:60,name:'Élévations latérales',format:'3×12-15',sets:3,
+        info:{
+          gif:'gifs/elevations-laterales-halteres.webp',
+          muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
+          execution:[
+            'Debout, pieds largeur de bassin, genoux souples, **buste légèrement penché** vers l\'avant (~10-15°).',
+            'Haltères le long du corps, **coudes légèrement fléchis et fixes**.',
+            'Monte les bras sur les côtés jusqu\'à ce que **les coudes arrivent à l\'horizontale**. **Les coudes mènent**, les mains restent sous les coudes (comme pour verser une carafe).',
+            'Courte pause en haut, puis **redescends lentement (2 s)**. Pour garder la tension, **ne repose pas les haltères** contre les cuisses.',
+          ],
+          erreurs:[
+            'Charger trop lourd et monter avec un coup de reins.',
+            '**Hausser les épaules** : ce sont les trapèzes qui travaillent alors.',
+            'Monter les mains **plus haut que les coudes**.',
+          ],
+          interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
+        }},
+    {id:'x-curl-incline',superset:true,restTime:10,name:'Curl incliné (haltères)',reps:'10-12',format:'3×10-12 (superset)',sets:3,
       info:{
-        gif:'gifs/elevations-laterales-machine.webp',
-        muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs'] },
+        gif:'gifs/curl-incline-halteres.webp',
+        muscles:{ main:['Biceps (longue portion)'], secondary:['Avant-bras'] },
         execution:[
-          'Règle le siège : **l\'axe de la machine aligné avec tes épaules**, coussins contre l\'extérieur des bras.',
-          'Dos droit, **épaules basses**, poignées en main.',
-          'Monte les bras sur les côtés **jusqu\'à hauteur d\'épaules**, pas plus haut.',
-          '**Redescends lentement** sans reposer la charge en bas.',
+          'Banc incliné à **45-60°**, dos collé, **bras pendants à la verticale**.',
+          'Paumes vers l\'avant.',
+          'Monte les haltères **sans avancer les coudes**.',
+          '**Redescends complètement**, bras tendus : c\'est l\'étirement qui fait tout.',
         ],
         erreurs:[
-          '**Hausser les épaules** : c\'est les trapèzes qui bossent, allège.',
-          '**Monter au-dessus des épaules** : ça n\'apporte rien de plus.',
-          '**Donner des à-coups** pour finir la série.',
+          '**Avancer les coudes** pendant la montée.',
+          '**Charger trop lourd** et perdre l\'amplitude.',
         ],
-        interet:'La machine garde **la tension sur tout le mouvement**, même en bas, et tu ne peux pas tricher avec le dos. Excellente quand les poulies sont prises.'
+        interet:'Bras derrière le corps, le biceps est **étiré au maximum** : un des curls les plus efficaces pour le développer.'
       }},
-    {id:'x-curl-machine',superset:true,restTime:10,name:'Curl biceps (machine)',reps:'10-12',format:'3×10-12 (superset)',sets:3,
+    {id:'x-triceps-corde',restTime:75,name:'Extension triceps corde au-dessus de la tête',reps:'10-12',format:'3×10-12',sets:3,
       info:{
-        gif:'gifs/curl-biceps-machine.webp',
-        muscles:{ main:['Biceps'], secondary:['Avant-bras'] },
+        gif:'gifs/triceps-corde.webp',
+        muscles:{ main:['Triceps (surtout la longue portion)'], secondary:[] },
         execution:[
-          'Règle le siège : **coudes alignés avec l\'axe de la machine**, bras à plat sur le pupitre.',
-          'Prise en supination (paumes vers le haut).',
-          'Monte **en contractant le biceps**, sans décoller les coudes.',
-          '**Redescends lentement** jusqu\'aux bras presque tendus.',
+          'Poulie haute, corde en main, **dos à la machine**, un pied devant l\'autre.',
+          'Corde derrière la tête, **coudes pliés près de la tête**, buste légèrement penché en avant. **Rentre un peu le menton**.',
+          'Tends les bras vers l\'avant et un peu vers le haut, jusqu\'à ce qu\'ils soient **presque tendus**, en **écartant la corde** en fin de mouvement.',
+          'Reviens lentement jusqu\'à **un bon étirement des triceps**, **coudes fixes** : seuls les avant-bras bougent.',
         ],
         erreurs:[
-          '**Coudes mal alignés** avec l\'axe : ça tire sur l\'articulation.',
-          '**Soulever les fesses** pour finir la rep.',
+          '**Écarter les coudes** : les triceps travaillent moins.',
+          '**Se laisser tirer en arrière** ou cambrer.',
+          '**Charger lourd** : le corps devient instable et les coudes souffrent.',
         ],
-        interet:'Le pupitre bloque toute triche : **100 % biceps**, idéal pour finir une séance bras.'
-      }},
-    {id:'x-triceps-machine',restTime:75,name:'Extensions triceps (machine)',reps:'10-12',format:'3×10-12',sets:3,
-      info:{
-        gif:'gifs/triceps-machine.webp',
-        muscles:{ main:['Triceps'], secondary:[] },
-        execution:[
-          'Règle le siège : **coudes alignés avec l\'axe**, bras sur le coussin.',
-          'Dos contre le dossier.',
-          'Pousse **jusqu\'aux bras tendus**, en contractant les triceps 1 seconde.',
-          '**Reviens lentement**.',
-        ],
-        erreurs:[
-          '**Décoller les coudes** du coussin.',
-          '**Pencher le buste** pour pousser avec le corps.',
-        ],
-        interet:'Triceps isolés, **sans stress sur les épaules**. Très bien en fin de séance.'
+        interet:'Bras au-dessus de la tête, **la longue portion du triceps**, qui fait la plus grosse partie du bras, **travaille étirée** : c\'est là qu\'elle progresse le mieux. À faire si tu remplaces le superset curl/extension par un curl seul.'
       }},
     ]
   },
@@ -319,55 +321,40 @@ const PROGRAM = [
           ],
           interet:'Isolation des pectoraux avec une **tension constante**, **plus douce pour les épaules** que les haltères. En fin de séance pecs, pour finir le muscle avec du volume après les développés.'
         }},
-    {id:'x-lat-machine',restTime:60,name:'Élévations latérales (machine)',reps:'12-15',format:'3×12-15',sets:3,
-      info:{
-        gif:'gifs/elevations-laterales-machine.webp',
-        muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs'] },
-        execution:[
-          'Règle le siège : **l\'axe de la machine aligné avec tes épaules**, coussins contre l\'extérieur des bras.',
-          'Dos droit, **épaules basses**, poignées en main.',
-          'Monte les bras sur les côtés **jusqu\'à hauteur d\'épaules**, pas plus haut.',
-          '**Redescends lentement** sans reposer la charge en bas.',
-        ],
-        erreurs:[
-          '**Hausser les épaules** : c\'est les trapèzes qui bossent, allège.',
-          '**Monter au-dessus des épaules** : ça n\'apporte rien de plus.',
-          '**Donner des à-coups** pour finir la série.',
-        ],
-        interet:'La machine garde **la tension sur tout le mouvement**, même en bas, et tu ne peux pas tricher avec le dos. Excellente quand les poulies sont prises.'
-      }},
-    {id:'x-curl-machine',superset:true,restTime:10,name:'Curl biceps (machine)',reps:'10-12',format:'3×10-12 (superset)',sets:3,
-      info:{
-        gif:'gifs/curl-biceps-machine.webp',
-        muscles:{ main:['Biceps'], secondary:['Avant-bras'] },
-        execution:[
-          'Règle le siège : **coudes alignés avec l\'axe de la machine**, bras à plat sur le pupitre.',
-          'Prise en supination (paumes vers le haut).',
-          'Monte **en contractant le biceps**, sans décoller les coudes.',
-          '**Redescends lentement** jusqu\'aux bras presque tendus.',
-        ],
-        erreurs:[
-          '**Coudes mal alignés** avec l\'axe : ça tire sur l\'articulation.',
-          '**Soulever les fesses** pour finir la rep.',
-        ],
-        interet:'Le pupitre bloque toute triche : **100 % biceps**, idéal pour finir une séance bras.'
-      }},
-    {id:'x-dips-assis',restTime:75,name:'Dips assis (machine)',reps:'10-12',format:'3×10-12',sets:3,
-      info:{
-        gif:'gifs/dips-assis-machine.webp',
-        muscles:{ main:['Triceps'], secondary:['Pectoraux (bas)', 'Deltoïdes antérieurs'] },
-        execution:[
-          'Règle le siège : **poignées à hauteur des côtes**, dos contre le dossier.',
-          'Coudes près du corps.',
-          'Pousse vers le bas **jusqu\'aux bras tendus**.',
-          '**Remonte lentement** sans dépasser 90° aux coudes.',
-        ],
-        erreurs:[
-          '**Ouvrir les coudes** sur les côtés.',
-          '**Remonter trop haut** : l\'avant de l\'épaule souffre.',
-        ],
-        interet:'Les dips **sans le poids du corps** : tu choisis la charge, parfait pour charger lourd les triceps en sécurité.'
-      }},
+      {id:'c4',restTime:60,name:'Latérales drop set méca.',format:'3×(8+8)',sets:3,dropSet:true,
+        info:{
+          gif:'gifs/elevations-laterales-halteres.webp',
+          muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes postérieurs', 'Trapèzes'] },
+          execution:[
+            '**Phase 1, buste penché à ~45°** : **8 élévations** latérales, coudes qui mènent, jusqu\'à l\'horizontale.',
+            '**Phase 2, sans repos** : redresse-toi et fais **8 élévations classiques debout**, avec **les mêmes haltères**.',
+            'Debout, le mouvement est plus facile : c\'est ce qui te permet de continuer sans changer de poids.',
+            '**Mouvement lent et contrôlé** dans les deux phases. **1:30 de repos** après chaque série complète.',
+          ],
+          erreurs:[
+            '**Prendre trop lourd** : tu dois tenir **les 16 répétitions** proprement.',
+            '**Hausser les épaules** quand la fatigue arrive.',
+            'Accélérer la deuxième phase avec de l\'élan.',
+          ],
+          interet:'**Drop set mécanique** : on change d\'angle au lieu de baisser la charge, pour aller chercher **16 répétitions efficaces** par série. Beaucoup de travail pour le deltoïde latéral en peu de temps.'
+        }},
+      {id:'c6',restTime:60,name:'SS: Curl marteau / Ext.',format:'2×10-12 / 10-12',sets:2,superset:true,
+        info:{
+          gif:'gifs/curl-marteau.webp',
+          muscles:{ main:['Biceps', 'Brachio-radial (avant-bras)', 'Triceps'], secondary:['Brachial'] },
+          execution:[
+            '**Curl marteau** : debout, haltères en **prise neutre** (paumes face au corps), **coudes collés et fixes**. Monte le plus haut possible, contracte, **descends lentement**.',
+            '**Extension à la poulie haute** : coudes collés au corps, pousse jusqu\'à l\'extension complète, **tiens 1 s en bas**, remonte jusqu\'à 90°.',
+            'Enchaîne les deux **sans repos**, **1:30 de repos** après le tour complet.',
+            'Mouvements stricts, **pas d\'élan**.',
+          ],
+          erreurs:[
+            '**Se pencher en arrière** ou balancer les haltères.',
+            '**Bâcler la descente**.',
+            '**Laisser les coudes bouger** pendant l\'extension.',
+          ],
+          interet:'Le curl marteau vise l\'avant-bras et le brachial, qui donnent **l\'épaisseur du bras**. Variante différente du curl EZ du Jour A, pour varier le travail. Superset avec le triceps pour les mêmes raisons qu\'au Jour A : **deux fois moins de temps**, presque sans perte de force.'
+        }},
     ]
   }
 ];
