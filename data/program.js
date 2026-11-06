@@ -187,6 +187,23 @@ const PROGRAM = [
           ],
           interet:'La poulie **garde la tension sur tout le mouvement**, même en bas, là où les haltères n\'en donnent presque pas. Angle complémentaire des latérales haltères du Jour A. **4 séries** parce que les épaules sont un point faible.'
         }},
+    {id:'x-oiseau-machine',restTime:60,name:'Oiseau (machine)',reps:'12-15',format:'3×12-15',sets:3,
+      info:{
+        gif:'gifs/oiseau-machine.webp',
+        muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens'] },
+        execution:[
+          'Assis face au dossier de la machine, **poitrine contre le coussin**, bras tendus devant à hauteur d\'épaules.',
+          'Prise pronation ou neutre, **coudes légèrement fléchis**.',
+          'Ouvre les bras vers l\'arrière **en arc de cercle** : **le mouvement part de l\'épaule**. Serre légèrement les omoplates en fin de mouvement.',
+          '**Reviens lentement**. **Charge légère**, mouvement propre.',
+        ],
+        erreurs:[
+          '**Hausser les épaules** : souvent le signe que c\'est trop lourd.',
+          '**Avancer la tête**.',
+          'Tirer **avec les omoplates seulement**, sans ouvrir les bras.',
+        ],
+        interet:'Isole **l\'arrière des épaules**, souvent en retard, sans avoir à te stabiliser. **Bon remplaçant du face pull** si la poulie est prise.'
+      }},
     {id:'x-curl-incline',superset:true,restTime:10,name:'Curl incliné (haltères)',reps:'10-12',format:'3×10-12 (superset)',sets:3,
       info:{
         gif:'gifs/curl-incline-halteres.webp',
