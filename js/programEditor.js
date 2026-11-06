@@ -120,6 +120,7 @@ function renderPrograms() {
   ];
 
   let html = '<h2 class="page-title">Programmes</h2>';
+  html += `<button class="gd-entry" onclick="openGuide('why')"><span class="gd-entry-ic">?</span><span><strong>Le guide du programme</strong><br><span class="gd-entry-sub">RIR, double progression, ce que dit la recherche</span></span><span class="ex-arrow">▸</span></button>`;
   html += '<div class="warrior-section">Missions disponibles</div>';
   html += '<div class="hist-hint" style="margin:0 0 14px">Touche un programme pour le suivre · ✎ pour le modifier</div>';
 

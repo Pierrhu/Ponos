@@ -1,5 +1,5 @@
 // Changer ce numéro force le nettoyage des anciens caches.
-const CACHE = 'ponos-v27';
+const CACHE = 'ponos-v28';
 
 const PRECACHE = [
   './',
@@ -24,6 +24,7 @@ const PRECACHE = [
   './js/velo.js',
   './js/export.js',
   './js/modals.js',
+  './js/guide.js',
   './js/programEditor.js',
   './js/nav.js',
   './js/main.js',

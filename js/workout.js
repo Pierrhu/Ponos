@@ -43,6 +43,7 @@ function renderWorkout() {
   const suggestions = getSuggestions({ ...day, exercises });
 
   html += renderWarmup(day, exercises);
+  html += `<button class="gd-entry" onclick="openGuide('rir')"><span class="gd-entry-ic">?</span><span><strong>RIR, progression, logique du programme</strong><br><span class="gd-entry-sub">Le guide pour savoir quoi faire à chaque série</span></span><span class="ex-arrow">▸</span></button>`;
 
   // Exercices
   exercises.forEach(ex => {
