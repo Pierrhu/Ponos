@@ -7,30 +7,93 @@ const GUIDE_TABS = [
 ];
 let guideTab = 'rir';
 
+const RIR_LEVELS = [
+  { rir: '4+', color: '#3B7A57', title: 'Facile',      text: 'La charge monte **aussi vite** qu\'à la 1ʳᵉ rep. Tu es loin de l\'échec.',
+    reps: [0.55, 0.55, 0.55, 0.6, 0.6, 0.6, 0.6, 0.65] },
+  { rir: '3',  color: '#7FA34A', title: 'Ça pèse',     text: 'Tu sens l\'effort, mais **la vitesse ne baisse presque pas**.',
+    reps: [0.55, 0.55, 0.6, 0.6, 0.65, 0.7, 0.8, 0.9] },
+  { rir: '2',  color: '#D9A43B', title: 'Ça ralentit', text: '**Les dernières reps ralentissent nettement.** Deux de plus : dur, mais faisable.',
+    reps: [0.55, 0.6, 0.6, 0.7, 0.8, 1.0, 1.3, 1.6] },
+  { rir: '1',  color: '#D9702E', title: 'Ça force',    text: 'La dernière rep est **lente, tu dois pousser**. Une seule de plus passerait, tout juste.',
+    reps: [0.55, 0.6, 0.7, 0.8, 1.0, 1.3, 1.8, 2.5] },
+  { rir: '0',  color: '#C23B3B', title: 'Échec',       text: 'La dernière rep **cale presque à mi-chemin**. Tu n\'en referais pas une seule proprement.',
+    reps: [0.6, 0.7, 0.8, 1.0, 1.3, 1.8, 2.6, 3.8], grind: true },
+];
+let rirSel = 2;
+let rirAnimToken = 0;
+
+function selectRir(i) {
+  rirSel = i;
+  const lv = RIR_LEVELS[i];
+  document.querySelectorAll('.gd-rir-chip').forEach((b, k) => {
+    b.classList.toggle('active', k === i);
+    b.style.background = k === i ? RIR_LEVELS[k].color : '';
+  });
+  const t = document.getElementById('gd-rir-title'); if (t) { t.textContent = `RIR ${lv.rir} · ${lv.title}`; t.style.color = lv.color; }
+  const x = document.getElementById('gd-rir-text');  if (x) x.innerHTML = fmtFiche(lv.text);
+  startRirAnim();
+}
+
+// Une série de 8 reps : la montée ralentit d'autant plus qu'on s'arrête près de l'échec
+function startRirAnim() {
+  const token = ++rirAnimToken;
+  const lv = RIR_LEVELS[rirSel];
+  const bar = document.getElementById('gd-rir-bar');
+  const cnt = document.getElementById('gd-rir-count');
+  const fill = document.getElementById('gd-rir-fill');
+  if (!bar) return;
+  bar.style.background = lv.color; bar.style.boxShadow = `0 0 10px ${lv.color}99`;
+  const TOP = 92, DOWN = 0.9, PAUSE = 0.25, END = 1.4;
+  const seq = [];
+  let t = 0;
+  lv.reps.forEach((up, k) => {
+    seq.push({ k, from: t, to: t + up, a: 0, b: 1, up: true, grind: lv.grind && k === lv.reps.length - 1 });
+    t += up + PAUSE;
+    seq.push({ k, from: t, to: t + DOWN, a: 1, b: 0 });
+    t += DOWN + 0.15;
+  });
+  const total = t + END;
+  const t0 = performance.now();
+  const frame = now => {
+    if (token !== rirAnimToken || !document.body.contains(bar)) return;
+    const el = ((now - t0) / 1000) % total;
+    let pos = 0, rep = lv.reps.length, slow = 0;
+    for (const s of seq) {
+      if (el < s.from) { pos = s.a === 0 ? 0 : 1; rep = s.k + 1; break; }
+      if (el <= s.to) {
+        let u = (el - s.from) / (s.to - s.from);
+        if (s.grind) u = u < 0.45 ? u / 0.45 * 0.5 : u < 0.75 ? 0.5 + (u - 0.45) / 0.3 * 0.05 : 0.55 + (u - 0.75) / 0.25 * 0.45; // cale à mi-course
+        pos = s.a + (s.b - s.a) * u; rep = s.k + 1;
+        if (s.up) slow = Math.min(1, (s.to - s.from - 0.55) / 2.5);
+        break;
+      }
+      pos = s.b; rep = s.k + 1;
+    }
+    bar.style.transform = `translateY(${-pos * TOP}px)`;
+    if (cnt) cnt.textContent = el > t ? 'Série finie' : `Rep ${rep} / ${lv.reps.length}`;
+    if (fill) fill.style.width = `${Math.round(slow * 100)}%`;
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+
 function guideRir() {
-  const rows = [
-    { rir: '4+', color: '#3B7A57', title: 'Facile', text: 'La charge monte aussi vite qu\'à la 1ʳᵉ rep.' },
-    { rir: '3',  color: '#7FA34A', title: 'Ça pèse', text: 'Tu sens l\'effort, mais **la vitesse ne baisse pas encore**.' },
-    { rir: '2',  color: '#D9A43B', title: 'Ça ralentit', text: '**La rep ralentit nettement.** Deux de plus : dur, mais faisable.' },
-    { rir: '1',  color: '#D9702E', title: 'Ça force', text: 'Rep lente, tu dois pousser. **Une seule** de plus passerait, tout juste.' },
-    { rir: '0',  color: '#C23B3B', title: 'Échec', text: 'Tu n\'en referais **pas une seule** proprement.' },
-  ];
+  const lv = RIR_LEVELS[rirSel];
   return `
-    <div class="gd-lead">Le <strong>RIR</strong> (<em>reps in reserve</em>), c'est le nombre de reps propres que tu aurais encore pu faire <strong>au moment où tu poses la charge</strong>.</div>
+    <div class="gd-lead">Le <strong>RIR</strong>, c'est le nombre de reps propres que tu aurais <strong>encore pu faire</strong> au moment où tu poses la charge. Ton repère : <strong>la vitesse</strong>.</div>
 
-    <div class="gd-demo" aria-hidden="true">
-      <div class="gd-demo-track">
-        <div class="gd-demo-bar"><span></span></div>
+    <div class="gd-rir">
+      <div class="gd-rir-anim" aria-hidden="true">
+        <div class="gd-demo-track"><div class="gd-rir-bar" id="gd-rir-bar"></div></div>
       </div>
-      <div class="gd-demo-cap">La charge <strong>ralentit</strong> à l'approche de l'échec : c'est ton meilleur repère.</div>
-    </div>
-
-    <div class="gd-scale">
-      ${rows.map(r => `
-        <div class="gd-scale-row">
-          <div class="gd-scale-badge" style="background:${r.color}">${r.rir}</div>
-          <div><div class="gd-scale-title">${r.title}</div><div class="gd-scale-text">${fmtFiche(r.text)}</div></div>
-        </div>`).join('')}
+      <div class="gd-rir-side">
+        <div class="gd-rir-chips" role="tablist" aria-label="Choisir un RIR">
+          ${RIR_LEVELS.map((r, k) => `<button class="gd-rir-chip${k === rirSel ? ' active' : ''}" style="${k === rirSel ? `background:${r.color}` : ''};--c:${r.color}" onclick="selectRir(${k})" aria-label="RIR ${r.rir}">${r.rir}</button>`).join('')}
+        </div>
+        <div class="gd-rir-title" id="gd-rir-title" style="color:${lv.color}">RIR ${lv.rir} · ${lv.title}</div>
+        <div class="gd-rir-text" id="gd-rir-text">${fmtFiche(lv.text)}</div>
+        <div class="gd-rir-meta"><span id="gd-rir-count">Rep 1 / 8</span><span class="gd-rir-slow">lenteur <span class="gd-rir-slowbar"><span id="gd-rir-fill"></span></span></span></div>
+      </div>
     </div>
 
     <div class="gd-h">Dans ton programme</div>
@@ -144,6 +207,7 @@ function openGuide(tab) {
   let el = document.getElementById('guide');
   if (!el) { el = document.createElement('div'); el.id = 'guide'; document.body.appendChild(el); }
   el.innerHTML = renderGuide();
+  if (guideTab === 'rir') startRirAnim();
 }
 function setGuideTab(t) { guideTab = t; openGuide(); const b = document.querySelector('#guide .gd-body'); if (b) b.scrollTop = 0; }
 function closeGuide() { const el = document.getElementById('guide'); if (el) el.remove(); }

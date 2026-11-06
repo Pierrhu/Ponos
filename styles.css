@@ -2056,3 +2056,18 @@
 .ex-thumb-btn { background: none; border: none; padding: 0; margin-right: 12px; flex-shrink: 0; cursor: pointer; align-self: center; }
 .ex-thumb-btn .pe-thumb.ex-thumb { width: 52px; height: 52px; border-radius: 10px; }
 .ex-header { align-items: center; }
+
+/* RIR interactif */
+.gd-rir { display: flex; gap: 14px; background: rgba(255,255,255,0.03); border-radius: 14px; padding: 12px; margin-bottom: 6px; }
+.gd-rir-anim .gd-demo-track { width: 40px; height: 120px; }
+.gd-rir-bar { position: absolute; left: 4px; right: 4px; bottom: 6px; height: 10px; border-radius: 5px; background: #D9A43B; }
+.gd-rir-side { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.gd-rir-chips { display: flex; gap: 6px; }
+.gd-rir-chip { flex: 1; height: 34px; border-radius: 9px; border: 1.5px solid var(--c); background: transparent; color: var(--text); font-weight: 900; font-size: 14px; cursor: pointer; }
+.gd-rir-chip.active { color: #fff; }
+.gd-rir-title { font-weight: 900; font-size: 14px; margin-top: 2px; }
+.gd-rir-text { font-size: 12.5px; line-height: 1.45; color: var(--text2, var(--text)); min-height: 36px; }
+.gd-rir-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text3); font-variant-numeric: tabular-nums; }
+.gd-rir-slow { display: flex; align-items: center; gap: 6px; }
+.gd-rir-slowbar { width: 60px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.08); overflow: hidden; display: inline-block; }
+.gd-rir-slowbar span { display: block; height: 100%; width: 0; background: #C23B3B; transition: width 0.15s; }
