@@ -798,6 +798,41 @@ const EXTRA_EXERCISES = [
         ],
         interet:'**Non négociable** pour un cycliste qui passe des heures penché vers l\'avant : il renforce **l\'arrière des épaules et la coiffe des rotateurs**, qui équilibrent tout le travail de développé. Moins de douleurs d\'épaule, meilleure posture, et l\'arrière de l\'épaule, souvent oublié, prend du volume.'
       }},
+  // ── Retirés du Jour C le 6/11 (rowing et face pull pas aimés), gardés pour l'historique ──
+    {id:'c2',muscle:'Dos',restTime:90,name:'Tirage horizontal serré',format:'3×10-12',sets:3,
+      info:{
+        gif:'gifs/tirage-horizontal-serre.webp',
+        muscles:{ main:['Milieu du dos (rhomboïdes, trapèzes)', 'Grand dorsal'], secondary:['Deltoïdes postérieurs', 'Biceps'] },
+        execution:[
+          'Pieds sur les cale-pieds, genoux légèrement fléchis, **poignée serrée**. **Buste droit, abdos gainés**.',
+          'Tire la poignée **vers le nombril** en **rapprochant les omoplates**, coudes qui frôlent le corps.',
+          'Marque **1 seconde de contraction** en fin de tirage, poitrine sortie.',
+          '**Reviens lentement** jusqu\'aux bras tendus en laissant les omoplates s\'écarter, sans que la charge se repose.',
+        ],
+        erreurs:[
+          '**Balancer le buste** d\'avant en arrière pour tirer plus lourd.',
+          'Tirer **avec les bras** au lieu des coudes.',
+          '**Arrondir le dos** en fin de retour.',
+        ],
+        interet:'Complète les tirages verticaux des Jours A et B par un tirage horizontal. La prise serrée vise **le milieu du dos**, ce qui donne **l\'épaisseur et une meilleure posture**. En 10-12 pour accumuler du volume sans grosse fatigue.'
+      }},
+    {id:'c5',muscle:'Épaules',restTime:45,name:'Face pull corde',format:'2×15-20',sets:2,
+      info:{
+        gif:'gifs/face-pull.webp',
+        muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens', 'Coiffe des rotateurs'] },
+        execution:[
+          'Poulie réglée **à hauteur du visage**, corde en prise pronation. Recule jusqu\'à avoir les bras tendus, pieds écartés, genoux souples.',
+          '**Serre d\'abord les omoplates**, puis tire la corde **vers ton front** en montant les coudes sur les côtés.',
+          'En fin de tirage, **écarte les deux bouts de la corde** : les mains finissent de part et d\'autre des oreilles.',
+          '**Tiens 1 à 2 secondes**, puis reviens lentement sans relâcher les épaules vers l\'avant.',
+        ],
+        erreurs:[
+          '**Tirer avec les biceps** : pense **« coudes en arrière »**, les mains suivent.',
+          'Laisser les omoplates s\'ouvrir pendant la série.',
+          'Charger trop : si tu dois te pencher en arrière, c\'est **trop lourd**.',
+        ],
+        interet:'**Deuxième dose de la semaine** après le Jour B : **5 séries hebdomadaires** au total, juste ce qu\'il faut pour protéger les épaules sans y passer du temps. C\'est l\'assurance contre les douleurs d\'épaule quand le développé commence à charger.'
+      }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent

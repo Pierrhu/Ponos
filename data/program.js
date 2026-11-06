@@ -258,23 +258,39 @@ const PROGRAM = [
           ],
           interet:'Complète la barre du Jour A : l\'amplitude est plus grande et **chaque bras travaille seul**, ce qui corrige les déséquilibres et recrute plus les stabilisateurs. Jour de volume : **charges modérées en 10-12**, pas de top set.'
         }},
-      {id:'c2',restTime:90,name:'Tirage horizontal serré',format:'3×10-12',sets:3,
-        info:{
-          gif:'gifs/tirage-horizontal-serre.webp',
-          muscles:{ main:['Milieu du dos (rhomboïdes, trapèzes)', 'Grand dorsal'], secondary:['Deltoïdes postérieurs', 'Biceps'] },
-          execution:[
-            'Pieds sur les cale-pieds, genoux légèrement fléchis, **poignée serrée**. **Buste droit, abdos gainés**.',
-            'Tire la poignée **vers le nombril** en **rapprochant les omoplates**, coudes qui frôlent le corps.',
-            'Marque **1 seconde de contraction** en fin de tirage, poitrine sortie.',
-            '**Reviens lentement** jusqu\'aux bras tendus en laissant les omoplates s\'écarter, sans que la charge se repose.',
-          ],
-          erreurs:[
-            '**Balancer le buste** d\'avant en arrière pour tirer plus lourd.',
-            'Tirer **avec les bras** au lieu des coudes.',
-            '**Arrondir le dos** en fin de retour.',
-          ],
-          interet:'Complète les tirages verticaux des Jours A et B par un tirage horizontal. La prise serrée vise **le milieu du dos**, ce qui donne **l\'épaisseur et une meilleure posture**. En 10-12 pour accumuler du volume sans grosse fatigue.'
-        }},
+    {id:'x-tirage-machine',restTime:90,name:'Tirage vertical (machine Hammer)',reps:'10-12',format:'3×10-12',sets:3,
+      info:{
+        gif:'gifs/tirage-vertical-machine.webp',
+        muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Rhomboïdes'] },
+        execution:[
+          'Règle le siège : **cuisses bien calées** sous les boudins, bras tendus pour attraper les poignées.',
+          'Poitrine haute, **épaules basses** avant de tirer.',
+          'Tire les poignées **vers le haut de la poitrine en amenant les coudes vers les hanches**. Serre le dos 1 seconde.',
+          '**Remonte lentement** jusqu\'aux bras tendus, en gardant les épaules basses.',
+        ],
+        erreurs:[
+          '**Tirer avec les bras** au lieu des coudes : pense « coudes dans les poches ».',
+          '**Se pencher en arrière** pour s\'aider avec le poids du corps.',
+          '**Lâcher la remontée** : la phase lente travaille autant que la montée.',
+        ],
+        interet:'Remplace le tirage à la poulie quand elle est prise. Les deux bras travaillent **chacun de leur côté** : le plus faible ne peut pas tricher.'
+      }},
+    {id:'x-dips-assistes',restTime:90,name:'Dips assistés (machine)',reps:'8-12',format:'3×8-12',sets:3,
+      info:{
+        gif:'gifs/dips-assistes-machine.webp',
+        muscles:{ main:['Pectoraux (bas)', 'Triceps'], secondary:['Deltoïdes antérieurs'] },
+        execution:[
+          'Choisis l\'assistance : **plus le poids est lourd, plus la machine t\'aide**.',
+          'Genoux sur le coussin, mains sur les poignées, **buste légèrement penché en avant**.',
+          'Descends **jusqu\'à ce que les coudes forment environ 90°**.',
+          'Remonte en poussant, **sans verrouiller les coudes** en haut.',
+        ],
+        erreurs:[
+          '**Descendre trop bas** : ça tire sur l\'avant des épaules.',
+          '**Hausser les épaules** vers les oreilles.',
+        ],
+        interet:'La version accessible des dips : tu progresses en **retirant de l\'assistance** au fil des semaines, jusqu\'aux dips au poids du corps.'
+      }},
       {id:'c3',restTime:60,name:'Écarté poulie vis-à-vis',format:'3×12-15',sets:3,
         info:{
           gif:'gifs/ecarte-poulie.webp',
@@ -309,23 +325,23 @@ const PROGRAM = [
           ],
           interet:'**Drop set mécanique** : on change d\'angle au lieu de baisser la charge, pour aller chercher **16 répétitions efficaces** par série. Beaucoup de travail pour le deltoïde latéral en peu de temps.'
         }},
-      {id:'c5',restTime:45,name:'Face pull corde',format:'2×15-20',sets:2,
-        info:{
-          gif:'gifs/face-pull.webp',
-          muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens', 'Coiffe des rotateurs'] },
-          execution:[
-            'Poulie réglée **à hauteur du visage**, corde en prise pronation. Recule jusqu\'à avoir les bras tendus, pieds écartés, genoux souples.',
-            '**Serre d\'abord les omoplates**, puis tire la corde **vers ton front** en montant les coudes sur les côtés.',
-            'En fin de tirage, **écarte les deux bouts de la corde** : les mains finissent de part et d\'autre des oreilles.',
-            '**Tiens 1 à 2 secondes**, puis reviens lentement sans relâcher les épaules vers l\'avant.',
-          ],
-          erreurs:[
-            '**Tirer avec les biceps** : pense **« coudes en arrière »**, les mains suivent.',
-            'Laisser les omoplates s\'ouvrir pendant la série.',
-            'Charger trop : si tu dois te pencher en arrière, c\'est **trop lourd**.',
-          ],
-          interet:'**Deuxième dose de la semaine** après le Jour B : **5 séries hebdomadaires** au total, juste ce qu\'il faut pour protéger les épaules sans y passer du temps. C\'est l\'assurance contre les douleurs d\'épaule quand le développé commence à charger.'
-        }},
+    {id:'x-oiseau-machine',restTime:60,name:'Oiseau (machine)',reps:'12-15',format:'3×12-15',sets:3,
+      info:{
+        gif:'gifs/oiseau-machine.webp',
+        muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens'] },
+        execution:[
+          'Assis face au dossier de la machine, **poitrine contre le coussin**, bras tendus devant à hauteur d\'épaules.',
+          'Prise pronation ou neutre, **coudes légèrement fléchis**.',
+          'Ouvre les bras vers l\'arrière **en arc de cercle** : **le mouvement part de l\'épaule**. Serre légèrement les omoplates en fin de mouvement.',
+          '**Reviens lentement**. **Charge légère**, mouvement propre.',
+        ],
+        erreurs:[
+          '**Hausser les épaules** : souvent le signe que c\'est trop lourd.',
+          '**Avancer la tête**.',
+          'Tirer **avec les omoplates seulement**, sans ouvrir les bras.',
+        ],
+        interet:'Isole **l\'arrière des épaules**, souvent en retard, sans avoir à te stabiliser. **Bon remplaçant du face pull** si la poulie est prise.'
+      }},
       {id:'c6',restTime:60,name:'SS: Curl marteau / Ext.',format:'2×10-12 / 10-12',sets:2,superset:true,
         info:{
           gif:'gifs/curl-marteau.webp',
