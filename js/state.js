@@ -98,6 +98,8 @@ function saveState() {
     done:            state.done,
     sessionStart:    state.sessionStart,
     swaps:           state.swaps,
+    warmup:          state.warmup,
+    guideSeen:       state.guideSeen,
   };
   idbSet(STORAGE_KEY, data).catch(() => {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}

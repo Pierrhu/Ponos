@@ -43,7 +43,7 @@ function renderWorkout() {
   const suggestions = getSuggestions({ ...day, exercises });
 
   html += renderWarmup(day, exercises);
-  html += `<button class="gd-entry" onclick="openGuide('rir')"><span class="gd-entry-ic">?</span><span><strong>RIR, progression, logique du programme</strong><br><span class="gd-entry-sub">Le guide pour savoir quoi faire à chaque série</span></span><span class="ex-arrow">▸</span></button>`;
+  if (!state.guideSeen) html += `<button class="gd-entry" onclick="openGuide('rir')"><span class="gd-entry-ic">?</span><span><strong>RIR, progression, logique du programme</strong><br><span class="gd-entry-sub">Le guide pour savoir quoi faire à chaque série</span></span><span class="ex-arrow">▸</span></button>`;
 
   // Exercices
   exercises.forEach(ex => {
@@ -58,10 +58,11 @@ function renderWorkout() {
 
     html += `<div class="card ex-card${isOpen?' open':''}" style="--ex-accent:${day.accent}" data-exid="${ex.id}" onclick="toggleEx('${ex.id}')">
       <div class="ex-header">
-        <div style="flex:1">${tagHtml}
+        <button class="ex-thumb-btn" aria-label="Voir la fiche de ${ex.name}" onclick="event.stopPropagation();openInfoModal('${ex.id}')">${exThumb(ex, 'ex-thumb')}</button>
+        <div style="flex:1;min-width:0">${tagHtml}
           <div class="ex-name">${ex.name}</div>
           ${ex._slotId ? `<div class="ex-swapped">⇄ à la place de ${ex._slotName}</div>` : ''}
-          <div class="ex-format">${ex.format}${ex.restTime ? ' <span style="color:var(--text3);font-size:10px">· Repos ' + (ex.restTime >= 60 ? Math.floor(ex.restTime/60) + 'min' + (ex.restTime % 60 ? String(ex.restTime % 60).padStart(2,'0') : '') : ex.restTime + 's') + '</span>' : ''}</div>
+          <div class="ex-format">${ex.format}${ex.superset ? ' <span style="color:var(--text3);font-size:10px">· enchaîne direct avec le suivant</span>' : ex.restTime ? ' <span style="color:var(--text3);font-size:10px">· Repos ' + (ex.restTime >= 60 ? Math.floor(ex.restTime/60) + 'min' + (ex.restTime % 60 ? String(ex.restTime % 60).padStart(2,'0') : '') : ex.restTime + 's') + '</span>' : ''}</div>
           ${lastPerf ? `<div class="ex-prev" style="text-align:left;margin-top:3px">Préc: <strong style="color:${day.accent}">${lastPerf.kg}kg×${lastPerf.reps}</strong></div>` : ''}
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">

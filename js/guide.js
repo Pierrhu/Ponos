@@ -140,6 +140,7 @@ function renderGuide() {
 
 function openGuide(tab) {
   if (tab) guideTab = tab;
+  if (!state.guideSeen) { state.guideSeen = true; saveState(); }
   let el = document.getElementById('guide');
   if (!el) { el = document.createElement('div'); el.id = 'guide'; document.body.appendChild(el); }
   el.innerHTML = renderGuide();
