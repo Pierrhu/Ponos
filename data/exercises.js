@@ -762,6 +762,42 @@ const EXTRA_EXERCISES = [
         ],
         interet:'Le plus simple pour travailler les jambes **sans charger le dos** ni apprendre de technique. **Pieds plus hauts**, tu travailles plus les fessiers ; plus bas, plus les quadriceps. Les jambes sont les plus gros muscles du corps : plus de muscle, **plus de calories brûlées au repos**.'
       }},
+  // ── Retirés du Jour B le 6/11 (rowing et face pull pas aimés), gardés pour l'historique ──
+    {id:'b3',muscle:'Dos',restTime:90,name:'Rowing DB unilatéral',format:'3×10-12/bras',sets:3,
+      info:{
+        gif:'gifs/rowing-db-unilateral.webp',
+        muscles:{ main:['Grand dorsal', 'Rhomboïdes', 'Trapèzes'], secondary:['Deltoïdes postérieurs', 'Biceps'] },
+        execution:[
+          'Un genou et la main du même côté sur le banc (main sous l\'épaule, genou sous la hanche), l\'autre pied au sol. **Dos plat, nuque dans l\'axe**.',
+          'Départ bras tendu, épaule qui descend un peu pour **bien étirer le dos**.',
+          'Tire l\'haltère **vers la hanche, pas vers l\'épaule**, coude qui frôle le corps. **Serre l\'omoplate 1 s** en haut.',
+          'Redescends lentement. Commence par **ton côté faible**, puis fais le même nombre de répétitions de l\'autre côté.',
+        ],
+        erreurs:[
+          '**Tourner le buste** pour monter l\'haltère.',
+          'Tirer **avec le biceps**.',
+          'Relever la tête ou arrondir le dos.',
+        ],
+        interet:'**Un côté à la fois**, pour corriger les déséquilibres gauche/droite que les exercices à deux bras cachent. Plus d\'amplitude qu\'à la barre, donc **un meilleur étirement** du grand dorsal.'
+      }},
+    {id:'b5',muscle:'Épaules',restTime:60,name:'Face pull corde',format:'3×15-20',sets:3,
+      info:{
+        gif:'gifs/face-pull.webp',
+        muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens', 'Coiffe des rotateurs'] },
+        execution:[
+          'Poulie réglée **à hauteur du visage**, corde en prise pronation. Recule jusqu\'à avoir les bras tendus, pieds écartés, genoux souples.',
+          '**Serre d\'abord les omoplates**, puis tire la corde **vers ton front** en montant les coudes sur les côtés.',
+          'En fin de tirage, **écarte les deux bouts de la corde** : les mains finissent de part et d\'autre des oreilles.',
+          '**Tiens 1 à 2 secondes**, puis reviens lentement sans relâcher les épaules vers l\'avant.',
+          '**Charge légère** : c\'est un mouvement de santé des épaules, pas de force.',
+        ],
+        erreurs:[
+          '**Tirer avec les biceps** : pense **« coudes en arrière »**, les mains suivent.',
+          'Laisser les omoplates s\'ouvrir pendant la série (imagine serrer une balle entre elles).',
+          '**Se pencher en arrière** pour aider avec le poids du corps.',
+        ],
+        interet:'**Non négociable** pour un cycliste qui passe des heures penché vers l\'avant : il renforce **l\'arrière des épaules et la coiffe des rotateurs**, qui équilibrent tout le travail de développé. Moins de douleurs d\'épaule, meilleure posture, et l\'arrière de l\'épaule, souvent oublié, prend du volume.'
+      }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent

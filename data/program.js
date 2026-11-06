@@ -135,6 +135,24 @@ const PROGRAM = [
           ],
           interet:'Le mouvement de force principal des épaules, et ton **troisième marqueur de rang**. Debout, il demande beaucoup de gainage. Top set puis back-off, comme au développé couché.'
         }},
+    {id:'x-tractions-ass',restTime:120,name:'Tractions assistées',reps:'6-10',format:'3×6-10',sets:3,
+      info:{
+        gif:'gifs/tractions-assistees.webp',
+        muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Milieu du dos'] },
+        execution:[
+          '**Règle l\'assistance** (le contrepoids qui t\'aide) et monte à genoux ou debout sur la plateforme.',
+          'Prise pronation un peu plus large que les épaules, **départ bras tendus**.',
+          'Tire en pensant **« coudes vers le bas »** jusqu\'à ce que **le menton passe la barre**. Souffle en montant.',
+          '**Tiens 1-2 s en haut**, puis **redescends lentement** jusqu\'aux bras complètement tendus.',
+          'Note l\'assistance en kg dans la case « charge » : **plus elle baisse, plus tu progresses**.',
+        ],
+        erreurs:[
+          'Tirer **avec les bras** plutôt qu\'avec le dos.',
+          'Faire des **demi-répétitions** : bras tendus en bas, menton au-dessus de la barre en haut.',
+          'Garder la même assistance des semaines : **baisse-la** dès que tu fais toutes tes répétitions.',
+        ],
+        interet:'**Le mouvement exact de la traction**, avec juste ce qu\'il faut d\'aide. En baissant l\'assistance de séance en séance, c\'est le chemin le plus direct vers **tes 3 tractions strictes**.'
+      }},
       {id:'b2',restTime:120,name:'Tirage vertical neutre',format:'3×6-8 lourd',sets:3,
         info:{
           gif:'gifs/tirage-vertical-neutre.webp',
@@ -151,23 +169,6 @@ const PROGRAM = [
             'Aller vite : sur un exercice lourd, **le contrôle compte double**.',
           ],
           interet:'Travaillé lourd (6-8), c\'est **ton chemin vers les tractions**. La prise neutre **ménage les épaules** et laisse charger plus. Le jour où tu tireras l\'équivalent de ton poids de corps 6 fois ici, la traction stricte ne sera plus loin.'
-        }},
-      {id:'b3',restTime:90,name:'Rowing DB unilatéral',format:'3×10-12/bras',sets:3,
-        info:{
-          gif:'gifs/rowing-db-unilateral.webp',
-          muscles:{ main:['Grand dorsal', 'Rhomboïdes', 'Trapèzes'], secondary:['Deltoïdes postérieurs', 'Biceps'] },
-          execution:[
-            'Un genou et la main du même côté sur le banc (main sous l\'épaule, genou sous la hanche), l\'autre pied au sol. **Dos plat, nuque dans l\'axe**.',
-            'Départ bras tendu, épaule qui descend un peu pour **bien étirer le dos**.',
-            'Tire l\'haltère **vers la hanche, pas vers l\'épaule**, coude qui frôle le corps. **Serre l\'omoplate 1 s** en haut.',
-            'Redescends lentement. Commence par **ton côté faible**, puis fais le même nombre de répétitions de l\'autre côté.',
-          ],
-          erreurs:[
-            '**Tourner le buste** pour monter l\'haltère.',
-            'Tirer **avec le biceps**.',
-            'Relever la tête ou arrondir le dos.',
-          ],
-          interet:'**Un côté à la fois**, pour corriger les déséquilibres gauche/droite que les exercices à deux bras cachent. Plus d\'amplitude qu\'à la barre, donc **un meilleur étirement** du grand dorsal.'
         }},
       {id:'b4',restTime:60,name:'Latérales poulie basse',format:'3×12-15',sets:3,
         info:{
@@ -186,24 +187,55 @@ const PROGRAM = [
           ],
           interet:'La poulie **garde la tension sur tout le mouvement**, même en bas, là où les haltères n\'en donnent presque pas. Angle complémentaire des latérales haltères du Jour A. **4 séries** parce que les épaules sont un point faible.'
         }},
-      {id:'b5',restTime:60,name:'Face pull corde',format:'3×15-20',sets:3,
-        info:{
-          gif:'gifs/face-pull.webp',
-          muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens', 'Coiffe des rotateurs'] },
-          execution:[
-            'Poulie réglée **à hauteur du visage**, corde en prise pronation. Recule jusqu\'à avoir les bras tendus, pieds écartés, genoux souples.',
-            '**Serre d\'abord les omoplates**, puis tire la corde **vers ton front** en montant les coudes sur les côtés.',
-            'En fin de tirage, **écarte les deux bouts de la corde** : les mains finissent de part et d\'autre des oreilles.',
-            '**Tiens 1 à 2 secondes**, puis reviens lentement sans relâcher les épaules vers l\'avant.',
-            '**Charge légère** : c\'est un mouvement de santé des épaules, pas de force.',
-          ],
-          erreurs:[
-            '**Tirer avec les biceps** : pense **« coudes en arrière »**, les mains suivent.',
-            'Laisser les omoplates s\'ouvrir pendant la série (imagine serrer une balle entre elles).',
-            '**Se pencher en arrière** pour aider avec le poids du corps.',
-          ],
-          interet:'**Non négociable** pour un cycliste qui passe des heures penché vers l\'avant : il renforce **l\'arrière des épaules et la coiffe des rotateurs**, qui équilibrent tout le travail de développé. Moins de douleurs d\'épaule, meilleure posture, et l\'arrière de l\'épaule, souvent oublié, prend du volume.'
-        }},
+    {id:'x-oiseau-machine',restTime:60,name:'Oiseau (machine)',reps:'12-15',format:'3×12-15',sets:3,
+      info:{
+        gif:'gifs/oiseau-machine.webp',
+        muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens'] },
+        execution:[
+          'Assis face au dossier de la machine, **poitrine contre le coussin**, bras tendus devant à hauteur d\'épaules.',
+          'Prise pronation ou neutre, **coudes légèrement fléchis**.',
+          'Ouvre les bras vers l\'arrière **en arc de cercle** : **le mouvement part de l\'épaule**. Serre légèrement les omoplates en fin de mouvement.',
+          '**Reviens lentement**. **Charge légère**, mouvement propre.',
+        ],
+        erreurs:[
+          '**Hausser les épaules** : souvent le signe que c\'est trop lourd.',
+          '**Avancer la tête**.',
+          'Tirer **avec les omoplates seulement**, sans ouvrir les bras.',
+        ],
+        interet:'Isole **l\'arrière des épaules**, souvent en retard, sans avoir à te stabiliser. **Bon remplaçant du face pull** si la poulie est prise.'
+      }},
+    {id:'x-curl-incline',superset:true,restTime:10,name:'Curl incliné (haltères)',reps:'10-12',format:'3×10-12 (superset)',sets:3,
+      info:{
+        gif:'gifs/curl-incline-halteres.webp',
+        muscles:{ main:['Biceps (longue portion)'], secondary:['Avant-bras'] },
+        execution:[
+          'Banc incliné à **45-60°**, dos collé, **bras pendants à la verticale**.',
+          'Paumes vers l\'avant.',
+          'Monte les haltères **sans avancer les coudes**.',
+          '**Redescends complètement**, bras tendus : c\'est l\'étirement qui fait tout.',
+        ],
+        erreurs:[
+          '**Avancer les coudes** pendant la montée.',
+          '**Charger trop lourd** et perdre l\'amplitude.',
+        ],
+        interet:'Bras derrière le corps, le biceps est **étiré au maximum** : un des curls les plus efficaces pour le développer.'
+      }},
+    {id:'x-triceps-poulie',restTime:75,name:'Extensions triceps poulie haute (corde)',reps:'10-15',format:'3×10-15',sets:3,
+      info:{
+        gif:'gifs/triceps-poulie-haute.webp',
+        muscles:{ main:['Triceps'], secondary:[] },
+        execution:[
+          'Face à la poulie haute, corde en main, **coudes collés au corps**.',
+          'Buste légèrement penché, abdos serrés.',
+          'Pousse vers le bas **jusqu\'aux bras tendus** en écartant la corde en bas.',
+          '**Remonte lentement** jusqu\'à ce que les avant-bras soient à l\'horizontale.',
+        ],
+        erreurs:[
+          '**Coudes qui partent devant** : ils restent fixes.',
+          '**Utiliser le poids du corps** pour descendre la charge.',
+        ],
+        interet:'Le grand classique du triceps : simple, efficace, **facile à doser**.'
+      }},
     ]
   },
   {
