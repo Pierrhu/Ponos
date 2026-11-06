@@ -3,7 +3,7 @@ const PROGRAM = [
   {
     id:'A', name:'Jour A', subtitle:'Force Horizontale', accent:'#C23B3B', when:'Lundi',
     exercises: [
-      {id:'a1',restTime:150,name:'Développé couché barre',format:'3 chauffe + Top set 3-5 + 2×6-8',sets:3,topSet:true,rankKey:'bench',
+      {id:'a1',restTime:180,name:'Développé couché barre',format:'Top set 4-6 + 2×6-8 · RIR 1-2',sets:3,topSet:true,rankKey:'bench',
         info:{
           gif:'gifs/developpe-couche-barre.webp',
           muscles:{ main:['Pectoraux'], secondary:['Triceps', 'Deltoïdes antérieurs'] },
@@ -23,7 +23,7 @@ const PROGRAM = [
           ],
           interet:'L\'exercice de base des pectoraux, et **ton marqueur de force principal** (c\'est lui qui donne ton rang). Un top set lourd puis deux séries de back-off : assez de travail pour progresser, en tenant dans l\'heure avec l\'échauffement.'
         }},
-    {id:'x-row-machine',restTime:120,name:'Rowing assis (machine)',reps:'8-10',format:'3×8-10',sets:3,
+    {id:'x-row-machine',restTime:120,name:'Rowing assis (machine)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/rowing-assis-machine.webp',
         muscles:{ main:['Milieu du dos (rhomboïdes, trapèzes)', 'Grand dorsal'], secondary:['Biceps', 'Deltoïdes postérieurs'] },
@@ -39,7 +39,7 @@ const PROGRAM = [
         ],
         interet:'Poitrine calée : **zéro stress sur le bas du dos**. Parfait remplaçant des rowings libres quand le dos est fatigué.'
       }},
-      {id:'a3',restTime:90,name:'Développé incliné DB 30°',format:'3×8-10',sets:3,
+      {id:'a3',restTime:120,name:'Développé incliné DB 30°',format:'3×8-12 · RIR 1-2',sets:3,
         info:{
           gif:'gifs/developpe-incline-db.webp',
           muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
@@ -57,7 +57,7 @@ const PROGRAM = [
           ],
           interet:'Vise **le haut des pectoraux**, souvent en retard. Placé après le couché, il n\'a **pas besoin d\'être lourd** pour être efficace. Les haltères donnent une plus grande amplitude et font travailler chaque bras seul.'
         }},
-      {id:'a4',restTime:90,name:'Tirage vertical large',format:'3×10-12',sets:3,
+      {id:'a4',restTime:120,name:'Tirage vertical large',format:'3×8-12 · RIR 1-2',sets:3,
         info:{
           gif:'gifs/tirage-vertical-large.webp',
           muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Milieu du dos', 'Grand rond'] },
@@ -75,7 +75,7 @@ const PROGRAM = [
           ],
           interet:'Ajoute un tirage vertical au rowing du Jour A. La prise large vise **la largeur du dos**. En volume modéré (10-12) pour accumuler du travail **sans fatiguer le bas du dos**, déjà sollicité par le rowing barre.'
         }},
-      {id:'a5',restTime:60,name:'Élévations latérales',format:'3×12-15',sets:3,
+      {id:'a5',restTime:75,name:'Élévations latérales',format:'3×12-20 · dernière à fond',sets:3,
         info:{
           gif:'gifs/elevations-laterales-halteres.webp',
           muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
@@ -92,7 +92,7 @@ const PROGRAM = [
           ],
           interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
         }},
-    {id:'x-curl-incline',superset:true,restTime:10,name:'Curl incliné (haltères)',reps:'10-12',format:'3×10-12 (superset)',sets:3,
+    {id:'x-curl-incline',superset:true,restTime:10,name:'Curl incliné (haltères)',reps:'10-15',format:'3×10-15 · RIR 0-1 (superset)',sets:3,
       info:{
         gif:'gifs/curl-incline-halteres.webp',
         muscles:{ main:['Biceps (longue portion)'], secondary:['Avant-bras'] },
@@ -108,7 +108,7 @@ const PROGRAM = [
         ],
         interet:'Bras derrière le corps, le biceps est **étiré au maximum** : un des curls les plus efficaces pour le développer.'
       }},
-    {id:'x-triceps-corde',restTime:75,name:'Extension triceps corde au-dessus de la tête',reps:'10-12',format:'3×10-12',sets:3,
+    {id:'x-triceps-corde',restTime:90,name:'Extension triceps corde au-dessus de la tête',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/triceps-corde.webp',
         muscles:{ main:['Triceps (surtout la longue portion)'], secondary:[] },
@@ -130,7 +130,7 @@ const PROGRAM = [
   {
     id:'B', name:'Jour B', subtitle:'Force Verticale', accent:'#2D7DD2', when:'Jeudi',
     exercises: [
-      {id:'b1',restTime:150,name:'Développé militaire',format:'Top set 3-5 + 2×6-8',sets:3,topSet:true,rankKey:'ohp',
+      {id:'b1',restTime:180,name:'Développé militaire',format:'Top set 4-6 + 2×6-8 · RIR 1-2',sets:3,topSet:true,rankKey:'ohp',
         info:{
           gif:'gifs/developpe-militaire-halteres.webp',
           muscles:{ main:['Deltoïdes antérieurs et latéraux'], secondary:['Triceps', 'Haut des pectoraux', 'Abdos (gainage)'] },
@@ -148,7 +148,7 @@ const PROGRAM = [
           ],
           interet:'Le mouvement de force principal des épaules, et ton **troisième marqueur de rang**. Debout, il demande beaucoup de gainage. Top set puis back-off, comme au développé couché.'
         }},
-    {id:'x-tractions-ass',restTime:120,name:'Tractions assistées',reps:'6-10',format:'3×6-10',sets:3,
+    {id:'x-tractions-ass',restTime:150,name:'Tractions assistées',reps:'6-10',format:'3×6-10 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/tractions-assistees.webp',
         muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Milieu du dos'] },
@@ -166,7 +166,7 @@ const PROGRAM = [
         ],
         interet:'**Le mouvement exact de la traction**, avec juste ce qu\'il faut d\'aide. En baissant l\'assistance de séance en séance, c\'est le chemin le plus direct vers **tes 3 tractions strictes**.'
       }},
-      {id:'b2',restTime:120,name:'Tirage vertical neutre',format:'3×6-8 lourd',sets:3,
+      {id:'b2',restTime:120,name:'Tirage vertical neutre',format:'3×8-12 · RIR 1-2',sets:3,
         info:{
           gif:'gifs/tirage-vertical-neutre.webp',
           muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Milieu du dos'] },
@@ -183,7 +183,7 @@ const PROGRAM = [
           ],
           interet:'Travaillé lourd (6-8), c\'est **ton chemin vers les tractions**. La prise neutre **ménage les épaules** et laisse charger plus. Le jour où tu tireras l\'équivalent de ton poids de corps 6 fois ici, la traction stricte ne sera plus loin.'
         }},
-      {id:'b4',restTime:60,name:'Latérales poulie basse',format:'3×12-15',sets:3,
+      {id:'b4',restTime:60,name:'Latérales poulie basse',format:'4×12-20 · dernière à fond',sets:4,
         info:{
           gif:'gifs/elevations-laterales-poulie.webp',
           muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes antérieurs et postérieurs', 'Coiffe des rotateurs'] },
@@ -200,7 +200,7 @@ const PROGRAM = [
           ],
           interet:'La poulie **garde la tension sur tout le mouvement**, même en bas, là où les haltères n\'en donnent presque pas. Angle complémentaire des latérales haltères du Jour A. **4 séries** parce que les épaules sont un point faible.'
         }},
-    {id:'x-oiseau-machine',restTime:60,name:'Oiseau (machine)',reps:'12-15',format:'3×12-15',sets:3,
+    {id:'x-oiseau-machine',restTime:60,name:'Oiseau (machine)',reps:'12-20',format:'3×12-20 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/oiseau-machine.webp',
         muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens'] },
@@ -217,7 +217,7 @@ const PROGRAM = [
         ],
         interet:'Isole **l\'arrière des épaules**, souvent en retard, sans avoir à te stabiliser. **Bon remplaçant du face pull** si la poulie est prise.'
       }},
-    {id:'x-curl-poulie',superset:true,restTime:10,name:'Curl biceps poulie basse',reps:'10-12',format:'3×10-12 (superset)',sets:3,
+    {id:'x-curl-poulie',superset:true,restTime:10,name:'Curl biceps poulie basse',reps:'10-15',format:'3×10-15 · RIR 0-1 (superset)',sets:3,
       info:{
         gif:'gifs/curl-poulie-basse.webp',
         muscles:{ main:['Biceps'], secondary:['Brachial', 'Avant-bras'] },
@@ -234,7 +234,7 @@ const PROGRAM = [
         ],
         interet:'La poulie garde une **tension sur tout le mouvement**, même en bas, là où la barre libre n\'en donne presque pas. Isolation stricte qui permet de progresser en charge **sans tricher**. Bon remplaçant du curl EZ.'
       }},
-    {id:'x-triceps-poulie',restTime:75,name:'Extensions triceps poulie haute (corde)',reps:'10-15',format:'3×10-15',sets:3,
+    {id:'x-triceps-poulie',restTime:90,name:'Extensions triceps poulie haute (corde)',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/triceps-poulie-haute.webp',
         muscles:{ main:['Triceps'], secondary:[] },
@@ -255,23 +255,24 @@ const PROGRAM = [
   {
     id:'C', name:'Jour C', subtitle:'Volume & Rattrapage', accent:'#1A9E8F', when:'Samedi',
     exercises: [
-    {id:'x-chest-press',restTime:90,name:'Développé assis (machine)',reps:'10-12',format:'3×10-12',sets:3,
+    {id:'x-incline-machine',restTime:120,name:'Développé incliné (machine)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
-        gif:'gifs/chest-press-machine.webp',
-        muscles:{ main:['Pectoraux'], secondary:['Triceps', 'Deltoïdes antérieurs'] },
+        gif:'gifs/developpe-incline-machine.webp',
+        muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
         execution:[
-          'Règle le siège : **poignées au niveau du milieu de la poitrine**.',
-          'Dos collé au dossier, **omoplates serrées**, pieds à plat.',
-          'Pousse **jusqu\'aux bras presque tendus**, sans verrouiller les coudes.',
-          '**Reviens lentement** jusqu\'à sentir l\'étirement des pecs, sans reposer la charge.',
+          '**Règle le siège** : poignées un peu sous la hauteur des épaules, là où serait la barre en bas d\'un développé.',
+          'Inspire et **serre les omoplates contre le dossier**, pieds à plat, abdos gainés.',
+          'Pousse en soufflant, **sans que les épaules partent vers l\'avant**.',
+          '**Reviens lentement** jusqu\'à l\'étirement des pecs, sans reposer la charge.',
         ],
         erreurs:[
-          '**Siège trop haut ou trop bas** : les épaules prennent le relais.',
-          '**Décoller le dos** du dossier pour pousser plus lourd.',
+          '**Décoller les omoplates** du dossier, surtout si l\'avant de l\'épaule tire.',
+          '**Cambrer fort** le bas du dos.',
+          '**Pousser avec les jambes** ou bouger le bassin.',
         ],
-        interet:'Le développé le plus simple qui soit : **pas d\'équilibre à gérer**, idéal pour débuter ou quand le banc est pris.'
+        interet:'Même rôle que le développé incliné haltères (**le haut des pectoraux**), mais **guidé** : tu peux pousser fort sans gérer l\'équilibre. Parfait quand la salle est pleine ou en fin de séance pecs.'
       }},
-    {id:'x-tirage-machine',restTime:90,name:'Tirage vertical (machine Hammer)',reps:'10-12',format:'3×10-12',sets:3,
+    {id:'x-tirage-machine',restTime:120,name:'Tirage vertical (machine Hammer)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/tirage-vertical-machine.webp',
         muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Rhomboïdes'] },
@@ -288,23 +289,23 @@ const PROGRAM = [
         ],
         interet:'Remplace le tirage à la poulie quand elle est prise. Les deux bras travaillent **chacun de leur côté** : le plus faible ne peut pas tricher.'
       }},
-    {id:'x-dips-assistes',restTime:90,name:'Dips assistés (machine)',reps:'8-12',format:'3×8-12',sets:3,
+    {id:'x-pullover-poulie',restTime:75,name:'Pull-over à la poulie',reps:'12-15',format:'3×12-15 · RIR 0-1',sets:3,
       info:{
-        gif:'gifs/dips-assistes-machine.webp',
-        muscles:{ main:['Pectoraux (bas)', 'Triceps'], secondary:['Deltoïdes antérieurs'] },
+        gif:'gifs/pull-over-poulie.webp',
+        muscles:{ main:['Grand dorsal'], secondary:['Grand rond', 'Triceps (longue portion)'] },
         execution:[
-          'Choisis l\'assistance : **plus le poids est lourd, plus la machine t\'aide**.',
-          'Genoux sur le coussin, mains sur les poignées, **buste légèrement penché en avant**.',
-          'Descends **jusqu\'à ce que les coudes forment environ 90°**.',
-          'Remonte en poussant, **sans verrouiller les coudes** en haut.',
+          'Face à la poulie haute, barre droite ou corde, **bras presque tendus**, buste légèrement penché.',
+          '**Abdos serrés**, épaules basses.',
+          'Ramène la barre **en arc de cercle jusqu\'aux cuisses** en gardant les bras quasi tendus.',
+          '**Remonte lentement** jusqu\'à sentir l\'étirement sous les aisselles.',
         ],
         erreurs:[
-          '**Descendre trop bas** : ça tire sur l\'avant des épaules.',
-          '**Hausser les épaules** vers les oreilles.',
+          '**Plier les coudes** : ça devient un exercice de triceps.',
+          '**Charger trop lourd** et balancer le buste.',
         ],
-        interet:'La version accessible des dips : tu progresses en **retirant de l\'assistance** au fil des semaines, jusqu\'aux dips au poids du corps.'
+        interet:'Isole le grand dorsal **sans les biceps**. Parfait en fin de séance dos, ou pour apprendre à « sentir » ton dos.'
       }},
-      {id:'c3',restTime:60,name:'Écarté poulie vis-à-vis',format:'3×12-15',sets:3,
+      {id:'c3',restTime:75,name:'Écarté poulie vis-à-vis',format:'3×12-15 · RIR 0-1',sets:3,
         info:{
           gif:'gifs/ecarte-poulie.webp',
           muscles:{ main:['Pectoraux'], secondary:['Deltoïdes antérieurs'] },
@@ -321,7 +322,7 @@ const PROGRAM = [
           ],
           interet:'Isolation des pectoraux avec une **tension constante**, **plus douce pour les épaules** que les haltères. En fin de séance pecs, pour finir le muscle avec du volume après les développés.'
         }},
-      {id:'c4',restTime:60,name:'Latérales drop set méca.',format:'3×(8+8)',sets:3,dropSet:true,
+      {id:'c4',restTime:60,name:'Élévations latérales (drop set)',format:'4×12-20 · dernière en drop set',sets:4,dropSet:true,
         info:{
           gif:'gifs/elevations-laterales-halteres.webp',
           muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes postérieurs', 'Trapèzes'] },
@@ -338,7 +339,7 @@ const PROGRAM = [
           ],
           interet:'**Drop set mécanique** : on change d\'angle au lieu de baisser la charge, pour aller chercher **16 répétitions efficaces** par série. Beaucoup de travail pour le deltoïde latéral en peu de temps.'
         }},
-      {id:'c6',restTime:60,name:'SS: Curl marteau / Ext.',format:'2×10-12 / 10-12',sets:2,superset:true,
+      {id:'c6',restTime:75,name:'SS: Curl marteau / Ext.',format:'3×10-15 / 10-15 · RIR 0-1',sets:3,superset:true,
         info:{
           gif:'gifs/curl-marteau.webp',
           muscles:{ main:['Biceps', 'Brachio-radial (avant-bras)', 'Triceps'], secondary:['Brachial'] },
