@@ -168,10 +168,11 @@ const WARMUP_MOVES = {
 };
 // Adapté au jour : épaules toujours, puis ce que la séance sollicite le plus
 const WARMUP_BY_DAY = {
-  A: ['facepull', 'rotation', 'zottman', 'goodmorning'],  // couché + rowing barre buste penché
-  B: ['facepull', 'rotation', 'zottman', 'laterales'],    // militaire au-dessus de la tête
-  C: ['facepull', 'rotation', 'zottman'],                 // haltères, volume
+  A: ['facepull', 'rotation', 'zottman'],                 // couché, hack squat
+  B: ['facepull', 'rotation', 'laterales', 'goodmorning'], // militaire + soulevé de terre roumain / swing
+  C: ['facepull', 'rotation', 'zottman'],                 // haltères, bulgare
 };
+const POWER_IDS = ['x-box-jump', 'x-kb-swing', 'x-squat-saute'];
 const WARMUP_DEFAULT = ['facepull', 'rotation', 'zottman'];
 let warmupOpen = null;   // null = automatique (ouvert tant que pas fini)
 let warmupPreview = null;
@@ -185,7 +186,7 @@ function roundPlate(kg) { return Math.max(0, Math.round(kg / 2.5) * 2.5); }
 
 function warmupItems(exercises) {
   const day = getActiveProgram()[state.dayIdx];
-  const first = exercises[0];
+  const first = exercises.find(e => !POWER_IDS.includes(e.id)) || exercises[0];
   const items = (WARMUP_BY_DAY[day && day.id] || WARMUP_DEFAULT).map(id => ({ id, ...WARMUP_MOVES[id] }));
   if (first) {
     const prev = getLastPerf(first.id, 0);

@@ -922,6 +922,159 @@ const EXTRA_EXERCISES = [
         ],
         interet:'La poulie **garde la tension sur tout le mouvement**, même en bas, là où les haltères n\'en donnent presque pas. Angle complémentaire des latérales haltères du Jour A. **4 séries** parce que les épaules sont un point faible.'
       }},
+  // ── Programme V athlétique (9/11) ──
+  {id:'x-box-jump',muscle:'Jambes',restTime:60,name:'Box jump',reps:'3',format:'3×3',sets:3,
+    info:{
+      gif:'gifs/box-jump.webp',
+      muscles:{ main:['Quadriceps', 'Fessiers'], secondary:['Mollets'] },
+      execution:[
+        'Face à une box (ou un step solide) **à hauteur de mi-tibia ou de genou**, pieds largeur de hanches.',
+        '**Descends vite en quart de squat** en lançant les bras en arrière.',
+        '**Saute en explosant**, bras vers le haut, et **atterris en douceur** sur la box, genoux fléchis, pieds à plat.',
+        '**Descends en marchant**, pas en sautant. Repos complet entre chaque série.',
+      ],
+      erreurs:[
+        '**Box trop haute** : le but est de sauter vite, pas de replier les jambes au maximum.',
+        '**Atterrir genoux rentrés** vers l\'intérieur.',
+        '**Enchaîner les sauts fatigué** : 3 sauts nets valent mieux que 10 mous.',
+      ],
+      interet:'Le travail **explosif** qui rend athlétique : apprendre au corps à produire de la force vite. **Zéro fatigue** : on le fait frais, en début de séance. Pas de box libre ? **Saut vertical** sur place.'
+    }},
+  {id:'x-kb-swing',muscle:'Jambes',restTime:60,name:'Kettlebell swing',reps:'10',format:'3×10',sets:3,
+    info:{
+      gif:'gifs/kettlebell-swing.webp',
+      muscles:{ main:['Fessiers', 'Ischio-jambiers'], secondary:['Lombaires', 'Épaules', 'Abdos (gainage)'] },
+      execution:[
+        'Kettlebell au sol devant toi, pieds un peu plus larges que les hanches. **Charnière de hanche**, dos plat, attrape la poignée.',
+        'Fais passer la kettlebell **entre les jambes** comme une passe de rugby en arrière.',
+        '**Pousse violemment les hanches vers l\'avant** et serre les fessiers : la kettlebell monte à **hauteur de poitrine** grâce aux hanches, pas aux bras.',
+        'Laisse-la redescendre et **enchaîne** en rechargeant les hanches.',
+      ],
+      erreurs:[
+        '**Squatter** au lieu de pousser les fesses en arrière.',
+        '**Lever avec les bras** : ils ne font que guider.',
+        '**Arrondir le dos** en bas.',
+      ],
+      interet:'Puissance des hanches, cardio et gainage en un seul mouvement : **le roi de l\'athlétique**. Pas de kettlebell ? Un **haltère tenu par une extrémité** fait l\'affaire.'
+    }},
+  {id:'x-squat-saute',muscle:'Jambes',restTime:60,name:'Squat sauté',reps:'5',format:'3×5',sets:3,
+    info:{
+      gif:'gifs/squat-saute.webp',
+      muscles:{ main:['Quadriceps', 'Fessiers'], secondary:['Mollets'] },
+      execution:[
+        'Debout, pieds largeur d\'épaules, mains devant la poitrine.',
+        '**Descends en squat** jusqu\'à mi-hauteur, dos droit.',
+        '**Explose vers le haut** le plus haut possible.',
+        '**Atterris en douceur** sur l\'avant des pieds, genoux fléchis, et repars directement.',
+      ],
+      erreurs:[
+        '**Atterrir jambes tendues** : amortis toujours.',
+        '**Genoux qui rentrent** à la réception.',
+      ],
+      interet:'Explosivité **sans matériel**, à faire frais. Même effet que le box jump, avec plus d\'impacts : reste à 5 sauts nets.'
+    }},
+  {id:'x-farmer',muscle:'Abdos',restTime:60,name:'Marche du fermier',reps:'30-40 m',format:'2×30-40 m',sets:2,
+    info:{
+      gif:'gifs/farmer-walk.webp',
+      muscles:{ main:['Avant-bras (prise)', 'Trapèzes'], secondary:['Abdos (gainage)', 'Épaules', 'Jambes'] },
+      execution:[
+        'Un **haltère ou une kettlebell lourde dans chaque main**, bras le long du corps.',
+        '**Épaules basses et en arrière**, poitrine haute, abdos serrés.',
+        'Marche **à petits pas rapides** sur 30-40 m, sans te pencher.',
+        'Pose les charges **en pliant les jambes**, dos droit.',
+      ],
+      erreurs:[
+        '**Hausser les épaules** ou se pencher d\'un côté.',
+        '**Lâcher la posture** en fin de trajet.',
+      ],
+      interet:'Le test athlétique par excellence : **prise, gainage, trapèzes et posture** en même temps. Tu notes la charge par main et la distance.'
+    }},
+  {id:'x-curl-marteau',muscle:'Bras',restTime:60,name:'Curl marteau',reps:'10-15',format:'2×10-15',sets:2,
+    info:{
+      gif:'gifs/curl-marteau.webp',
+      muscles:{ main:['Biceps', 'Brachio-radial (avant-bras)'], secondary:['Brachial'] },
+      execution:[
+        'Debout, haltères en **prise neutre** (paumes face au corps), **coudes collés**.',
+        'Monte les haltères **sans bouger les coudes**, le plus haut possible.',
+        '**Contracte 1 seconde** en haut.',
+        '**Redescends lentement**, bras presque tendus en bas.',
+      ],
+      erreurs:[
+        '**Balancer le buste** pour monter.',
+        '**Coudes qui avancent**.',
+      ],
+      interet:'Épaissit le bras **et l\'avant-bras** : le bras paraît plus large de face comme de profil.'
+    }},
+  // ── Sortis du programme le 9/11 (programme V athlétique), gardés pour l'historique ──
+    {id:'a4',muscle:'Dos',restTime:120,name:'Tirage vertical large',format:'3×8-12 · RIR 1-2',sets:3,
+      info:{
+        gif:'gifs/tirage-vertical-large.webp',
+        muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Milieu du dos', 'Grand rond'] },
+        execution:[
+          '**Cuisses bien calées** sous les boudins, pieds à plat, abdos serrés.',
+          '**Prise pronation large**, un peu plus large que les épaules, sans exagérer.',
+          '**Abaisse d\'abord les épaules** et les omoplates, puis tire la barre **vers le haut de la poitrine** en bombant légèrement le torse.',
+          'Coudes tirés **vers le bas et un peu vers l\'arrière**, buste presque immobile (un léger recul est OK).',
+          '**Remonte lentement**, sans laisser la barre tirer les épaules vers les oreilles.',
+        ],
+        erreurs:[
+          '**Se balancer en arrière** pour tirer plus lourd.',
+          'Descendre la barre loin sous le menton ou derrière la nuque.',
+          'Tirer avec les bras : pense **« coudes vers les hanches »**.',
+        ],
+        interet:'Ajoute un tirage vertical au rowing du Jour A. La prise large vise **la largeur du dos**. En volume modéré (10-12) pour accumuler du travail **sans fatiguer le bas du dos**, déjà sollicité par le rowing barre.'
+      }},
+    {id:'c3',muscle:'Pectoraux',restTime:75,name:'Écarté poulie',format:'3×12-15 · RIR 0-1',sets:3,
+      info:{
+        gif:'gifs/ecarte-poulie.webp',
+        muscles:{ main:['Pectoraux'], secondary:['Deltoïdes antérieurs'] },
+        execution:[
+          '**Poulies à hauteur de poitrine**, un pied devant l\'autre, buste légèrement penché. Les câbles sont **déjà tendus** au départ.',
+          'Bras écartés, **coudes légèrement fléchis et fixes**, paumes vers l\'avant.',
+          'Ramène les mains l\'une vers l\'autre **en grand arc de cercle**, comme pour enlacer un arbre.',
+          '**Serre les pecs 1 à 2 secondes**, puis **reviens lentement** jusqu\'à l\'étirement.',
+        ],
+        erreurs:[
+          '**Plier et tendre les coudes** pendant le mouvement : ça devient un développé.',
+          'Laisser les mains aller **derrière la ligne des épaules** au retour.',
+          '**Cogner les poignées** en fin de mouvement ou les serrer trop fort.',
+        ],
+        interet:'Isolation des pectoraux avec une **tension constante**, **plus douce pour les épaules** que les haltères. En fin de séance pecs, pour finir le muscle avec du volume après les développés.'
+      }},
+    {id:'c4',muscle:'Épaules',restTime:60,name:'Élévations latérales',format:'4×12-20 · dernière en drop set',sets:4,dropSet:true,
+      info:{
+        gif:'gifs/elevations-laterales-halteres.webp',
+        muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes postérieurs', 'Trapèzes'] },
+        execution:[
+          '**Phase 1, buste penché à ~45°** : **8 élévations** latérales, coudes qui mènent, jusqu\'à l\'horizontale.',
+          '**Phase 2, sans repos** : redresse-toi et fais **8 élévations classiques debout**, avec **les mêmes haltères**.',
+          'Debout, le mouvement est plus facile : c\'est ce qui te permet de continuer sans changer de poids.',
+          '**Mouvement lent et contrôlé** dans les deux phases. **1:30 de repos** après chaque série complète.',
+        ],
+        erreurs:[
+          '**Prendre trop lourd** : tu dois tenir **les 16 répétitions** proprement.',
+          '**Hausser les épaules** quand la fatigue arrive.',
+          'Accélérer la deuxième phase avec de l\'élan.',
+        ],
+        interet:'**Drop set mécanique** : on change d\'angle au lieu de baisser la charge, pour aller chercher **16 répétitions efficaces** par série. Beaucoup de travail pour le deltoïde latéral en peu de temps.'
+      }},
+    {id:'c6',muscle:'Bras',restTime:75,name:'Curl marteau + extension triceps',format:'3×10-15 / 10-15 · RIR 0-1',sets:3,superset:true,
+      info:{
+        gif:'gifs/curl-marteau.webp',
+        muscles:{ main:['Biceps', 'Brachio-radial (avant-bras)', 'Triceps'], secondary:['Brachial'] },
+        execution:[
+          '**Curl marteau** : debout, haltères en **prise neutre** (paumes face au corps), **coudes collés et fixes**. Monte le plus haut possible, contracte, **descends lentement**.',
+          '**Extension à la poulie haute** : coudes collés au corps, pousse jusqu\'à l\'extension complète, **tiens 1 s en bas**, remonte jusqu\'à 90°.',
+          'Enchaîne les deux **sans repos**, **1:30 de repos** après le tour complet.',
+          'Mouvements stricts, **pas d\'élan**.',
+        ],
+        erreurs:[
+          '**Se pencher en arrière** ou balancer les haltères.',
+          '**Bâcler la descente**.',
+          '**Laisser les coudes bouger** pendant l\'extension.',
+        ],
+        interet:'Le curl marteau vise l\'avant-bras et le brachial, qui donnent **l\'épaisseur du bras**. Variante différente du curl EZ du Jour A, pour varier le travail. Superset avec le triceps pour les mêmes raisons qu\'au Jour A : **deux fois moins de temps**, presque sans perte de force.'
+      }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent
@@ -982,6 +1135,11 @@ const ALTERNATIVES = {
   'x-releve-jambes': ['x-crunch-machine', 'x-planche'],
   'x-planche': ['x-releve-jambes'],
   'x-pushdown-barre': ['x-triceps-poulie', 'x-triceps-corde', 'x-triceps-machine'],
+  'x-box-jump':     ['x-squat-saute', 'x-kb-swing'],
+  'x-squat-saute':  ['x-box-jump', 'x-kb-swing'],
+  'x-kb-swing':     ['x-box-jump', 'x-squat-saute'],
+  'x-farmer':       ['x-planche', 'x-releve-jambes'],
+  'x-curl-marteau': ['x-curl-poulie', 'x-curl-machine', 'x-curl-incline'],
 };
 
 // ── Couleurs des groupes musculaires ─────────────────────────────────────────

@@ -155,14 +155,25 @@ function guideProg() {
 
 function guideWhy() {
   const vol = [
-    { m: 'Épaules (latéraux)', n: 11, max: 16, c: 'var(--orange, #D9702E)', tag: 'Priorité' },
-    { m: 'Dos (dorsaux)',      n: 12, max: 16, c: 'var(--blue, #2D7DD2)',   tag: 'Priorité' },
-    { m: 'Pectoraux',          n: 15, max: 16, c: 'var(--red, #C23B3B)' },
-    { m: 'Biceps',             n: 9,  max: 16, c: 'var(--purple, #8E5BD6)' },
-    { m: 'Triceps',            n: 9,  max: 16, c: 'var(--purple, #8E5BD6)' },
+    { m: 'Épaules (latéraux)', n: 13, max: 18, c: 'var(--orange, #D9702E)', tag: 'Priorité' },
+    { m: 'Dos (dorsaux)',      n: 17, max: 18, c: 'var(--blue, #2D7DD2)',   tag: 'Priorité' },
+    { m: 'Pectoraux',          n: 10, max: 18, c: 'var(--red, #C23B3B)' },
+    { m: 'Arrière d\'épaule',  n: 6,  max: 18, c: 'var(--orange, #D9702E)' },
+    { m: 'Biceps',             n: 12, max: 18, c: 'var(--purple, #8E5BD6)' },
+    { m: 'Triceps',            n: 11, max: 18, c: 'var(--purple, #8E5BD6)' },
+    { m: 'Jambes',             n: 9,  max: 18, c: 'var(--green, #3B7A57)' },
   ];
   return `
-    <div class="gd-lead">Objectif : <strong>le plus grand ratio épaules / taille</strong>. Deux muscles font la largeur : les <strong>deltoïdes latéraux</strong> et les <strong>dorsaux</strong>. La taille, elle, s'affine en perdant du gras (aucun exo ne fait fondre le ventre localement : c'est le rôle d'Hébé).</div>
+    <div class="gd-lead">Objectif : <strong>un physique en V, athlétique</strong>. Deux muscles font la largeur : les <strong>deltoïdes latéraux</strong> et les <strong>dorsaux</strong>, travaillés 3 fois par semaine. Les <strong>jambes</strong> et un exercice <strong>explosif</strong> par séance te rendent athlétique. La taille s'affine en perdant du gras : c'est le rôle d'Hébé.</div>
+
+    <div class="gd-h">Les 3 séances</div>
+    <ul class="gd-list">
+      <li><strong>A · Force</strong> : box jump, couché barre, hack squat, tractions + latérales, rowing, bras.</li>
+      <li><strong>B · Épaules & dos</strong> : swing, militaire, tirage + latérales, soulevé de terre roumain, dips, oiseau.</li>
+      <li><strong>C · Athlétique</strong> : squat sauté, incliné haltères, tirage + latérales en drop set, bulgare, rowing, bras, marche du fermier.</li>
+      <li><strong>Supersets</strong> tirage → latérales : deux muscles qui ne se gênent pas, enchaînés. Même résultat, <strong>moins de temps</strong>.</li>
+      <li><strong>Nouveau bloc tous les ~6 semaines</strong> (le prochain après Noël) : mêmes principes, variantes différentes, pour ne jamais t'en lasser.</li>
+    </ul>
 
     <div class="gd-h">Séries dures par semaine</div>
     <div class="gd-vol">
@@ -183,6 +194,9 @@ function guideWhy() {
       <li><strong>Latérales</strong> : haltères et poulie font aussi bien, à 12-16 reps proches de l'échec (Frontiers in Physiology, 2025). On alterne pour varier.</li>
       <li><strong>Position étirée</strong> : un muscle travaillé étiré grossit plus (Maeo et al., 2023). D'où le triceps au-dessus de la tête et le curl incliné.</li>
       <li><strong>Barre ou machine</strong> : même croissance (Haugen et al., 2023). La barre reste pour le couché et le militaire, parce que tes records y sont.</li>
+      <li><strong>Supersets</strong> : autant de muscle et de force que des séries classiques, en moins de temps (Weakley et al., méta-analyse 2025).</li>
+      <li><strong>Pliométrie</strong> (sauts, swings) : améliore la détente et l'explosivité, en plus de la muscu (méta-analyses 2023-2025).</li>
+      <li><strong>Varier les exos</strong> de temps en temps donne des résultats au moins aussi bons et aide la motivation ; trop changer nuit à la progression (Kassiano et al., 2022). D'où un bloc stable de ~6 semaines.</li>
     </ul>`;
 }
 
