@@ -183,22 +183,22 @@ const PROGRAM = [
           ],
           interet:'Travaillé lourd (6-8), c\'est **ton chemin vers les tractions**. La prise neutre **ménage les épaules** et laisse charger plus. Le jour où tu tireras l\'équivalent de ton poids de corps 6 fois ici, la traction stricte ne sera plus loin.'
         }},
-      {id:'b4',restTime:60,name:'Latérales poulie basse',format:'4×12-20 · dernière à fond',sets:4,
+      {id:'a5',restTime:60,name:'Élévations latérales',format:'4×12-20 · dernière à fond',sets:4,
         info:{
-          gif:'gifs/elevations-laterales-poulie.webp',
-          muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes antérieurs et postérieurs', 'Coiffe des rotateurs'] },
+          gif:'gifs/elevations-laterales-halteres.webp',
+          muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
           execution:[
-            'De côté par rapport à la poulie basse : la main éloignée tient la poignée, **le câble passe devant toi**, l\'autre main tient le montant.',
-            '**Penche-toi légèrement** à l\'opposé de la machine pour gagner de l\'amplitude.',
-            'Monte le bras sur le côté **jusqu\'à l\'horizontale**, coude légèrement fléchi, paume vers le sol. Courte pause.',
-            '**Redescends lentement (2-3 s)** et repars **sans pause en bas** pour garder la tension.',
+            'Debout, pieds largeur de bassin, genoux souples, **buste légèrement penché** vers l\'avant (~10-15°).',
+            'Haltères le long du corps, **coudes légèrement fléchis et fixes**.',
+            'Monte les bras sur les côtés jusqu\'à ce que **les coudes arrivent à l\'horizontale**. **Les coudes mènent**, les mains restent sous les coudes (comme pour verser une carafe).',
+            'Courte pause en haut, puis **redescends lentement (2 s)**. Pour garder la tension, **ne repose pas les haltères** contre les cuisses.',
           ],
           erreurs:[
-            'Laisser le câble **ramener le bras d\'un coup**.',
-            'Monter nettement **au-dessus de l\'horizontale**.',
-            'Balancer le corps pour aider.',
+            'Charger trop lourd et monter avec un coup de reins.',
+            '**Hausser les épaules** : ce sont les trapèzes qui travaillent alors.',
+            'Monter les mains **plus haut que les coudes**.',
           ],
-          interet:'La poulie **garde la tension sur tout le mouvement**, même en bas, là où les haltères n\'en donnent presque pas. Angle complémentaire des latérales haltères du Jour A. **4 séries** parce que les épaules sont un point faible.'
+          interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
         }},
     {id:'x-oiseau-machine',restTime:60,name:'Oiseau (machine)',reps:'12-20',format:'3×12-20 · RIR 0-1',sets:3,
       info:{

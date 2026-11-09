@@ -904,6 +904,24 @@ const EXTRA_EXERCISES = [
       ],
       interet:'Le classique du triceps : **simple, stable, facile à charger**. La barre droite permet de pousser plus lourd que la corde.'
     }},
+  // ── Retiré du Jour B le 9/11 (latérales poulie basse pas aimées) ──
+    {id:'b4',muscle:'Épaules',restTime:60,name:'Latérales poulie basse',format:'4×12-20 · dernière à fond',sets:4,
+      info:{
+        gif:'gifs/elevations-laterales-poulie.webp',
+        muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes antérieurs et postérieurs', 'Coiffe des rotateurs'] },
+        execution:[
+          'De côté par rapport à la poulie basse : la main éloignée tient la poignée, **le câble passe devant toi**, l\'autre main tient le montant.',
+          '**Penche-toi légèrement** à l\'opposé de la machine pour gagner de l\'amplitude.',
+          'Monte le bras sur le côté **jusqu\'à l\'horizontale**, coude légèrement fléchi, paume vers le sol. Courte pause.',
+          '**Redescends lentement (2-3 s)** et repars **sans pause en bas** pour garder la tension.',
+        ],
+        erreurs:[
+          'Laisser le câble **ramener le bras d\'un coup**.',
+          'Monter nettement **au-dessus de l\'horizontale**.',
+          'Balancer le corps pour aider.',
+        ],
+        interet:'La poulie **garde la tension sur tout le mouvement**, même en bas, là où les haltères n\'en donnent presque pas. Angle complémentaire des latérales haltères du Jour A. **4 séries** parce que les épaules sont un point faible.'
+      }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent
