@@ -108,22 +108,22 @@ const PROGRAM = [
         ],
         interet:'Bras derrière le corps, le biceps est **étiré au maximum** : un des curls les plus efficaces pour le développer.'
       }},
-    {id:'x-triceps-corde',restTime:90,name:'Extension triceps corde au-dessus de la tête',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
+    {id:'x-pushdown-barre',restTime:90,name:'Extensions triceps poulie haute (barre droite)',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
       info:{
-        gif:'gifs/triceps-corde.webp',
-        muscles:{ main:['Triceps (surtout la longue portion)'], secondary:[] },
+        gif:'gifs/pushdown-barre.webp',
+        muscles:{ main:['Triceps'], secondary:[] },
         execution:[
-          'Poulie haute, corde en main, **dos à la machine**, un pied devant l\'autre.',
-          'Corde derrière la tête, **coudes pliés près de la tête**, buste légèrement penché en avant. **Rentre un peu le menton**.',
-          'Tends les bras vers l\'avant et un peu vers le haut, jusqu\'à ce qu\'ils soient **presque tendus**, en **écartant la corde** en fin de mouvement.',
-          'Reviens lentement jusqu\'à **un bon étirement des triceps**, **coudes fixes** : seuls les avant-bras bougent.',
+          'Face à la poulie haute, **barre droite** en prise pronation (paumes vers le bas), mains à largeur d\'épaules.',
+          '**Coudes collés au corps**, buste légèrement penché, abdos serrés.',
+          'Pousse la barre vers le bas **jusqu\'aux bras tendus**, serre les triceps 1 seconde.',
+          '**Remonte lentement** jusqu\'à ce que les avant-bras soient à l\'horizontale, sans décoller les coudes.',
         ],
         erreurs:[
-          '**Écarter les coudes** : les triceps travaillent moins.',
-          '**Se laisser tirer en arrière** ou cambrer.',
-          '**Charger lourd** : le corps devient instable et les coudes souffrent.',
+          '**Coudes qui partent devant** ou s\'écartent : ils restent fixes contre les côtes.',
+          '**Utiliser le poids du corps** pour descendre la barre.',
+          '**Poignets cassés** : ils restent dans l\'alignement des avant-bras.',
         ],
-        interet:'Bras au-dessus de la tête, **la longue portion du triceps**, qui fait la plus grosse partie du bras, **travaille étirée** : c\'est là qu\'elle progresse le mieux. À faire si tu remplaces le superset curl/extension par un curl seul.'
+        interet:'Le classique du triceps : **simple, stable, facile à charger**. La barre droite permet de pousser plus lourd que la corde.'
       }},
     ]
   },

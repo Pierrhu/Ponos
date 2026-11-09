@@ -887,6 +887,23 @@ const EXTRA_EXERCISES = [
         ],
         interet:'Complète la barre du Jour A : l\'amplitude est plus grande et **chaque bras travaille seul**, ce qui corrige les déséquilibres et recrute plus les stabilisateurs. Jour de volume : **charges modérées en 10-12**, pas de top set.'
       }},
+  {id:'x-pushdown-barre',muscle:'Bras',restTime:90,name:'Extensions triceps poulie haute (barre droite)',reps:'10-15',format:'3×10-15',sets:3,
+    info:{
+      gif:'gifs/pushdown-barre.webp',
+      muscles:{ main:['Triceps'], secondary:[] },
+      execution:[
+        'Face à la poulie haute, **barre droite** en prise pronation (paumes vers le bas), mains à largeur d\'épaules.',
+        '**Coudes collés au corps**, buste légèrement penché, abdos serrés.',
+        'Pousse la barre vers le bas **jusqu\'aux bras tendus**, serre les triceps 1 seconde.',
+        '**Remonte lentement** jusqu\'à ce que les avant-bras soient à l\'horizontale, sans décoller les coudes.',
+      ],
+      erreurs:[
+        '**Coudes qui partent devant** ou s\'écartent : ils restent fixes contre les côtes.',
+        '**Utiliser le poids du corps** pour descendre la barre.',
+        '**Poignets cassés** : ils restent dans l\'alignement des avant-bras.',
+      ],
+      interet:'Le classique du triceps : **simple, stable, facile à charger**. La barre droite permet de pousser plus lourd que la corde.'
+    }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent
@@ -932,7 +949,7 @@ const ALTERNATIVES = {
   'x-curl-incline': ['x-curl-machine', 'x-curl-pupitre', 'x-curl-poulie'],
   'x-curl-pupitre': ['x-curl-machine', 'x-curl-incline', 'x-curl-poulie'],
   'x-triceps-machine': ['x-triceps-poulie', 'x-triceps-corde', 'x-dips-assis'],
-  'x-triceps-poulie': ['x-triceps-machine', 'x-triceps-corde', 'x-dips-assis'],
+  'x-triceps-poulie': ['x-pushdown-barre', 'x-triceps-machine', 'x-triceps-corde', 'x-dips-assis'],
   'x-dips-assis': ['x-triceps-machine', 'x-dips-assistes'],
   'x-squat-smith': ['x-hack', 'x-presse', 'x-goblet'],
   'x-hack': ['x-presse', 'x-squat-smith', 'x-goblet'],
@@ -946,6 +963,7 @@ const ALTERNATIVES = {
   'x-crunch-poulie': ['x-crunch-machine', 'x-releve-jambes'],
   'x-releve-jambes': ['x-crunch-machine', 'x-planche'],
   'x-planche': ['x-releve-jambes'],
+  'x-pushdown-barre': ['x-triceps-poulie', 'x-triceps-corde', 'x-triceps-machine'],
 };
 
 // ── Couleurs des groupes musculaires ─────────────────────────────────────────
