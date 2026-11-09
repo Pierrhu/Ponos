@@ -46,13 +46,15 @@ function renderWorkout() {
   if (!state.guideSeen) html += `<button class="gd-entry" onclick="openGuide('rir')"><span class="gd-entry-ic">?</span><span><strong>RIR, progression, logique du programme</strong><br><span class="gd-entry-sub">Le guide pour savoir quoi faire à chaque série</span></span><span class="ex-arrow">▸</span></button>`;
 
   // Exercices
-  exercises.forEach(ex => {
+  exercises.forEach((ex, exIdx) => {
     const isOpen   = state.activeEx === ex.id;
+    const ssSecond = exIdx > 0 && exercises[exIdx - 1].superset && !ex.superset;
     const lastPerf = getLastPerf(ex.id, 0);
     const sugg     = suggestions[ex.id];
     let tagHtml = '';
     if (ex.topSet)   tagHtml  = '<span class="tag tag-top">TOP SET</span>';
     if (ex.superset) tagHtml  = '<span class="tag tag-ss">SUPERSET</span>';
+    if (ssSecond)    tagHtml  = '<span class="tag tag-ss">SUPERSET · 2ᵉ exo</span>';
     if (ex.dropSet)  tagHtml  = '<span class="tag tag-drop">DROP SET</span>';
     if (sugg)        tagHtml += `<span class="suggestion-tag">↑ Essaie ${sugg}kg</span>`;
 
