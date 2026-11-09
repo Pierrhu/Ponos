@@ -23,7 +23,7 @@ const PROGRAM = [
           ],
           interet:'L\'exercice de base des pectoraux, et **ton marqueur de force principal** (c\'est lui qui donne ton rang). Un top set lourd puis deux séries de back-off : assez de travail pour progresser, en tenant dans l\'heure avec l\'échauffement.'
         }},
-    {id:'x-row-machine',restTime:120,name:'Rowing assis (machine)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
+    {id:'x-row-machine',restTime:120,name:'Rowing assis',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/rowing-assis-machine.webp',
         muscles:{ main:['Milieu du dos (rhomboïdes, trapèzes)', 'Grand dorsal'], secondary:['Biceps', 'Deltoïdes postérieurs'] },
@@ -39,7 +39,7 @@ const PROGRAM = [
         ],
         interet:'Poitrine calée : **zéro stress sur le bas du dos**. Parfait remplaçant des rowings libres quand le dos est fatigué.'
       }},
-      {id:'a3',restTime:120,name:'Développé incliné DB 30°',format:'3×8-12 · RIR 1-2',sets:3,
+      {id:'a3',restTime:120,name:'Développé incliné haltères',format:'3×8-12 · RIR 1-2',sets:3,
         info:{
           gif:'gifs/developpe-incline-db.webp',
           muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
@@ -92,7 +92,7 @@ const PROGRAM = [
           ],
           interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
         }},
-    {id:'x-curl-incline',superset:true,restTime:10,name:'Curl incliné (haltères)',reps:'10-15',format:'3×10-15 · RIR 0-1 (superset)',sets:3,
+    {id:'x-curl-incline',superset:true,restTime:10,name:'Curl incliné',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/curl-incline-halteres.webp',
         muscles:{ main:['Biceps (longue portion)'], secondary:['Avant-bras'] },
@@ -108,7 +108,7 @@ const PROGRAM = [
         ],
         interet:'Bras derrière le corps, le biceps est **étiré au maximum** : un des curls les plus efficaces pour le développer.'
       }},
-    {id:'x-pushdown-barre',restTime:90,name:'Extensions triceps poulie haute (barre droite)',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
+    {id:'x-pushdown-barre',restTime:90,name:'Extension triceps barre',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/pushdown-barre.webp',
         muscles:{ main:['Triceps'], secondary:[] },
@@ -200,7 +200,7 @@ const PROGRAM = [
           ],
           interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
         }},
-    {id:'x-oiseau-machine',restTime:60,name:'Oiseau (machine)',reps:'12-20',format:'3×12-20 · RIR 0-1',sets:3,
+    {id:'x-oiseau-machine',restTime:60,name:'Oiseau',reps:'12-20',format:'3×12-20 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/oiseau-machine.webp',
         muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens'] },
@@ -217,7 +217,7 @@ const PROGRAM = [
         ],
         interet:'Isole **l\'arrière des épaules**, souvent en retard, sans avoir à te stabiliser. **Bon remplaçant du face pull** si la poulie est prise.'
       }},
-    {id:'x-curl-poulie',superset:true,restTime:10,name:'Curl biceps poulie basse',reps:'10-15',format:'3×10-15 · RIR 0-1 (superset)',sets:3,
+    {id:'x-curl-poulie',superset:true,restTime:10,name:'Curl poulie',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/curl-poulie-basse.webp',
         muscles:{ main:['Biceps'], secondary:['Brachial', 'Avant-bras'] },
@@ -234,7 +234,7 @@ const PROGRAM = [
         ],
         interet:'La poulie garde une **tension sur tout le mouvement**, même en bas, là où la barre libre n\'en donne presque pas. Isolation stricte qui permet de progresser en charge **sans tricher**. Bon remplaçant du curl EZ.'
       }},
-    {id:'x-triceps-poulie',restTime:90,name:'Extensions triceps poulie haute (corde)',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
+    {id:'x-triceps-poulie',restTime:90,name:'Extension triceps corde',reps:'10-15',format:'3×10-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/triceps-poulie-haute.webp',
         muscles:{ main:['Triceps'], secondary:[] },
@@ -255,7 +255,7 @@ const PROGRAM = [
   {
     id:'C', name:'Jour C', subtitle:'Volume & Rattrapage', accent:'#1A9E8F', when:'Samedi',
     exercises: [
-    {id:'x-incline-machine',restTime:120,name:'Développé incliné (machine)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
+    {id:'x-incline-machine',restTime:120,name:'Développé incliné machine',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/developpe-incline-machine.webp',
         muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
@@ -272,7 +272,7 @@ const PROGRAM = [
         ],
         interet:'Même rôle que le développé incliné haltères (**le haut des pectoraux**), mais **guidé** : tu peux pousser fort sans gérer l\'équilibre. Parfait quand la salle est pleine ou en fin de séance pecs.'
       }},
-    {id:'x-tirage-machine',restTime:120,name:'Tirage vertical (machine Hammer)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
+    {id:'x-tirage-machine',restTime:120,name:'Tirage vertical Hammer',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/tirage-vertical-machine.webp',
         muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Rhomboïdes'] },
@@ -289,7 +289,7 @@ const PROGRAM = [
         ],
         interet:'Remplace le tirage à la poulie quand elle est prise. Les deux bras travaillent **chacun de leur côté** : le plus faible ne peut pas tricher.'
       }},
-    {id:'x-dips-assistes',restTime:120,name:'Dips assistés (machine)',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
+    {id:'x-dips-assistes',restTime:120,name:'Dips assistés',reps:'8-12',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/dips-assistes-machine.webp',
         muscles:{ main:['Pectoraux (bas)', 'Triceps'], secondary:['Deltoïdes antérieurs'] },
@@ -305,7 +305,7 @@ const PROGRAM = [
         ],
         interet:'La version accessible des dips : tu progresses en **retirant de l\'assistance** au fil des semaines, jusqu\'aux dips au poids du corps.'
       }},
-      {id:'c3',restTime:75,name:'Écarté poulie vis-à-vis',format:'3×12-15 · RIR 0-1',sets:3,
+      {id:'c3',restTime:75,name:'Écarté poulie',format:'3×12-15 · RIR 0-1',sets:3,
         info:{
           gif:'gifs/ecarte-poulie.webp',
           muscles:{ main:['Pectoraux'], secondary:['Deltoïdes antérieurs'] },
@@ -322,7 +322,7 @@ const PROGRAM = [
           ],
           interet:'Isolation des pectoraux avec une **tension constante**, **plus douce pour les épaules** que les haltères. En fin de séance pecs, pour finir le muscle avec du volume après les développés.'
         }},
-      {id:'c4',restTime:60,name:'Élévations latérales (drop set)',format:'4×12-20 · dernière en drop set',sets:4,dropSet:true,
+      {id:'c4',restTime:60,name:'Élévations latérales',format:'4×12-20 · dernière en drop set',sets:4,dropSet:true,
         info:{
           gif:'gifs/elevations-laterales-halteres.webp',
           muscles:{ main:['Deltoïdes latéraux'], secondary:['Deltoïdes postérieurs', 'Trapèzes'] },
@@ -339,7 +339,7 @@ const PROGRAM = [
           ],
           interet:'**Drop set mécanique** : on change d\'angle au lieu de baisser la charge, pour aller chercher **16 répétitions efficaces** par série. Beaucoup de travail pour le deltoïde latéral en peu de temps.'
         }},
-      {id:'c6',restTime:75,name:'SS: Curl marteau / Ext.',format:'3×10-15 / 10-15 · RIR 0-1',sets:3,superset:true,
+      {id:'c6',restTime:75,name:'Curl marteau + extension triceps',format:'3×10-15 / 10-15 · RIR 0-1',sets:3,superset:true,
         info:{
           gif:'gifs/curl-marteau.webp',
           muscles:{ main:['Biceps', 'Brachio-radial (avant-bras)', 'Triceps'], secondary:['Brachial'] },
