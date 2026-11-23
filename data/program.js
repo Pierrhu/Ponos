@@ -4,7 +4,7 @@ const PROGRAM = [
   {
     id:'A', name:'Push', subtitle:'Pecs · épaules · triceps · quadris', accent:'#C23B3B', when:'Alterné',
     exercises: [
-      {id:'a1',restTime:180,name:'Développé couché barre',format:'Top set 4-6 + 2×6-8 · RIR 1-2',sets:3,topSet:true,rankKey:'bench',
+      {id:'a1',restTime:180,name:'Développé couché barre',format:'Top set 4-6 + 3×6-8 · RIR 1-2',sets:4,topSet:true,rankKey:'bench',
         info:{
           gif:'gifs/developpe-couche-barre.webp',
           muscles:{ main:['Pectoraux'], secondary:['Triceps', 'Deltoïdes antérieurs'] },
@@ -74,7 +74,7 @@ const PROGRAM = [
         ],
         interet:'La version accessible des dips : tu progresses en **retirant de l\'assistance** au fil des semaines, jusqu\'aux dips au poids du corps.'
       }},
-      {id:'a5',restTime:60,name:'Élévations latérales',format:'4×12-15 · dernière à fond',sets:4,
+      {id:'a5',restTime:60,name:'Élévations latérales',format:'5×12-15 · dernière à fond',sets:5,
         info:{
           gif:'gifs/elevations-laterales-halteres.webp',
           muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
@@ -130,7 +130,7 @@ const PROGRAM = [
   {
     id:'B', name:'Pull', subtitle:'Dos · arrière d\'épaule · biceps · ischios', accent:'#2D7DD2', when:'Alterné',
     exercises: [
-    {id:'x-tirage-machine',topSet:true,restTime:150,name:'Tirage vertical Hammer',reps:'6-10',format:'Top set 6-8 + 2×8-10 · RIR 1-2',sets:3,
+    {id:'x-tirage-machine',topSet:true,restTime:150,name:'Tirage vertical Hammer',reps:'6-10',format:'Top set 6-8 + 3×8-10 · RIR 1-2',sets:4,
       info:{
         gif:'gifs/tirage-vertical-machine.webp',
         muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Rhomboïdes'] },
@@ -147,7 +147,7 @@ const PROGRAM = [
         ],
         interet:'Remplace le tirage à la poulie quand elle est prise. Les deux bras travaillent **chacun de leur côté** : le plus faible ne peut pas tricher.'
       }},
-    {id:'x-tractions-ass',restTime:120,name:'Tractions assistées',reps:'6-10',format:'3×6-10 · RIR 1-2',sets:3,
+    {id:'x-tractions-ass',restTime:120,name:'Tractions assistées',reps:'6-10',format:'4×6-10 · RIR 1-2',sets:4,
       info:{
         gif:'gifs/tractions-assistees.webp',
         muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Milieu du dos'] },
@@ -198,7 +198,7 @@ const PROGRAM = [
         ],
         interet:'Isole **l\'arrière des épaules**, souvent en retard, sans avoir à te stabiliser. **Bon remplaçant du face pull** si la poulie est prise.'
       }},
-      {id:'a5',restTime:60,name:'Élévations latérales',format:'3×12-15 · dernière à fond',sets:3,
+      {id:'a5',restTime:60,name:'Élévations latérales',format:'4×12-15 · dernière à fond',sets:4,
         info:{
           gif:'gifs/elevations-laterales-halteres.webp',
           muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
