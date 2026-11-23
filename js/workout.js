@@ -168,9 +168,8 @@ const WARMUP_MOVES = {
 };
 // Adapté au jour : épaules toujours, puis ce que la séance sollicite le plus
 const WARMUP_BY_DAY = {
-  A: ['facepull', 'rotation', 'zottman'],                 // couché, hack squat
-  B: ['facepull', 'rotation', 'laterales', 'goodmorning'], // militaire + soulevé de terre roumain / swing
-  C: ['facepull', 'rotation', 'zottman'],                 // haltères, bulgare
+  A: ['facepull', 'rotation', 'zottman'],   // Push : couché, épaules, dips
+  B: ['facepull', 'rotation', 'zottman'],   // Pull : tirages, curl
 };
 const POWER_IDS = ['x-box-jump', 'x-kb-swing', 'x-squat-saute'];
 const WARMUP_DEFAULT = ['facepull', 'rotation', 'zottman'];

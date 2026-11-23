@@ -1075,6 +1075,60 @@ const EXTRA_EXERCISES = [
         ],
         interet:'Le curl marteau vise l\'avant-bras et le brachial, qui donnent **l\'épaisseur du bras**. Variante différente du curl EZ du Jour A, pour varier le travail. Superset avec le triceps pour les mêmes raisons qu\'au Jour A : **deux fois moins de temps**, presque sans perte de force.'
       }},
+  // ── Sortis du programme le 23/11 (passage en Push / Pull), gardés pour l'historique ──
+    {id:'b1',muscle:'Épaules',restTime:180,name:'Développé militaire',format:'Top set 4-6 + 2×6-8 · RIR 1-2',sets:3,topSet:true,rankKey:'ohp',
+      info:{
+        gif:'gifs/developpe-militaire-halteres.webp',
+        muscles:{ main:['Deltoïdes antérieurs et latéraux'], secondary:['Triceps', 'Haut des pectoraux', 'Abdos (gainage)'] },
+        execution:[
+          '**Debout, pieds largeur d\'épaules**, barre posée sur le haut de la poitrine, au creux des paumes, **coudes sous la barre**.',
+          '**Gaine abdos, fessiers et cuisses**. Inspire avant de pousser.',
+          '**Pousse à la verticale** en **reculant légèrement la tête** pour laisser passer la barre, puis ramène la tête sous la barre une fois passée.',
+          'En haut, bras tendus, barre **au-dessus du milieu du pied**, coudes très légèrement fléchis. Souffle.',
+          'Redescends lentement **jusqu\'aux clavicules**.',
+        ],
+        erreurs:[
+          '**Cambrer le bas du dos** pour finir la répétition : c\'est trop lourd pour ton gainage.',
+          '**Balancer le buste** ou pousser avec les jambes.',
+          'Barre qui part vers l\'avant au lieu de monter droit. En cas de gêne à l\'épaule, **élargis un peu la prise**.',
+        ],
+        interet:'Le mouvement de force principal des épaules, et ton **troisième marqueur de rang**. Debout, il demande beaucoup de gainage. Top set puis back-off, comme au développé couché.'
+      }},
+    {id:'b2',muscle:'Dos',superset:true,restTime:15,name:'Tirage vertical neutre',format:'4×8-12 · RIR 1-2',sets:4,
+      info:{
+        gif:'gifs/tirage-vertical-neutre.webp',
+        muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Milieu du dos'] },
+        execution:[
+          '**Poignée triangle** (prises parallèles), cuisses bien bloquées, buste légèrement penché en arrière.',
+          'Tire la poignée **vers le haut de la poitrine**, **coudes serrés vers les hanches**.',
+          'En bas : poitrine sortie, omoplates serrées, **pause de 1-2 s**.',
+          '**Remonte lentement**, bras presque tendus, sans laisser les épaules monter aux oreilles.',
+        ],
+        erreurs:[
+          'Charger trop et **raccourcir l\'amplitude**.',
+          '**Relâcher les épaules** d\'un coup au retour.',
+          'Aller vite : sur un exercice lourd, **le contrôle compte double**.',
+        ],
+        interet:'Travaillé lourd (6-8), c\'est **ton chemin vers les tractions**. La prise neutre **ménage les épaules** et laisse charger plus. Le jour où tu tireras l\'équivalent de ton poids de corps 6 fois ici, la traction stricte ne sera plus loin.'
+      }},
+    {id:'a3',muscle:'Pectoraux',restTime:120,name:'Développé incliné haltères',format:'3×8-12 · RIR 1-2',sets:3,
+      info:{
+        gif:'gifs/developpe-incline-db.webp',
+        muscles:{ main:['Haut des pectoraux'], secondary:['Deltoïdes antérieurs', 'Triceps'] },
+        execution:[
+          '**Banc à 30°, pas plus** : au-delà, ce sont les épaules qui prennent le relais.',
+          'Assis, haltères sur les cuisses, puis allonge-toi en les ramenant près de la poitrine. **Omoplates serrées**, dos collé au banc.',
+          'Inspire, et pousse **en arc de cercle** : les haltères se rapprochent en haut **sans se toucher**.',
+          'Descends lentement, coudes à ~45° du buste, jusqu\'à **un bon étirement des pecs** : c\'est là que le muscle travaille le plus.',
+          'Garde une **légère flexion des coudes** en haut pour ne pas perdre la tension.',
+        ],
+        erreurs:[
+          '**Entrechoquer les haltères** en haut.',
+          'Décoller les omoplates ou cambrer fort le bas du dos.',
+          'Partir aussi lourd qu\'au plat : l\'incliné se fait avec **une charge plus légère**.',
+        ],
+        interet:'Vise **le haut des pectoraux**, souvent en retard. Placé après le couché, il n\'a **pas besoin d\'être lourd** pour être efficace. Les haltères donnent une plus grande amplitude et font travailler chaque bras seul.'
+      }},
 ];
 
 // Remplaçants proposés en premier pour chaque exercice (les autres restent

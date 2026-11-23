@@ -155,24 +155,24 @@ function guideProg() {
 
 function guideWhy() {
   const vol = [
-    { m: 'Épaules (latéraux)', n: 13, max: 18, c: 'var(--orange, #D9702E)', tag: 'Priorité' },
-    { m: 'Dos (dorsaux)',      n: 17, max: 18, c: 'var(--blue, #2D7DD2)',   tag: 'Priorité' },
-    { m: 'Pectoraux',          n: 10, max: 18, c: 'var(--red, #C23B3B)' },
-    { m: 'Arrière d\'épaule',  n: 6,  max: 18, c: 'var(--orange, #D9702E)' },
-    { m: 'Biceps',             n: 12, max: 18, c: 'var(--purple, #8E5BD6)' },
-    { m: 'Triceps',            n: 11, max: 18, c: 'var(--purple, #8E5BD6)' },
+    { m: 'Épaules (latéraux)', n: 11, max: 18, c: 'var(--orange, #D9702E)', tag: 'Priorité' },
+    { m: 'Dos (dorsaux)',      n: 14, max: 18, c: 'var(--blue, #2D7DD2)',   tag: 'Priorité' },
+    { m: 'Pectoraux',          n: 14, max: 18, c: 'var(--red, #C23B3B)' },
+    { m: 'Arrière d\'épaule',  n: 7,  max: 18, c: 'var(--orange, #D9702E)' },
+    { m: 'Biceps',             n: 11, max: 18, c: 'var(--purple, #8E5BD6)' },
+    { m: 'Triceps',            n: 13, max: 18, c: 'var(--purple, #8E5BD6)' },
     { m: 'Jambes',             n: 9,  max: 18, c: 'var(--green, #3B7A57)' },
   ];
   return `
-    <div class="gd-lead">Objectif : <strong>un physique en V, athlétique</strong>. Deux muscles font la largeur : les <strong>deltoïdes latéraux</strong> et les <strong>dorsaux</strong>, travaillés 3 fois par semaine. Les <strong>jambes</strong> et un exercice <strong>explosif</strong> par séance te rendent athlétique. La taille s'affine en perdant du gras : c'est le rôle d'Hébé.</div>
+    <div class="gd-lead">Objectif : <strong>un physique en V</strong>, avec des exos que tu aimes. Deux muscles font la largeur : les <strong>deltoïdes latéraux</strong> et les <strong>dorsaux</strong>. Les jambes sont entretenues en fin de séance. La taille s'affine en perdant du gras.</div>
 
-    <div class="gd-h">Les 3 séances</div>
+    <div class="gd-h">Push / Pull en alternance</div>
     <ul class="gd-list">
-      <li><strong>A · Force</strong> : box jump, couché barre, hack squat, tractions + latérales, rowing, bras.</li>
-      <li><strong>B · Épaules & dos</strong> : swing, militaire, tirage + latérales, soulevé de terre roumain, dips, oiseau.</li>
-      <li><strong>C · Athlétique</strong> : squat sauté, incliné haltères, tirage + latérales en drop set, bulgare, rowing, bras, marche du fermier.</li>
-      <li><strong>Supersets</strong> tirage → latérales : deux muscles qui ne se gênent pas, enchaînés. Même résultat, <strong>moins de temps</strong>.</li>
-      <li><strong>Nouveau bloc tous les ~6 semaines</strong> (le prochain après Noël) : mêmes principes, variantes différentes, pour ne jamais t'en lasser.</li>
+      <li><strong>3 séances par semaine</strong>, Push et Pull à tour de rôle : une semaine Push · Pull · Push, la suivante Pull · Push · Pull.</li>
+      <li><strong>Push</strong> : couché barre, épaules machine, incliné machine, dips, latérales, triceps, presse.</li>
+      <li><strong>Pull</strong> : tirage Hammer, tractions assistées, rowing assis, oiseau, latérales, curl, leg curl.</li>
+      <li><strong>Latérales dans les deux séances</strong> : c'est ce qui élargit les épaules.</li>
+      <li><strong>Le programme ne change plus</strong> : on monte les kilos, c'est tout.</li>
     </ul>
 
     <div class="gd-h">Séries dures par semaine</div>
