@@ -166,13 +166,14 @@ function guideWhy() {
   return `
     <div class="gd-lead">Objectif : <strong>un physique en V</strong>, avec des exos que tu aimes. Deux muscles font la largeur : les <strong>deltoïdes latéraux</strong> et les <strong>dorsaux</strong>. Les jambes sont entretenues en fin de séance. La taille s'affine en perdant du gras.</div>
 
-    <div class="gd-h">Push / Pull en alternance</div>
+    <div class="gd-h">Push / Pull en 2 versions</div>
     <ul class="gd-list">
-      <li><strong>3 séances par semaine</strong>, Push et Pull à tour de rôle : une semaine Push · Pull · Push, la suivante Pull · Push · Pull.</li>
-      <li><strong>Push</strong> : couché barre, épaules machine, incliné machine, dips, latérales, triceps, presse.</li>
-      <li><strong>Pull</strong> : tirage Hammer, tractions assistées, rowing assis, oiseau, latérales, curl, leg curl.</li>
-      <li><strong>Latérales dans les deux séances</strong> : c'est ce qui élargit les épaules.</li>
-      <li><strong>Le programme ne change plus</strong> : on monte les kilos, c'est tout.</li>
+      <li><strong>3 séances par semaine</strong>, dans l'ordre : <strong>Push A → Pull A → Push B → Pull B</strong>, puis on recommence. Tu reprends simplement là où tu t'es arrêté.</li>
+      <li><strong>Push A</strong> : couché barre, épaules machine, incliné machine, dips, latérales, triceps, presse.</li>
+      <li><strong>Pull A</strong> : tirage Hammer, tractions assistées, rowing assis, oiseau, latérales, curl machine, leg curl.</li>
+      <li><strong>Push B</strong> : militaire, développé assis machine, pec deck, latérales, triceps corde, hack squat, leg extension.</li>
+      <li><strong>Pull B</strong> : tirage neutre, tirage large, T-bar, oiseau, latérales, curl incliné, leg curl allongé.</li>
+      <li><strong>Latérales dans les 4 séances</strong> : c'est ce qui élargit les épaules.</li>
     </ul>
 
     <div class="gd-h">Séries dures par semaine</div>

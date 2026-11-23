@@ -1,8 +1,8 @@
 // ============ PROGRAMME ============
-// Push / Pull en alternance (23/11) : 3 séances par semaine, jambes en fin de séance.
+// Push / Pull en 2 versions (23/11) : Push A → Pull A → Push B → Pull B, 3 séances par semaine.
 const PROGRAM = [
   {
-    id:'A', name:'Push', subtitle:'Pecs · épaules · triceps · quadris', accent:'#C23B3B', when:'Alterné',
+    id:'A', name:'Push A', subtitle:'Couché · épaules · dips · presse', accent:'#C23B3B', when:'Push',
     exercises: [
       {id:'a1',restTime:180,name:'Développé couché barre',format:'Top set 4-6 + 3×6-8 · RIR 1-2',sets:4,topSet:true,rankKey:'bench',
         info:{
@@ -128,7 +128,7 @@ const PROGRAM = [
     ]
   },
   {
-    id:'B', name:'Pull', subtitle:'Dos · arrière d\'épaule · biceps · ischios', accent:'#2D7DD2', when:'Alterné',
+    id:'B', name:'Pull A', subtitle:'Hammer · tractions · rowing · leg curl', accent:'#2D7DD2', when:'Pull',
     exercises: [
     {id:'x-tirage-machine',topSet:true,restTime:150,name:'Tirage vertical Hammer',reps:'6-10',format:'Top set 6-8 + 3×8-10 · RIR 1-2',sets:4,
       info:{
@@ -247,6 +247,249 @@ const PROGRAM = [
           '**Mouvement saccadé**.',
         ],
         interet:'Isole **l\'arrière des cuisses**, souvent faible chez les cyclistes. Il équilibre le travail des quadriceps à la presse et **protège les genoux**.'
+      }},
+    ]
+  },
+  {
+    id:'C', name:'Push B', subtitle:'Militaire · développé assis · hack', accent:'#D9702E', when:'Push',
+    exercises: [
+      {id:'b1',topSet:true,restTime:180,name:'Développé militaire',format:'Top set 4-6 + 3×6-8 · RIR 1-2',sets:4,rankKey:'ohp',
+        info:{
+          gif:'gifs/developpe-militaire-halteres.webp',
+          muscles:{ main:['Deltoïdes antérieurs et latéraux'], secondary:['Triceps', 'Haut des pectoraux', 'Abdos (gainage)'] },
+          execution:[
+            '**Debout, pieds largeur d\'épaules**, barre posée sur le haut de la poitrine, au creux des paumes, **coudes sous la barre**.',
+            '**Gaine abdos, fessiers et cuisses**. Inspire avant de pousser.',
+            '**Pousse à la verticale** en **reculant légèrement la tête** pour laisser passer la barre, puis ramène la tête sous la barre une fois passée.',
+            'En haut, bras tendus, barre **au-dessus du milieu du pied**, coudes très légèrement fléchis. Souffle.',
+            'Redescends lentement **jusqu\'aux clavicules**.',
+          ],
+          erreurs:[
+            '**Cambrer le bas du dos** pour finir la répétition : c\'est trop lourd pour ton gainage.',
+            '**Balancer le buste** ou pousser avec les jambes.',
+            'Barre qui part vers l\'avant au lieu de monter droit. En cas de gêne à l\'épaule, **élargis un peu la prise**.',
+          ],
+          interet:'Le mouvement de force principal des épaules, et ton **troisième marqueur de rang**. Debout, il demande beaucoup de gainage. Top set puis back-off, comme au développé couché.'
+        }},
+    {id:'x-chest-press',restTime:120,name:'Développé assis machine',reps:'8-10',format:'3×8-10 · RIR 1-2',sets:3,
+      info:{
+        gif:'gifs/chest-press-machine.webp',
+        muscles:{ main:['Pectoraux'], secondary:['Triceps', 'Deltoïdes antérieurs'] },
+        execution:[
+          'Règle le siège : **poignées au niveau du milieu de la poitrine**.',
+          'Dos collé au dossier, **omoplates serrées**, pieds à plat.',
+          'Pousse **jusqu\'aux bras presque tendus**, sans verrouiller les coudes.',
+          '**Reviens lentement** jusqu\'à sentir l\'étirement des pecs, sans reposer la charge.',
+        ],
+        erreurs:[
+          '**Siège trop haut ou trop bas** : les épaules prennent le relais.',
+          '**Décoller le dos** du dossier pour pousser plus lourd.',
+        ],
+        interet:'Le développé le plus simple qui soit : **pas d\'équilibre à gérer**, idéal pour débuter ou quand le banc est pris.'
+      }},
+    {id:'x-pecfly',restTime:75,name:'Pec deck',reps:'12-15',format:'3×12-15 · RIR 0-1',sets:3,
+      info:{
+        gif:'gifs/pec-fly-machine.webp',
+        muscles:{ main:['Pectoraux'], secondary:['Deltoïdes antérieurs'] },
+        execution:[
+          'Règle le siège : **poignées à hauteur de poitrine**. Dos plaqué au dossier, tête dans l\'axe.',
+          '**Coudes légèrement fléchis et fixes** pendant tout le mouvement.',
+          'Rapproche les poignées devant toi **en arc de cercle** en soufflant, sans qu\'elles se touchent. **Serre les pecs 1 à 2 s**.',
+          '**Reviens lentement** jusqu\'à sentir l\'étirement, sans reposer la charge entre les répétitions.',
+        ],
+        erreurs:[
+          '**Avancer le buste** ou pousser avec les pieds.',
+          '**Prendre de l\'élan**.',
+          '**Ouvrir trop loin** en arrière : arrête-toi quand tu sens l\'étirement.',
+        ],
+        interet:'Isole les pectoraux sans gérer l\'équilibre, avec une **tension constante**. Bon en finition ou quand les bancs sont pris. **Ne remplace pas un développé** pour la force, mais complète bien.'
+      }},
+      {id:'a5',restTime:60,name:'Élévations latérales',format:'5×12-15 · dernière à fond',sets:5,
+        info:{
+          gif:'gifs/elevations-laterales-halteres.webp',
+          muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
+          execution:[
+            'Debout, pieds largeur de bassin, genoux souples, **buste légèrement penché** vers l\'avant (~10-15°).',
+            'Haltères le long du corps, **coudes légèrement fléchis et fixes**.',
+            'Monte les bras sur les côtés jusqu\'à ce que **les coudes arrivent à l\'horizontale**. **Les coudes mènent**, les mains restent sous les coudes (comme pour verser une carafe).',
+            'Courte pause en haut, puis **redescends lentement (2 s)**. Pour garder la tension, **ne repose pas les haltères** contre les cuisses.',
+          ],
+          erreurs:[
+            'Charger trop lourd et monter avec un coup de reins.',
+            '**Hausser les épaules** : ce sont les trapèzes qui travaillent alors.',
+            'Monter les mains **plus haut que les coudes**.',
+          ],
+          interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
+        }},
+    {id:'x-triceps-poulie',restTime:60,name:'Triceps corde',reps:'10-12',format:'3×10-12 · RIR 0-1',sets:3,
+      info:{
+        gif:'gifs/triceps-poulie-haute.webp',
+        muscles:{ main:['Triceps'], secondary:[] },
+        execution:[
+          'Face à la poulie haute, corde en main, **coudes collés au corps**.',
+          'Buste légèrement penché, abdos serrés.',
+          'Pousse vers le bas **jusqu\'aux bras tendus** en écartant la corde en bas.',
+          '**Remonte lentement** jusqu\'à ce que les avant-bras soient à l\'horizontale.',
+        ],
+        erreurs:[
+          '**Coudes qui partent devant** : ils restent fixes.',
+          '**Utiliser le poids du corps** pour descendre la charge.',
+        ],
+        interet:'Le grand classique du triceps : simple, efficace, **facile à doser**.'
+      }},
+    {id:'x-hack',restTime:150,name:'Hack squat',reps:'8-10',format:'3×8-10 · RIR 2',sets:3,
+      info:{
+        gif:'gifs/hack-squat.webp',
+        muscles:{ main:['Quadriceps'], secondary:['Fessiers', 'Adducteurs'] },
+        execution:[
+          'Dos et épaules **bien calés** contre les coussins, pieds au milieu de la plateforme, largeur d\'épaules.',
+          'Débloque les sécurités.',
+          'Descends **lentement jusqu\'à 90°** ou un peu plus bas si c\'est confortable.',
+          'Remonte en poussant dans toute la plante du pied, **sans verrouiller les genoux**, puis remets les sécurités.',
+        ],
+        erreurs:[
+          '**Talons qui décollent** : avance un peu les pieds.',
+          '**Verrouiller les genoux** en haut.',
+        ],
+        interet:'Le meilleur ami des quadriceps : **dos protégé**, charge lourde possible.'
+      }},
+    {id:'x-legext',restTime:75,name:'Leg extension',reps:'12-15',format:'2×12-15 · RIR 1',sets:2,
+      info:{
+        gif:'gifs/leg-extension.webp',
+        muscles:{ main:['Quadriceps'], secondary:[] },
+        execution:[
+          'Dos calé, **genoux alignés avec l\'axe** de la machine, boudin juste au-dessus des chevilles.',
+          'Tends les jambes jusqu\'en haut **sans verrouiller les genoux**, **tiens 1 seconde**.',
+          '**Redescends lentement**, sans reposer la charge entre les répétitions.',
+        ],
+        erreurs:[
+          '**Aller très lourd** : les genoux n\'aiment pas les charges maximales sur cette machine.',
+          'Monter **avec de l\'élan**.',
+          'Genoux mal alignés avec l\'axe. **Arrête en cas de douleur** au genou.',
+        ],
+        interet:'**Isole les quadriceps**. Pratique pour remplacer la presse quand elle est prise, ou en finition. Bon aussi pour **échauffer les genoux** avant la presse.'
+      }},
+    ]
+  },
+  {
+    id:'D', name:'Pull B', subtitle:'Tirages · T-bar · curl incliné', accent:'#1A9E8F', when:'Pull',
+    exercises: [
+      {id:'b2',topSet:true,restTime:150,name:'Tirage vertical neutre',format:'Top set 6-8 + 3×8-10 · RIR 1-2',sets:4,
+        info:{
+          gif:'gifs/tirage-vertical-neutre.webp',
+          muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Milieu du dos'] },
+          execution:[
+            '**Poignée triangle** (prises parallèles), cuisses bien bloquées, buste légèrement penché en arrière.',
+            'Tire la poignée **vers le haut de la poitrine**, **coudes serrés vers les hanches**.',
+            'En bas : poitrine sortie, omoplates serrées, **pause de 1-2 s**.',
+            '**Remonte lentement**, bras presque tendus, sans laisser les épaules monter aux oreilles.',
+          ],
+          erreurs:[
+            'Charger trop et **raccourcir l\'amplitude**.',
+            '**Relâcher les épaules** d\'un coup au retour.',
+            'Aller vite : sur un exercice lourd, **le contrôle compte double**.',
+          ],
+          interet:'Travaillé lourd (6-8), c\'est **ton chemin vers les tractions**. La prise neutre **ménage les épaules** et laisse charger plus. Le jour où tu tireras l\'équivalent de ton poids de corps 6 fois ici, la traction stricte ne sera plus loin.'
+        }},
+      {id:'a4',restTime:120,name:'Tirage vertical large',format:'3×8-12 · RIR 1-2',sets:3,
+        info:{
+          gif:'gifs/tirage-vertical-large.webp',
+          muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Milieu du dos', 'Grand rond'] },
+          execution:[
+            '**Cuisses bien calées** sous les boudins, pieds à plat, abdos serrés.',
+            '**Prise pronation large**, un peu plus large que les épaules, sans exagérer.',
+            '**Abaisse d\'abord les épaules** et les omoplates, puis tire la barre **vers le haut de la poitrine** en bombant légèrement le torse.',
+            'Coudes tirés **vers le bas et un peu vers l\'arrière**, buste presque immobile (un léger recul est OK).',
+            '**Remonte lentement**, sans laisser la barre tirer les épaules vers les oreilles.',
+          ],
+          erreurs:[
+            '**Se balancer en arrière** pour tirer plus lourd.',
+            'Descendre la barre loin sous le menton ou derrière la nuque.',
+            'Tirer avec les bras : pense **« coudes vers les hanches »**.',
+          ],
+          interet:'Ajoute un tirage vertical au rowing du Jour A. La prise large vise **la largeur du dos**. En volume modéré (10-12) pour accumuler du travail **sans fatiguer le bas du dos**, déjà sollicité par le rowing barre.'
+        }},
+    {id:'x-tbar',restTime:120,name:'Rowing T-bar machine',reps:'8-10',format:'3×8-10 · RIR 1-2',sets:3,
+      info:{
+        gif:'gifs/rowing-t-bar-machine.webp',
+        muscles:{ main:['Milieu du dos', 'Grand dorsal'], secondary:['Biceps', 'Lombaires (gainage)', 'Deltoïdes postérieurs'] },
+        execution:[
+          'Pieds sur la plateforme, **poitrine contre le coussin** (ou buste penché à 45° dos plat si pas de coussin).',
+          'Attrape les poignées, **dos plat, abdos serrés**.',
+          'Tire la barre **vers le bas de la poitrine** en serrant les omoplates.',
+          '**Redescends sous contrôle** jusqu\'aux bras tendus.',
+        ],
+        erreurs:[
+          '**Arrondir le dos** : c\'est le piège numéro un.',
+          '**Donner des coups de reins** pour monter la charge.',
+        ],
+        interet:'Un rowing **lourd et stable** : tu peux charger plus qu\'aux haltères, avec un dos bien protégé.'
+      }},
+    {id:'x-oiseau-machine',restTime:60,name:'Oiseau machine',reps:'12-15',format:'3×12-15 · RIR 0-1',sets:3,
+      info:{
+        gif:'gifs/oiseau-machine.webp',
+        muscles:{ main:['Deltoïdes postérieurs'], secondary:['Rhomboïdes', 'Trapèzes moyens'] },
+        execution:[
+          'Assis face au dossier de la machine, **poitrine contre le coussin**, bras tendus devant à hauteur d\'épaules.',
+          'Prise pronation ou neutre, **coudes légèrement fléchis**.',
+          'Ouvre les bras vers l\'arrière **en arc de cercle** : **le mouvement part de l\'épaule**. Serre légèrement les omoplates en fin de mouvement.',
+          '**Reviens lentement**. **Charge légère**, mouvement propre.',
+        ],
+        erreurs:[
+          '**Hausser les épaules** : souvent le signe que c\'est trop lourd.',
+          '**Avancer la tête**.',
+          'Tirer **avec les omoplates seulement**, sans ouvrir les bras.',
+        ],
+        interet:'Isole **l\'arrière des épaules**, souvent en retard, sans avoir à te stabiliser. **Bon remplaçant du face pull** si la poulie est prise.'
+      }},
+      {id:'a5',restTime:60,name:'Élévations latérales',format:'4×12-15 · dernière à fond',sets:4,
+        info:{
+          gif:'gifs/elevations-laterales-halteres.webp',
+          muscles:{ main:['Deltoïdes latéraux'], secondary:['Trapèzes supérieurs', 'Deltoïdes antérieurs'] },
+          execution:[
+            'Debout, pieds largeur de bassin, genoux souples, **buste légèrement penché** vers l\'avant (~10-15°).',
+            'Haltères le long du corps, **coudes légèrement fléchis et fixes**.',
+            'Monte les bras sur les côtés jusqu\'à ce que **les coudes arrivent à l\'horizontale**. **Les coudes mènent**, les mains restent sous les coudes (comme pour verser une carafe).',
+            'Courte pause en haut, puis **redescends lentement (2 s)**. Pour garder la tension, **ne repose pas les haltères** contre les cuisses.',
+          ],
+          erreurs:[
+            'Charger trop lourd et monter avec un coup de reins.',
+            '**Hausser les épaules** : ce sont les trapèzes qui travaillent alors.',
+            'Monter les mains **plus haut que les coudes**.',
+          ],
+          interet:'Isolation du deltoïde latéral, celui qui donne **la largeur d\'épaules** et que les développés travaillent peu. En 12-15 répétitions, lent et propre : ce muscle répond **au volume et à la technique**, pas à la charge.'
+        }},
+    {id:'x-curl-incline',restTime:60,name:'Curl incliné',reps:'10-12',format:'3×10-12 · RIR 0-1',sets:3,
+      info:{
+        gif:'gifs/curl-incline-halteres.webp',
+        muscles:{ main:['Biceps (longue portion)'], secondary:['Avant-bras'] },
+        execution:[
+          'Banc incliné à **45-60°**, dos collé, **bras pendants à la verticale**.',
+          'Paumes vers l\'avant.',
+          'Monte les haltères **sans avancer les coudes**.',
+          '**Redescends complètement**, bras tendus : c\'est l\'étirement qui fait tout.',
+        ],
+        erreurs:[
+          '**Avancer les coudes** pendant la montée.',
+          '**Charger trop lourd** et perdre l\'amplitude.',
+        ],
+        interet:'Bras derrière le corps, le biceps est **étiré au maximum** : un des curls les plus efficaces pour le développer.'
+      }},
+    {id:'x-legcurl-allonge',restTime:90,name:'Leg curl allongé',reps:'10-12',format:'3×10-12 · RIR 1-2',sets:3,
+      info:{
+        gif:'gifs/leg-curl-allonge.webp',
+        muscles:{ main:['Ischio-jambiers'], secondary:['Mollets'] },
+        execution:[
+          'Allongé sur le ventre, **genoux juste au bord du coussin**, boudin au-dessus des talons.',
+          'Hanches **plaquées** sur le banc.',
+          'Ramène les talons **vers les fesses**, serre 1 seconde.',
+          '**Redescends lentement** sans reposer la charge.',
+        ],
+        erreurs:[
+          '**Décoller les hanches** du banc.',
+          '**Lâcher la descente**.',
+        ],
+        interet:'L\'autre version du leg curl, **si la machine assise est prise**. Même muscles, même efficacité.'
       }},
     ]
   }

@@ -1006,24 +1006,6 @@ const EXTRA_EXERCISES = [
       interet:'Épaissit le bras **et l\'avant-bras** : le bras paraît plus large de face comme de profil.'
     }},
   // ── Sortis du programme le 9/11 (programme V athlétique), gardés pour l'historique ──
-    {id:'a4',muscle:'Dos',restTime:120,name:'Tirage vertical large',format:'3×8-12 · RIR 1-2',sets:3,
-      info:{
-        gif:'gifs/tirage-vertical-large.webp',
-        muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Milieu du dos', 'Grand rond'] },
-        execution:[
-          '**Cuisses bien calées** sous les boudins, pieds à plat, abdos serrés.',
-          '**Prise pronation large**, un peu plus large que les épaules, sans exagérer.',
-          '**Abaisse d\'abord les épaules** et les omoplates, puis tire la barre **vers le haut de la poitrine** en bombant légèrement le torse.',
-          'Coudes tirés **vers le bas et un peu vers l\'arrière**, buste presque immobile (un léger recul est OK).',
-          '**Remonte lentement**, sans laisser la barre tirer les épaules vers les oreilles.',
-        ],
-        erreurs:[
-          '**Se balancer en arrière** pour tirer plus lourd.',
-          'Descendre la barre loin sous le menton ou derrière la nuque.',
-          'Tirer avec les bras : pense **« coudes vers les hanches »**.',
-        ],
-        interet:'Ajoute un tirage vertical au rowing du Jour A. La prise large vise **la largeur du dos**. En volume modéré (10-12) pour accumuler du travail **sans fatiguer le bas du dos**, déjà sollicité par le rowing barre.'
-      }},
     {id:'c3',muscle:'Pectoraux',restTime:75,name:'Écarté poulie',format:'3×12-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/ecarte-poulie.webp',
@@ -1076,41 +1058,6 @@ const EXTRA_EXERCISES = [
         interet:'Le curl marteau vise l\'avant-bras et le brachial, qui donnent **l\'épaisseur du bras**. Variante différente du curl EZ du Jour A, pour varier le travail. Superset avec le triceps pour les mêmes raisons qu\'au Jour A : **deux fois moins de temps**, presque sans perte de force.'
       }},
   // ── Sortis du programme le 23/11 (passage en Push / Pull), gardés pour l'historique ──
-    {id:'b1',muscle:'Épaules',restTime:180,name:'Développé militaire',format:'Top set 4-6 + 2×6-8 · RIR 1-2',sets:3,topSet:true,rankKey:'ohp',
-      info:{
-        gif:'gifs/developpe-militaire-halteres.webp',
-        muscles:{ main:['Deltoïdes antérieurs et latéraux'], secondary:['Triceps', 'Haut des pectoraux', 'Abdos (gainage)'] },
-        execution:[
-          '**Debout, pieds largeur d\'épaules**, barre posée sur le haut de la poitrine, au creux des paumes, **coudes sous la barre**.',
-          '**Gaine abdos, fessiers et cuisses**. Inspire avant de pousser.',
-          '**Pousse à la verticale** en **reculant légèrement la tête** pour laisser passer la barre, puis ramène la tête sous la barre une fois passée.',
-          'En haut, bras tendus, barre **au-dessus du milieu du pied**, coudes très légèrement fléchis. Souffle.',
-          'Redescends lentement **jusqu\'aux clavicules**.',
-        ],
-        erreurs:[
-          '**Cambrer le bas du dos** pour finir la répétition : c\'est trop lourd pour ton gainage.',
-          '**Balancer le buste** ou pousser avec les jambes.',
-          'Barre qui part vers l\'avant au lieu de monter droit. En cas de gêne à l\'épaule, **élargis un peu la prise**.',
-        ],
-        interet:'Le mouvement de force principal des épaules, et ton **troisième marqueur de rang**. Debout, il demande beaucoup de gainage. Top set puis back-off, comme au développé couché.'
-      }},
-    {id:'b2',muscle:'Dos',superset:true,restTime:15,name:'Tirage vertical neutre',format:'4×8-12 · RIR 1-2',sets:4,
-      info:{
-        gif:'gifs/tirage-vertical-neutre.webp',
-        muscles:{ main:['Grand dorsal'], secondary:['Biceps', 'Grand rond', 'Milieu du dos'] },
-        execution:[
-          '**Poignée triangle** (prises parallèles), cuisses bien bloquées, buste légèrement penché en arrière.',
-          'Tire la poignée **vers le haut de la poitrine**, **coudes serrés vers les hanches**.',
-          'En bas : poitrine sortie, omoplates serrées, **pause de 1-2 s**.',
-          '**Remonte lentement**, bras presque tendus, sans laisser les épaules monter aux oreilles.',
-        ],
-        erreurs:[
-          'Charger trop et **raccourcir l\'amplitude**.',
-          '**Relâcher les épaules** d\'un coup au retour.',
-          'Aller vite : sur un exercice lourd, **le contrôle compte double**.',
-        ],
-        interet:'Travaillé lourd (6-8), c\'est **ton chemin vers les tractions**. La prise neutre **ménage les épaules** et laisse charger plus. Le jour où tu tireras l\'équivalent de ton poids de corps 6 fois ici, la traction stricte ne sera plus loin.'
-      }},
     {id:'a3',muscle:'Pectoraux',restTime:120,name:'Développé incliné haltères',format:'3×8-12 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/developpe-incline-db.webp',
