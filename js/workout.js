@@ -168,11 +168,11 @@ const WARMUP_MOVES = {
 };
 // Adapté au jour : épaules toujours, puis ce que la séance sollicite le plus
 const WARMUP_BY_DAY = {
-  A: ['facepull', 'rotation', 'zottman'],   // Push : couché, épaules, dips
-  B: ['facepull', 'rotation', 'zottman'],   // Pull : tirages, curl
+  A: [],   // Push : uniquement les séries d'approche (demandé le 23/11 : rien d'inutile)
+  B: [],   // Pull : idem
 };
 const POWER_IDS = ['x-box-jump', 'x-kb-swing', 'x-squat-saute'];
-const WARMUP_DEFAULT = ['facepull', 'rotation', 'zottman'];
+const WARMUP_DEFAULT = [];
 let warmupOpen = null;   // null = automatique (ouvert tant que pas fini)
 let warmupPreview = null;
 
@@ -190,11 +190,13 @@ function warmupItems(exercises) {
   if (first) {
     const prev = getLastPerf(first.id, 0);
     const w = prev && parseFloat(prev.kg) > 0 ? parseFloat(prev.kg) : null;
-    const detail = w
-      ? `Léger ×10 · ${roundPlate(w * 0.5)} kg ×6 · ${roundPlate(w * 0.75)} kg ×3`
-      : 'Léger ×10 · ~50 % ×6 · ~75 % ×3';
-    items.push({ id:'approche', gif: first.info && first.info.gif, name:`Séries d'approche : ${first.name}`, detail,
-      text:`Avant tes vraies séries sur le premier gros exo : **barre vide ou très léger ×10**, puis **~50 % de ta charge ×6**, puis **~75 % ×3**. ${w ? `Calculé sur ta dernière charge (**${w} kg**). ` : ''}Pour les exos suivants, **une seule série légère** suffit : tu es déjà chaud.` });
+    const gif = first.info && first.info.gif;
+    const why = `Les séries d'approche chauffent exactement les muscles et les articulations du premier exo, sans te fatiguer. ${w ? `Calculées sur ta dernière charge (**${w} kg**). ` : ''}Pour les exos suivants, **une seule série légère** avant la première vraie série suffit.`;
+    items.push(
+      { id:'app1', gif, name:`${first.name} · très léger`, detail: w ? `Barre vide ou ~${roundPlate(w * 0.35)} kg × 10` : 'Barre vide ou très léger × 10', text: why },
+      { id:'app2', gif, name:`${first.name} · moitié`,     detail: w ? `${roundPlate(w * 0.5)} kg × 6` : '~50 % de ta charge × 6', text: why },
+      { id:'app3', gif, name:`${first.name} · presque`,    detail: w ? `${roundPlate(w * 0.75)} kg × 3` : '~75 % de ta charge × 3', text: why },
+    );
   }
   return items;
 }
@@ -208,8 +210,8 @@ function renderWarmup(day, exercises) {
   let h = `<div class="card warmup-card${all ? ' warmup-done' : ''}" style="--ex-accent:${day.accent}">
     <div class="warmup-head" onclick="toggleWarmup(${open})">
       <div style="flex:1">
-        <div class="warmup-title">${all ? '✓ ' : ''}Échauffement <span class="warmup-time">· 4-5 min</span></div>
-        <div class="warmup-sub">${all ? 'Fait, tu peux attaquer' : `${n}/${items.length} · épaules d'abord, elles protègent tout le reste`}</div>
+        <div class="warmup-title">${all ? '✓ ' : ''}Échauffement <span class="warmup-time">· 3 min</span></div>
+        <div class="warmup-sub">${all ? 'Fait, tu peux attaquer' : `${n}/${items.length} · 3 séries d'approche, rien d'autre`}</div>
       </div>
       <div class="ex-arrow">${open ? '▾' : '▸'}</div>
     </div>`;
