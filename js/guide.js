@@ -169,9 +169,9 @@ function guideWhy() {
     <div class="gd-h">Push / Pull en 2 versions</div>
     <ul class="gd-list">
       <li><strong>3 séances par semaine</strong>, dans l'ordre : <strong>Push A → Pull A → Push B → Pull B</strong>, puis on recommence. Tu reprends simplement là où tu t'es arrêté.</li>
-      <li><strong>Push A</strong> : couché barre, épaules machine, incliné machine, dips, latérales, triceps, presse.</li>
+      <li><strong>Push A</strong> : couché barre (top set), incliné machine, dips, latérales, triceps barre, presse, leg extension.</li>
       <li><strong>Pull A</strong> : tirage Hammer, tractions assistées, rowing assis, oiseau, latérales, curl machine, leg curl.</li>
-      <li><strong>Push B</strong> : militaire, développé assis machine, pec deck, latérales, triceps corde, hack squat, leg extension.</li>
+      <li><strong>Push B</strong> : militaire (top set), couché barre en volume, pec deck, latérales, triceps corde, hack squat, leg extension. Le couché revient dans les deux Push pour progresser plus vite.</li>
       <li><strong>Pull B</strong> : tirage neutre, tirage large, T-bar, oiseau, latérales, curl incliné, leg curl allongé.</li>
       <li><strong>Latérales dans les 4 séances</strong> : c'est ce qui élargit les épaules.</li>
     </ul>

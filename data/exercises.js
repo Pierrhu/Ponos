@@ -1141,6 +1141,7 @@ const ALTERNATIVES = {
   'x-kb-swing':     ['x-box-jump', 'x-squat-saute'],
   'x-farmer':       ['x-planche', 'x-releve-jambes'],
   'x-curl-marteau': ['x-curl-poulie', 'x-curl-machine', 'x-curl-incline'],
+  'a1v':            ['x-dc-machine', 'x-chest-press', 'a3'],
 };
 
 // ── Couleurs des groupes musculaires ─────────────────────────────────────────

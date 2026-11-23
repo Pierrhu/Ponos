@@ -24,23 +24,6 @@ const PROGRAM = [
           ],
           interet:'L\'exercice de base des pectoraux, et **ton marqueur de force principal** (c\'est lui qui donne ton rang). Un top set lourd puis deux séries de back-off : assez de travail pour progresser, en tenant dans l\'heure avec l\'échauffement.'
         }},
-    {id:'x-epaules-machine',restTime:150,name:'Développé épaules machine',reps:'6-8',format:'3×6-8 · RIR 1-2',sets:3,
-      info:{
-        gif:'gifs/developpe-epaules-machine.webp',
-        muscles:{ main:['Deltoïdes antérieurs et latéraux'], secondary:['Triceps', 'Haut des pectoraux'] },
-        execution:[
-          'Règle le siège : **poignées à hauteur d\'épaules**. Trop bas, tu perds de l\'amplitude.',
-          'Dos contre le dossier, **abdos gainés**, prise pronation (ou neutre si l\'épaule est sensible).',
-          'Pousse au-dessus de la tête **jusqu\'aux bras presque tendus**.',
-          '**Redescends lentement** jusqu\'au niveau des épaules, sans reposer la charge en bas.',
-        ],
-        erreurs:[
-          '**Cambrer le dos** pour finir la répétition.',
-          '**Reposer la pile** entre les répétitions.',
-          '**Siège mal réglé**. Si l\'épaule fait mal : plus léger, prise neutre, ou un autre exercice.',
-        ],
-        interet:'Remplaçant du développé militaire : **plus stable, moins de gainage**, et **sans danger si tu échoues** sur une répétition. Idéal quand le dos est fatigué.'
-      }},
     {id:'x-incline-machine',restTime:120,name:'Développé incliné machine',reps:'8-10',format:'3×8-10 · RIR 1-2',sets:3,
       info:{
         gif:'gifs/developpe-incline-machine.webp',
@@ -125,6 +108,22 @@ const PROGRAM = [
           ],
           interet:'Le plus simple pour travailler les jambes **sans charger le dos** ni apprendre de technique. **Pieds plus hauts**, tu travailles plus les fessiers ; plus bas, plus les quadriceps. Les jambes sont les plus gros muscles du corps : plus de muscle, **plus de calories brûlées au repos**.'
         }},
+    {id:'x-legext',restTime:75,name:'Leg extension',reps:'12-15',format:'2×12-15 · RIR 1',sets:2,
+      info:{
+        gif:'gifs/leg-extension.webp',
+        muscles:{ main:['Quadriceps'], secondary:[] },
+        execution:[
+          'Dos calé, **genoux alignés avec l\'axe** de la machine, boudin juste au-dessus des chevilles.',
+          'Tends les jambes jusqu\'en haut **sans verrouiller les genoux**, **tiens 1 seconde**.',
+          '**Redescends lentement**, sans reposer la charge entre les répétitions.',
+        ],
+        erreurs:[
+          '**Aller très lourd** : les genoux n\'aiment pas les charges maximales sur cette machine.',
+          'Monter **avec de l\'élan**.',
+          'Genoux mal alignés avec l\'axe. **Arrête en cas de douleur** au genou.',
+        ],
+        interet:'**Isole les quadriceps**. Pratique pour remplacer la presse quand elle est prise, ou en finition. Bon aussi pour **échauffer les genoux** avant la presse.'
+      }},
     ]
   },
   {
@@ -271,22 +270,26 @@ const PROGRAM = [
           ],
           interet:'Le mouvement de force principal des épaules, et ton **troisième marqueur de rang**. Debout, il demande beaucoup de gainage. Top set puis back-off, comme au développé couché.'
         }},
-    {id:'x-chest-press',restTime:120,name:'Développé assis machine',reps:'8-10',format:'3×8-10 · RIR 1-2',sets:3,
-      info:{
-        gif:'gifs/chest-press-machine.webp',
-        muscles:{ main:['Pectoraux'], secondary:['Triceps', 'Deltoïdes antérieurs'] },
-        execution:[
-          'Règle le siège : **poignées au niveau du milieu de la poitrine**.',
-          'Dos collé au dossier, **omoplates serrées**, pieds à plat.',
-          'Pousse **jusqu\'aux bras presque tendus**, sans verrouiller les coudes.',
-          '**Reviens lentement** jusqu\'à sentir l\'étirement des pecs, sans reposer la charge.',
-        ],
-        erreurs:[
-          '**Siège trop haut ou trop bas** : les épaules prennent le relais.',
-          '**Décoller le dos** du dossier pour pousser plus lourd.',
-        ],
-        interet:'Le développé le plus simple qui soit : **pas d\'équilibre à gérer**, idéal pour débuter ou quand le banc est pris.'
-      }},
+      {id:'a1v',restTime:150,name:'Développé couché barre · volume',format:'3×8-10 · RIR 2 · ~80 % du top set',sets:3,rankKey:'bench',
+        info:{
+          gif:'gifs/developpe-couche-barre.webp',
+          muscles:{ main:['Pectoraux'], secondary:['Triceps', 'Deltoïdes antérieurs'] },
+          execution:[
+            'Échauffement : **3 séries qui montent** (barre à vide ×10, ~50 % ×6, ~70 % ×3) avant le top set.',
+            'Installation : yeux sous la barre, **pieds ancrés au sol**, fessiers, haut du dos et tête collés au banc. **Omoplates serrées et basses**, léger arc du haut du dos.',
+            'Prise un peu plus large que les épaules, **poignets droits** au-dessus des coudes.',
+            'Grande inspiration bloquée, gainage, puis **descente contrôlée (2-3 s)** jusqu\'au bas des pecs, **au niveau des mamelons**.',
+            'Pousse **en appuyant dans les talons**, épaules loin des oreilles. Souffle en fin de poussée, **jamais en bas**.',
+            'Top set : ta charge max pour **3-5 reps**. Back-off : **~85 % du top set** pour 6-8 reps.',
+          ],
+          erreurs:[
+            'Décoller les fesses ou la tête du banc : c\'est que **la charge est trop lourde**.',
+            '**Casser les poignets** en arrière.',
+            'Faire **rebondir la barre** sur la poitrine ou raccourcir l\'amplitude.',
+            'Sortir une barre lourde seul d\'un support mal réglé : **règle les sécurités** à hauteur de poitrine.',
+          ],
+          interet:'L\'exercice de base des pectoraux, et **ton marqueur de force principal** (c\'est lui qui donne ton rang). Un top set lourd puis deux séries de back-off : assez de travail pour progresser, en tenant dans l\'heure avec l\'échauffement.'
+        }},
     {id:'x-pecfly',restTime:75,name:'Pec deck',reps:'12-15',format:'3×12-15 · RIR 0-1',sets:3,
       info:{
         gif:'gifs/pec-fly-machine.webp',
